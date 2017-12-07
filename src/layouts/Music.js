@@ -153,36 +153,38 @@ class Music extends React.Component {
               <Menu.Item key="9"><Icon type="file-text" /><a href="https://www.baidu.com/">使用文档</a></Menu.Item>
             </Menu>
           </Sider>
-          <Content className={styles.content}>
-            {/* <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb> */}
-            {/* <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" /> */}
-            <div className={styles.left}>
+          <layout>
+            <Content className={styles.content}>
+              {/* <Breadcrumb style={{ margin: '16px 0' }}>
+                <Breadcrumb.Item>Home</Breadcrumb.Item>
+                <Breadcrumb.Item>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb> */}
+              {/* <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" /> */}
+              <div className={styles.left}>
+                <Switch>
+                  <Route path="/pic2" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
+                  <Route path="/pic1" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
+                  <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
+                </Switch>
+              </div>
+              <div className={styles.cright}>
+                <Switch>
+                  <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
+                  <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
+                  <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
+                </Switch>
+              </div>
+            </Content>
+            {/* </div> */}
+            <Footer className={styles.footer}>
               <Switch>
-                <Route path="/pic2" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
-                <Route path="/pic1" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
-                <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
+                <Route path="/a" render={() => <h3>分析页</h3>} />
+                <Route path="/b" render={() => <h3>监控页</h3>} />
               </Switch>
-            </div>
-            <div className={styles.cright}>
-              <Switch>
-                <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
-                <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
-                <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
-              </Switch>
-            </div>
-          </Content>
+            </Footer>
+          </layout>
         </layout>
-        {/* </div> */}
-        <Footer className={styles.footer}>
-          <Switch>
-            <Route path="/a" render={() => <h3>分析页</h3>} />
-            <Route path="/b" render={() => <h3>监控页</h3>} />
-          </Switch>
-        </Footer>
       </Layout>
     );
     return (
