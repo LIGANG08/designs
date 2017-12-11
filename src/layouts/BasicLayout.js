@@ -4,10 +4,11 @@
 
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Carousel } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
+import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import styles from './BasicLayout.less';
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -126,6 +127,39 @@ class BasicLayout extends React.Component {
             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
             onClick={this.toggle}
           />
+            <div className={styles.header}>header
+          <h1 className={styles.hlogo}>
+            <img
+              src="http://i03.pic.sogou.com/ed0215a1ff39103d" alt="logo"
+              style={{ width: '40px', height: '40px', margin: '0 10px' }}
+            />
+            网易云音乐
+          </h1>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={['2']}
+                style={{ lineHeight: '64px' }}
+              >
+                <Menu.Item key="1"><Link to="/a">发现音乐</Link></Menu.Item>
+                <Menu.Item key="2"><Link to="/pic1">我的音乐</Link></Menu.Item>
+                <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item>
+                <Menu.Item key="4">商城</Menu.Item>
+                <Menu.Item key="5">音乐人</Menu.Item>
+                <Menu.Item key="6">下载客户端</Menu.Item>
+              </Menu>
+              <HeaderSearch
+                style={{ marginTop: '16px', marginLeft: '20px' }}
+                placeholder="🔍   音乐/电台/用户"
+                dataSource={['搜索提示一', '搜索提示二', '搜索提示三']}
+                onSearch={(value) => {
+                  console.log('input', value); // eslint-disable-line
+                }}
+                onPressEnter={(value) => {
+                  console.log('enter', value); // eslint-disable-line
+                }}
+              />
+            </div>
           </Header>
           <Content className={styles.content}>
             {/* <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" /> */}
@@ -133,6 +167,20 @@ class BasicLayout extends React.Component {
               <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
               <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
               <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
+            </Switch>
+            <Switch>
+              <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
+              <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
+              <Route
+                path="/a" render={() =>
+                  <Carousel classname={styles.move} autoplay>
+                    <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                    <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                    <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                    <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                  </Carousel>
+                  }
+              />
             </Switch>
           </Content>
           <Footer className={styles.footer}>
