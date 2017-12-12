@@ -142,14 +142,14 @@
 
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Carousel } from 'antd';
+import { Layout, Menu, Icon, Carousel, Card } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import styles from './Music.less';
 
-const { Header, Sider, Content, Footer } = Layout;
+const { Sider, Content, Footer } = Layout;
 
 const query = {
   'screen-xs': {
@@ -174,6 +174,10 @@ const query = {
 
 // const SubMenu = Menu.SubMenu;
 const { SubMenu } = Menu;
+const gridStyle = {
+  width: '25%',
+  textAlign: 'center',
+};
 
 class BasicLayout extends React.Component {
 
@@ -190,16 +194,28 @@ class BasicLayout extends React.Component {
   render() {
     const layout = (
       <Layout>
-        <Header style={{ lineHeight: '64px', background: 'red' }} >header
+        <div className={styles.header}>
           <div className={styles.logo} style={{ background: '#242424' }}>
             <a href="http://music.163.com">
               <img src="http://i03.pic.sogou.com/ed0215a1ff39103d" alt="logo" style={{ margin: '10px' }} />
-              {/* <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" /> */}
               <h1>网易云音乐</h1>
             </a>
           </div>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="1"><Link to="/m">发现音乐</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/pic1">我的音乐</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/right">商城</Link></Menu.Item>
+            <Menu.Item key="5">音乐人</Menu.Item>
+            <Menu.Item key="6">下载客户端</Menu.Item>
+          </Menu>
           <HeaderSearch
-            style={{ marginTop: '16px', marginLeft: '20px' }}
+            // style={{ marginTop: '16px', marginLeft: '20px' }}
             placeholder="🔍   音乐/电台/用户"
             dataSource={['搜索提示一', '搜索提示二', '搜索提示三']}
             onSearch={(value) => {
@@ -209,21 +225,11 @@ class BasicLayout extends React.Component {
               console.log('enter', value); // eslint-disable-line
             }}
           />
-          {/* <Menu
-            theme="silver"
-            mode="horizontal"
-            defaultSelectedKeys={['7']}
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu> */}
-        </Header>
-        <Layout className={styles.right}>
+        </div>
+        <Layout>
           {/* </Header> */}
           <Sider
-          // className={styles.left}
+            className={styles.sider}
             style={{ background: 'black' }}
           >
             <Menu
@@ -246,10 +252,6 @@ class BasicLayout extends React.Component {
               <SubMenu key="sub3" title={<span><Icon type="exception" /><span>创建的歌单</span></span>}>
                 <Menu.Item key="7">我喜欢的音乐</Menu.Item>
                 <Menu.Item key="8">标准列表</Menu.Item>
-                {/* <Menu.Item key="9">卡片列表</Menu.Item>
-                <Menu.Item key="10">搜索列表(项目)</Menu.Item>
-                <Menu.Item key="11">搜索列表(应用)</Menu.Item>
-                <Menu.Item key="12">搜索列表(文章)</Menu.Item> */}
               </SubMenu>
               <SubMenu key="sub4" title={<span><Icon type="layout" /><span>我的收藏</span></span>}>
                 <Menu.Item key="13"><Link to="/pic1">图1</Link></Menu.Item>
@@ -273,38 +275,54 @@ class BasicLayout extends React.Component {
             </Menu>
           </Sider>
           <Content className={styles.content}>
-            {/* <Header> */}
-            {/* <Menu
-              theme="silver"
-              mode="horizontal"
-              defaultSelectedKeys={['7']}
-              style={{ lineHeight: '64px' }}
-            >
-              <Menu.Item key="23">nav 1</Menu.Item>
-              <Menu.Item key="24">nav 2</Menu.Item>
-              <Menu.Item key="25">nav 3</Menu.Item>
-            </Menu> */}
-            {/* </Header> */}
-            {/* <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" /> */}
-            <Switch>
-              <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
-              <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
-              <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
-            </Switch>
-            <Switch>
-              <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
-              <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
-              <Route
-                path="/m" render={() =>
-                  <Carousel classname={styles.move} autoplay>
-                    <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ width: '100%', height: '300px' }} /></div>
-                    <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
-                    <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
-                    <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
-                  </Carousel>
-                  }
-              />
-            </Switch>
+            <div className={styles.main}>main
+              <div className={styles.top}>top
+                {/* <Carousel classname={styles.move} autoplay>
+                  <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ width: '80%' }} /></div>
+                  <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                  <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                  <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                </Carousel> */}
+                {/* <Switch>
+                  <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
+                  <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
+                  <Route
+                    path="/m" render={() =>
+                      <Carousel classname={styles.move} autoplay>
+                        <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ width: '80%' }} /></div>
+                        <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                        <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                        <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
+                      </Carousel>
+                      }
+                  />
+                </Switch> */}
+              </div>
+              <div className={styles.wrap}>
+                <Card title="Card Title">
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                </Card>
+              </div>
+              {/* <Switch>
+                <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
+                <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
+                <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
+              </Switch> */}
+            </div>
+            <div className={styles.right}>right
+              <Switch>
+                <Route path="/right" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
+                <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
+                <Route path="/m" render={() => <h3>Please select b topic.</h3>} />
+              </Switch>
+              <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />
+            </div>
           </Content>
         </Layout>
         <Footer className={styles.footer}>
