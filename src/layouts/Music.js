@@ -13,6 +13,7 @@ import styles from './Music.less';
 
 const { Sider, Content, Footer } = Layout;
 const TabPane = Tabs.TabPane;
+// const Search = Input.Search;
 
 function callback(key) {
   console.log(key);
@@ -42,9 +43,20 @@ const query = {
 const box = [
   {
     box: 1,
+    arr: [
+      {
+        b: 1,
+      },
+      {
+        b: 2,
+      },
+    ],
   },
   {
     box: 2,
+  },
+  {
+    box: 3,
   },
 ];
 
@@ -148,6 +160,11 @@ class BasicLayout extends React.Component {
               console.log('enter', value); // eslint-disable-line
             }}
           />
+          {/* <Search
+            placeholder="🔍   音乐/电台/用户"
+            onSearch={value => console.log(value)}
+            enterButton
+          /> */}
           <div style={{ marginLeft: '100px' }}>
             {/* <Avatar icon="user" /> */}
             {/* <Avatar>U</Avatar>
@@ -222,25 +239,21 @@ class BasicLayout extends React.Component {
             <div className={styles.main}>
               <div className={styles.top}>
                 <Carousel classname={styles.move} autoplay>
-                  <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" /></div>
-                  <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" /></div>
-                  <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" /></div>
-                  <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" /></div>
+                  <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
+                  <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
+                  <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
+                  <div><img src="http://p1.music.126.net/Gj92V72Sl8u2z6EhLaGF6Q==/19182079858662886.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
                 </Carousel>
-                {/* <Switch>
-                  <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
-                  <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
-                  <Route
-                    path="/m" render={() =>
-                      <Carousel classname={styles.move} autoplay>
-                        <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ width: '80%' }} /></div>
-                        <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
-                        <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
-                        <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" style={{ width: '100%' }} /></div>
-                      </Carousel>
-                      }
-                  />
-                </Switch> */}
+                <svg className={styles.svgb}>
+                  <polygon points="0,0 1000,450 100,50 850,160 100,200 450,100 100,350 1000,250, 500,200" style={{ fill: '#cccccc', strokeWidth: '1' }} />
+                </svg>
+                {/* <svg className={styles.svga}>
+                  <polygon points="0,0 100,450 400,450" style={{ fill: '#cccccc', strokeWidth: '1' }} />
+                </svg> */}
+                {/* <svg className={styles.svgc}>
+                  <polygon points="0,0 1000,100 650,250" style={{ fill: '#cccccc', strokeWidth: '1' }} />
+                </svg> */}
+                <span style={{ position: 'absolute', top: '300px', left: '650px', zIndex: '1000', color: '#000000' }}>网易音乐🎵</span>
               </div>
               <div className={styles.wrap}>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
@@ -271,24 +284,15 @@ class BasicLayout extends React.Component {
                         <List.Item.Meta
                           // avatar={<Avatar src={item.src} />}
                           // title={<a href="https://ant.design">{item.title}</a>}
+                          style={{ width: '120px', height: '60px', border: '1px solid red' }}
                           description={item.box}
                         />
                       </List.Item>
                     )}
                   />
-                  {/* <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid> */}
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性化推荐
-                  {/* <Divider type="vertical" />
-                  <a href="/#">Link</a>
-                  <Divider type="vertical" />
-                  <a href="/#">Link</a> */}
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="Card Title">
@@ -342,12 +346,6 @@ class BasicLayout extends React.Component {
               </Switch> */}
             </div>
             <div className={styles.right}>猜你喜欢
-              {/* <Switch>
-                <Route path="/right" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
-                <Route path="/pic2" render={() => <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" />} />
-                <Route path="/m" render={() => <h3>Please select b topic.</h3>} />
-              </Switch>
-              <img src="http://tupian.qqjay.com/u/2017/0604/1_143859_2.jpg!160x160" alt="这是一张图片" /> */}
               <List
                 // style={}
                 itemLayout="horizontal"
@@ -369,19 +367,18 @@ class BasicLayout extends React.Component {
           <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
             {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐 */}
             <Divider type="vertical" />
-            <a href="/#" style={{ color: '#666', fontSize: '15px' }}>关于网易</a>
+            <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>关于网易</span></a>
             <Divider type="vertical" />
-            <a href="/#" style={{ color: '#666', fontSize: '15px' }}>客户服务</a>
+            <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>客户服务</span></a>
             <Divider type="vertical" />
-            <a href="/#" style={{ color: '#666', fontSize: '15px' }}>服务条款</a>
+            <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>服务条款</span></a>
             <Divider type="vertical" />
-            <a href="/#" style={{ color: '#666', fontSize: '15px' }}>网站导航</a>
+            <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>网站导航</span></a>
             <Divider type="vertical" />
-            <a href="/#" style={{ color: '#666', fontSize: '15px' }}>意见反馈</a>
+            <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>意见反馈</span></a>
             <Divider type="vertical" />
-            <a href="/#" style={{ color: '#666', fontSize: '15px' }}>版权所有@ligang</a>
+            <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>版权所有@ligang</span></a>
             <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
-            {/* <span>版权部分</span> */}
           </div>
           <div>
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#C10D0C' }} />
@@ -394,7 +391,6 @@ class BasicLayout extends React.Component {
             <Route path="/b" render={() => <h3>监控页</h3>} />
           </Switch> */}
         </Footer>
-        {/* </Layout> */}
       </Layout>
     );
     return (
