@@ -5,13 +5,15 @@
       "extraBabelPlugins": [
         "dva-hmr",
         "transform-runtime",
-        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+        ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": true }]
       ]
     },
     "production": {
       "extraBabelPlugins": [
-        "transform-runtime"
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": true }]
       ]
-    }
+    },
+    "theme": "./theme.config.js"
   }
 }

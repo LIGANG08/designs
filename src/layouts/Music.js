@@ -12,12 +12,12 @@ import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import styles from './Music.less';
 
 const { Sider, Content, Footer } = Layout;
-const TabPane = Tabs.TabPane;
+// const TabPane = Tabs.TabPane;
 // const Search = Input.Search;
 
-function callback(key) {
-  console.log(key);
-}
+// function callback(key) {
+//   console.log(key);
+// }
 
 const query = {
   'screen-xs': {
@@ -111,14 +111,14 @@ const gridStyle = {
 class BasicLayout extends React.Component {
 
 
-  state = {
-    collapsed: false,
-  };
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
+  // state = {
+  //   collapsed: false,
+  // };
+  // toggle = () => {
+  //   this.setState({
+  //     collapsed: !this.state.collapsed,
+  //   });
+  // }
 
   render() {
     const layout = (
@@ -143,11 +143,12 @@ class BasicLayout extends React.Component {
             <Menu.Item key="5">音乐人</Menu.Item>
             <Menu.Item key="6">下载客户端</Menu.Item>
           </Menu>
-          <Tabs defaultActiveKey="1" onChange={callback}>
+          {/* <Tabs defaultActiveKey="1" onChange={callback}>
             <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
             <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
             <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
-          </Tabs>
+          </Tabs> */}
+          <div style={{ border: '2px solid white', width: '200px' }} />
           <HeaderSearch
             // style={{ marginTop: '16px', marginLeft: '20px' }}
             className={styles.Search}
@@ -211,8 +212,6 @@ class BasicLayout extends React.Component {
               <SubMenu key="sub4" title={<span><Icon type="layout" /><span>我的收藏</span></span>}>
                 <Menu.Item key="13"><Link to="/pic1">图1</Link></Menu.Item>
                 <Menu.Item key="14"><Link to="/pic2">图2</Link></Menu.Item>
-                {/* <Menu.Item key="11">Option 11</Menu.Item>
-                <Menu.Item key="12">Option 12</Menu.Item> */}
               </SubMenu>
               <SubMenu key="sub5" title={<span><Icon type="check-circle-o" /><span>结果</span></span>}>
                 <Menu.Item key="15">成功</Menu.Item>
@@ -230,30 +229,32 @@ class BasicLayout extends React.Component {
             </Menu>
           </Sider>
           <Content className={styles.content}>
-            {/* <Carousel classname={styles.move} autoplay>
-              <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" /></div>
-              <div><img src="http://p1.music.126.net/1Tmj-CGIPDeXmD_jhxWf6Q==/18686200116173908.jpg" alt="这是一张图片" /></div>
-              <div><img src="http://p1.music.126.net/636CVrb94tiJ7xG2iKZhDw==/18945684858708438.jpg" alt="这是一张图片" /></div>
-              <div><img src="http://p1.music.126.net/q7vXLOOAqxJAQqPAt_Brgg==/19182079858662861.jpg" alt="这是一张图片" /></div>
-            </Carousel> */}
             <div className={styles.main}>
               <div className={styles.top}>
                 <Carousel classname={styles.move} autoplay>
-                  <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
-                  <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
-                  <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
-                  <div><img src="http://p1.music.126.net/Gj92V72Sl8u2z6EhLaGF6Q==/19182079858662886.jpg" alt="这是一张图片" style={{ height: '450px', width: '100%' }} /></div>
+                  <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <div><img src="http://p1.music.126.net/Gj92V72Sl8u2z6EhLaGF6Q==/19182079858662886.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                 </Carousel>
-                <svg className={styles.svgb}>
-                  <polygon points="0,0 1000,450 100,50 850,160 100,200 450,100 100,350 1000,250, 500,200" style={{ fill: '#cccccc', strokeWidth: '1' }} />
+                <svg className={styles.svgc}>
+                  <polygon
+                    points="0,0 1000,450 100,50 "
+                    style={{ fill: '#cccccc', strokeWidth: '1' }}
+                  />
                 </svg>
-                {/* <svg className={styles.svga}>
-                  <polygon points="0,0 100,450 400,450" style={{ fill: '#cccccc', strokeWidth: '1' }} />
-                </svg> */}
+                <svg className={styles.svga}>
+                  <polygon points="0,100 90,90 100,0 110,90 200,100 110,110 100,200 90,110" style={{ fill: '#cccccc' }} />
+                </svg>
+                <span style={{ position: 'absolute', top: '180px', left: '312px', zIndex: '1000', color: '#000000' }}>🎵</span>
+                <svg className={styles.svgb}>
+                  <polygon points="0,100 90,90 100,0 110,90 200,100 110,110 100,200 90,110" style={{ fill: '#cccccc', strokeWidth: '1' }} />
+                </svg>
                 {/* <svg className={styles.svgc}>
-                  <polygon points="0,0 1000,100 650,250" style={{ fill: '#cccccc', strokeWidth: '1' }} />
+                  <polygon
+                  points="0,0 1000,100 650,250" style={{ fill: '#cccccc', strokeWidth: '1' }} />
                 </svg> */}
-                <span style={{ position: 'absolute', top: '300px', left: '650px', zIndex: '1000', color: '#000000' }}>网易音乐🎵</span>
+                <span style={{ position: 'absolute', top: '180px', left: '1072px', zIndex: '1000', color: '#000000' }}>🎵</span>
               </div>
               <div className={styles.wrap}>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
@@ -345,17 +346,18 @@ class BasicLayout extends React.Component {
                 <Route path="/b" render={() => <h3>Please select b topic.</h3>} />
               </Switch> */}
             </div>
-            <div className={styles.right}>猜你喜欢
+            <div className={styles.right}>猜你喜欢<hr />
               <List
-                // style={}
+                // style={{ color: 'white' }}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={item => (
                   <List.Item>
                     <List.Item.Meta
+                      // style={{ color: 'blue' }}
                       avatar={<Avatar src={item.src} />}
-                      title={<a href="https://ant.design">{item.title}</a>}
-                      description={item.song}
+                      title={<a href="https://ant.design" style={{ color: 'red' }}>{item.title}</a>}
+                      description={<span style={{ color: 'red' }}>item.song</span>}
                     />
                   </List.Item>
                 )}
