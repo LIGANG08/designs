@@ -40,26 +40,6 @@ const query = {
   },
 };
 
-const box = [
-  {
-    box: 1,
-    arr: [
-      {
-        b: 1,
-      },
-      {
-        b: 2,
-      },
-    ],
-  },
-  {
-    box: 2,
-  },
-  {
-    box: 3,
-  },
-];
-
 const data = [
   {
     title: '薛之谦',
@@ -271,32 +251,20 @@ class BasicLayout extends React.Component {
                   <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
-                <Card title="Card Title" style={{ borderBottom: '1px solid red' }}>
-                  <div style={gridStyle}>Content</div>
-                  <div style={gridStyle}>Content</div>
-                  <div style={gridStyle}>Content</div>
-                  <div style={gridStyle}>Content</div>
-                  <div style={gridStyle}>Content</div>
-                  <List
-                    itemLayout="horizontal"
-                    dataSource={box}
-                    renderItem={item => (
-                      <List.Item>
-                        <List.Item.Meta
-                          // avatar={<Avatar src={item.src} />}
-                          // title={<a href="https://ant.design">{item.title}</a>}
-                          style={{ width: '120px', height: '60px', border: '1px solid red' }}
-                          description={item.box}
-                        />
-                      </List.Item>
-                    )}
-                  />
+                <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>Content</Card.Grid>
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性化推荐
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
-                <Card title="Card Title">
+                <Card title="Personalized recommendation" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
@@ -313,7 +281,7 @@ class BasicLayout extends React.Component {
                   <a href="/#">Link</a> */}
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
-                <Card title="Card Title">
+                <Card title="The new disc recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
@@ -323,14 +291,14 @@ class BasicLayout extends React.Component {
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-                  <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />榜单
+                  <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />榜单推荐
                   {/* <Divider type="vertical" />
                   <a href="/#" style={{ color: 'silver' }}>Link</a>
                   <Divider type="vertical" />
                   <a href="/#">Link</a> */}
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
-                <Card title="Card Title">
+                <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
                   <Card.Grid style={gridStyle}>Content</Card.Grid>
@@ -356,8 +324,8 @@ class BasicLayout extends React.Component {
                     <List.Item.Meta
                       // style={{ color: 'blue' }}
                       avatar={<Avatar src={item.src} />}
-                      title={<a href="https://ant.design" style={{ color: 'red' }}>{item.title}</a>}
-                      description={<span style={{ color: 'red' }}>item.song</span>}
+                      title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
+                      description={<span style={{ color: 'white' }}>{item.song}</span>}
                     />
                   </List.Item>
                 )}

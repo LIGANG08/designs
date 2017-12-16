@@ -11,7 +11,7 @@
     "production": {
       "extraBabelPlugins": [
         "transform-runtime",
-        ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": true }]
+        ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": "true" }]
       ]
     },
     "theme": "./theme.config.js"
