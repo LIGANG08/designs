@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, IndexLink } from 'react-router-dom';
 import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Tabs, List } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
@@ -116,10 +116,10 @@ class BasicLayout extends React.Component {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1"><Link to="/m">发现音乐</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/pic1">我的音乐</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="/list">发现音乐</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/">我的音乐</Link></Menu.Item>
             {/* <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item> */}
-            <Menu.Item key="4"><Link to="/right">商城</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/">商城</Link></Menu.Item>
             <Menu.Item key="5">音乐人</Menu.Item>
             <Menu.Item key="6">下载客户端</Menu.Item>
           </Menu>
