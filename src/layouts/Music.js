@@ -9,6 +9,7 @@ import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
+// import list from './list';
 import styles from './Music.less';
 
 const { Sider, Content, Footer } = Layout;
@@ -116,10 +117,10 @@ class BasicLayout extends React.Component {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1"><Link to="/list">发现音乐</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/">我的音乐</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="/">发现音乐</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/list">我的音乐</Link></Menu.Item>
             {/* <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item> */}
-            <Menu.Item key="4"><Link to="/">商城</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/a">商城</Link></Menu.Item>
             <Menu.Item key="5">音乐人</Menu.Item>
             <Menu.Item key="6">下载客户端</Menu.Item>
           </Menu>
@@ -237,7 +238,7 @@ class BasicLayout extends React.Component {
                 <span style={{ position: 'absolute', top: '180px', left: '1072px', zIndex: '1000', color: '#000000' }}>🎵</span>
               </div>
               <div className={styles.wrap}>
-                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐
                   <Divider type="vertical" />
                   <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
@@ -252,28 +253,32 @@ class BasicLayout extends React.Component {
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
                 </Card>
-                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性化推荐
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="Personalized recommendation" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
                 </Card>
-                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />新碟推荐
                   {/* <Divider type="vertical" />
                   <a href="/#">Link</a>
@@ -282,15 +287,17 @@ class BasicLayout extends React.Component {
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="The new disc recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}>Content<img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}>Content<img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
                 </Card>
-                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />榜单推荐
                   {/* <Divider type="vertical" />
                   <a href="/#" style={{ color: 'silver' }}>Link</a>
@@ -299,13 +306,15 @@ class BasicLayout extends React.Component {
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
-                  <Card.Grid style={gridStyle}>Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
                 </Card>
               </div>
               {/* <Switch>

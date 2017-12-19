@@ -3,8 +3,8 @@
  */
 
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Tabs, List } from 'antd';
+import { Link } from 'react-router-dom';
+import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -39,6 +39,89 @@ const query = {
     minWidth: 1200,
   },
 };
+const columns = [{
+  title: '播放',
+  dataIndex: 'src',
+  // render: text => <a href="/#">{text}</a>,
+}, {
+  title: '歌曲标题',
+  dataIndex: 'song',
+  render: text => <a href="/#">{text}</a>,
+}, {
+  title: '时长',
+  // className: 'column-money',
+  dataIndex: 'time',
+}, {
+  title: '歌手',
+  dataIndex: 'autor',
+}, {
+  title: '专辑',
+  dataIndex: 'albums',
+}];
+
+const datas = [{
+  key: '1',
+  src: '▶️',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '2',
+  song: '李白',
+  time: '04:12',
+  autor: '李荣浩',
+  albums: '《李白》',
+}, {
+  key: '3',
+  song: '80000(Prod.By DROYC)',
+  time: '01:48',
+  autor: 'PRC 巴音汗',
+  albums: '《80000(Prod.By DROYC)》',
+}, {
+  key: '4',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '5',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '6',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '7',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '8',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '9',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '10',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}];
+
 
 const data = [
   {
@@ -68,6 +151,7 @@ const list = [
     title: '薛之谦',
     song: '丑八怪',
     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+    pic: 'picppppppppp',
   },
   {
     title: '李荣浩',
@@ -174,10 +258,10 @@ class BasicLayout extends React.Component {
             // defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1"><Link to="/list">发现音乐</Link></Menu.Item>
-            <Menu.Item key="2"><Link to="/">我的音乐</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="/">发现音乐</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/list">我的音乐</Link></Menu.Item>
             {/* <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item> */}
-            <Menu.Item key="4"><Link to="/list">商城</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/a">商城</Link></Menu.Item>
             <Menu.Item key="5">音乐人</Menu.Item>
             <Menu.Item key="6">下载客户端</Menu.Item>
           </Menu>
@@ -234,7 +318,7 @@ class BasicLayout extends React.Component {
                   renderItem={item => (
                     <List.Item>
                       <List.Item.Meta
-                        style={{ width: '100%' }}
+                        // style={{ width: '100%' }}
                         avatar={<Avatar src={item.src} />}
                         title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
                         description={<span style={{ color: 'white' }}>{item.song}</span>}
@@ -243,23 +327,51 @@ class BasicLayout extends React.Component {
                     )}
                 />
               </div>
-              <div className={styles.right}>right
-                <List
-                    // style={{ color: 'white' }}
-                  size=""
+              <div className={styles.right}>
+                <div className={styles.top}>
+                  <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
+                  我的音乐🎵
+                </div>
+                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                  {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
+                  <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>流行</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>摇滚</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>民谣</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
+                  <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
+                </div>
+                {/* <List
+                  className={styles.list}
+                  // style={{ padding: '10px', marginTop: '10px' }}
                   itemLayout="horizontal"
                   dataSource={list}
                   renderItem={item => (
                     <List.Item>
                       <List.Item.Meta
                         style={{ width: '100%' }}
-                        avatar={<Avatar src={item.src} />}
+                        avatar={<Avatar src={item.pic} />}
                         title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
-                        description={<span style={{ color: 'white' }}>{item.song}</span>}
+                        description={<span style={{ color: 'white' }}><Icon type="play-circle-o" />{item.song}</span>}
                       />
                     </List.Item>
                     )}
+                /> */}
+                <Table
+                  pagination={{ pageSize: 6 }}
+                  columns={columns}
+                  dataSource={datas}
+                  bordered
+                  // title={() => 'Header'}
+                  footer={() => 'Footer'}
                 />
+
               </div>
             </div>
           </Content>
