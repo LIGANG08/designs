@@ -3,8 +3,8 @@
  */
 
 import React from 'react';
-import { Switch, Route, Link, IndexLink } from 'react-router-dom';
-import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Tabs, List } from 'antd';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Table, List } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -64,6 +64,102 @@ const data = [
   },
 ];
 
+const columns = [{
+  title: '播放',
+  dataIndex: 'key',
+  render: text => <a href="">{text}</a>,
+}, {
+  title: 'image',
+  dataIndex: 'src',
+  render: text => <img src={text} alt={'g'} width={'100px'} height={'100px'} />,
+}, {
+  title: '歌曲标题',
+  dataIndex: 'song',
+  render: text => <a href="/#">{text}</a>,
+}, {
+  title: '时长',
+  // className: 'column-money',
+  dataIndex: 'time',
+}, {
+  title: '歌手',
+  dataIndex: 'autor',
+}, {
+  title: '专辑',
+  dataIndex: 'albums',
+}];
+
+const datas = [{
+  key: '1',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '2',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '李白',
+  time: '04:12',
+  autor: '李荣浩',
+  albums: '《李白》',
+}, {
+  key: '3',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '80000(Prod.By DROYC)',
+  time: '01:48',
+  autor: 'PRC 巴音汗',
+  albums: '《80000(Prod.By DROYC)》',
+}, {
+  key: '4',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '5',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '6',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '7',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '8',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '9',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}, {
+  key: '10',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  time: '04:26',
+  autor: '薛之谦',
+  albums: '《意外》',
+}];
+
 const menu = (
   <Menu>
     <Menu.Item>
@@ -87,6 +183,10 @@ const { SubMenu } = Menu;
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
+  display: 'inline-block',
+  Flexdirection: 'column',
+  Alignitems: 'center',
+  Justifycontent: 'center',
 };
 
 class BasicLayout extends React.Component {
@@ -254,13 +354,134 @@ class BasicLayout extends React.Component {
                 </div>
                 <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>
-                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                    <img
+                      src="http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        // border: '1px solid black',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '10px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px',
+                      }}
+                    >
+                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ width: '100%', height: '30px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
                   </Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        // border: '1px solid black',
+                        position: 'absolute',
+                        top: '225px',
+                        left: '285px',
+                        opacity: '0.6',
+                        background: 'black' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginTop: '-10px', marginLeft: '90px' }}
+                      />
+                    </div>
+                    <div style={{ width: '100%', height: '30px', marginTop: '20px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        // border: '1px solid black',
+                        position: 'absolute',
+                        top: '225px',
+                        left: '503px',
+                        opacity: '0.5',
+                        background: 'black' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ width: '100%', height: '30px', marginTop: '20px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        // border: '1px solid black',
+                        position: 'absolute',
+                        top: '225px',
+                        left: '721px',
+                        opacity: '0.6',
+                        background: 'black' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ width: '100%', height: '30px', marginTop: '20px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        // border: '1px solid black',
+                        position: 'absolute',
+                        top: '400px',
+                        // left: '65px',
+                        opacity: '0.6',
+                        background: 'black' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />Content
+                  </Card.Grid>
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
@@ -269,7 +490,10 @@ class BasicLayout extends React.Component {
                 </div>
                 <Card title="Personalized recommendation" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>
-                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
                   </Card.Grid>
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
@@ -312,10 +536,15 @@ class BasicLayout extends React.Component {
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
                 </Card>
+                <Table
+                  pagination={{ pageSize: 6 }}
+                  columns={columns}
+                  dataSource={datas}
+                  bordered
+                  // title={() => 'Header'}
+                  footer={() => 'Footer'}
+                />
               </div>
               {/* <Switch>
                 <Route path="/pic1" render={() => <img src="http://img16.3lian.com/gif2016/q7/20/88.jpg" alt="这是一张图片" />} />
