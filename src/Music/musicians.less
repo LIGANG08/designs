@@ -1,0 +1,79 @@
+.logo{
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  // justify-content: center;
+  // height: 64px;
+  // position: relative;
+  // line-height: 64px;
+  // // padding-left: (@menu-collapsed-width - 50px) / 2;
+  // padding-left: -24px;
+  // transition: all .3s;
+  // background: #045770;
+  // overflow: hidden;
+  // width: 100%;
+}
+
+.logo img{
+  display: inline-block;
+  vertical-align: middle;
+  height: 32px;
+}
+
+.logo h1{
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.Search{
+  border-radius: 35%;
+  margin-left: 20px;
+}
+
+
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1000;
+  box-sizing: border-box;
+  background: #242424;
+  border-bottom: 5px solid #1890ff;
+  background: black;
+}
+
+.content{
+  background: url(http://p1.music.126.net/uqVB0u2spm_t0OUAdvXbCQ==/18493785580103375.jpg);
+  height: 650px;
+}
+
+.p{
+  white-space: nowrap;
+  overflow: -webkit-marquee;
+  -webkit-marquee-direction: left;
+  -webkit-marquee-speed: normal;
+  -webkit-marquee-style: scroll;
+  -webkit-marquee-repetition: infinite; 
+}
+
+.marquee { perspective: 500px; font-size: 0; }
+.marquee div { display: inline-block; height: 12rem; width: 30rem; position: relative; }
+.marquee div:first-of-type { background: #e5233e; transform-origin: top right; transform: rotateY(-40deg); color: #fff; }
+.marquee div:last-of-type { background: #b31e31; transform-origin: top left; transform: rotateY(45deg); color: #f8c9d9; }
+.marquee div { 
+  font-size: 8rem;
+  overflow: hidden;
+}
+.marquee div span { 
+  position: absolute; 
+  width: 400%;    
+  line-height: 1.4;
+}
+.marquee div:first-of-type span { transform: translateX(60rem); animation: leftcrawl 14s linear infinite; text-shadow: 4px 0px 4px rgba(0,0,0,0.3); }
+.marquee div:last-of-type span { transform: translateX(30rem); animation: rightcrawl 14s linear infinite; }
+@keyframes leftcrawl { to { transform: translateX(-100rem); } } @keyframes rightcrawl { to { transform: translateX(-130rem); } }
+@media all and (max-width: 993px) { #marquee { perspective: none; } #marquee div:last-of-type { opacity: 0; height: 0; } #marquee div:first-of-type { width: 80%; } }

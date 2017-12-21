@@ -4,6 +4,8 @@ import { Router, Route, Switch } from 'dva/router';
 // import BasicLayout from './layouts/BasicLayout';
 import Music from './layouts/Music';
 import list from './Music/list';
+import musicians from './Music/musicians';
+import download from './Music/download';
 
 function RouterConfig({ history }) {
   return (
@@ -13,6 +15,8 @@ function RouterConfig({ history }) {
         {/* <Route path="/" component={BasicLayout} /> */}
         <Route path="/" exact component={Music} />
         <Route path="/list" component={list} />
+        <Route path="/musicians" component={musicians} />
+        <Route path="/download" component={download} />
       </Switch>
     </Router>
   );

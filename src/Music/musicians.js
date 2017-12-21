@@ -4,12 +4,12 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table } from 'antd';
+import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Carousel } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-import styles from '../Music/list.less';
+import styles from '../Music/musicians.less';
 
 const { Content, Footer } = Layout;
 // const TabPane = Tabs.TabPane;
@@ -40,17 +40,10 @@ const query = {
   },
 };
 const columns = [{
-  dataIndex: 'key',
-  // render: text => <a href="">{text}</a>,
-}, {
   title: '播放',
-  dataIndex: 'play',
-  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-  render: text => <text>{text}</text>,
-}, {
-  title: 'image',
   dataIndex: 'src',
   render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+  // render: text => <a href="/#">{text}</a>,
 }, {
   title: '歌曲标题',
   dataIndex: 'song',
@@ -69,7 +62,6 @@ const columns = [{
 
 const datas = [{
   key: '1',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -77,31 +69,27 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '2',
-  play: '▶️',
-  src: 'http://i01.pic.sogou.com/358447d676d3a67c',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '李白',
   time: '04:12',
   autor: '李荣浩',
   albums: '《李白》',
 }, {
   key: '3',
-  play: '▶️',
-  src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '80000(Prod.By DROYC)',
   time: '01:48',
   autor: 'PRC 巴音汗',
   albums: '《80000(Prod.By DROYC)》',
 }, {
   key: '4',
-  play: '▶️',
-  src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-  song: '红昭愿',
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
   time: '04:26',
-  autor: '音阙诗听',
-  albums: '《红昭愿》',
+  autor: '薛之谦',
+  albums: '《意外》',
 }, {
   key: '5',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -109,7 +97,6 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '6',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -117,7 +104,6 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '7',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -125,7 +111,6 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '8',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -133,7 +118,6 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '9',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -141,7 +125,6 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '10',
-  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -336,8 +319,30 @@ class BasicLayout extends React.Component {
         <Layout>
           <Content className={styles.content}>
             {/* <div className={styles.main}> */}
+            <p
+              className={styles.p}
+              style={{
+                direction: 'down',
+                fontSize: '60px',
+                scrolldelay: '1000',
+                overflow: '-webkit-marquee' }}
+            >Musicians
+            </p>
+            <div className={styles.marquee}> <div> <span>ONE LOVE ONE HEART</span> </div> <div aria-hidden="true"> <span>ONE LOVE ONE HEART</span> </div> </div>
             <div className={styles.main}>
-              <div className={styles.left}>
+              {/* <Carousel vertical autoplay>
+                <div><img src="http://p1.music.126.net/uqVB0u2spm_t0OUAdvXbCQ==/18493785580103375.jpg" alt="pic'" /></div>
+                <div><h3>2</h3></div>
+                <div><h3>3</h3></div>
+                <div><h3>4</h3></div>
+              </Carousel> */}
+              {/* <Carousel style={{ display: 'flex', flexDirection: 'column' }} vertical autoplay>
+                <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '100%' }} /></div>
+                <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '100%' }} /></div>
+                <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '100%' }} /></div>
+                <div><img src="http://p1.music.126.net/Gj92V72Sl8u2z6EhLaGF6Q==/19182079858662886.jpg" alt="这是一张图片" style={{ height: '100%' }} /></div>
+              </Carousel> */}
+              {/* <div className={styles.left}>
                 <List
                     // style={{ color: 'white' }}
                   itemLayout="horizontal"
@@ -353,53 +358,7 @@ class BasicLayout extends React.Component {
                     </List.Item>
                     )}
                 />
-              </div>
-              <div className={styles.right}>
-                <div className={styles.top}>
-                  <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
-                  我的音乐🎵
-                </div>
-                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-                  {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
-                  <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>流行</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>摇滚</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>民谣</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
-                  <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
-                </div>
-                {/* <List
-                  className={styles.list}
-                  // style={{ padding: '10px', marginTop: '10px' }}
-                  itemLayout="horizontal"
-                  dataSource={list}
-                  renderItem={item => (
-                    <List.Item>
-                      <List.Item.Meta
-                        style={{ width: '100%' }}
-                        avatar={<Avatar src={item.pic} />}
-                        title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
-                        description={<span style={{ color: 'white' }}><Icon type="play-circle-o" />{item.song}</span>}
-                      />
-                    </List.Item>
-                    )}
-                /> */}
-                <Table
-                  pagination={{ pageSize: 6 }}
-                  columns={columns}
-                  dataSource={datas}
-                  bordered
-                  // title={() => 'Header'}
-                  footer={() => 'Footer'}
-                />
-
-              </div>
+              </div> */}
             </div>
           </Content>
         </Layout>

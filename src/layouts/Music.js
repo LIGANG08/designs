@@ -3,13 +3,12 @@
  */
 
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Table, List } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-// import list from './list';
 import styles from './Music.less';
 
 const { Sider, Content, Footer } = Layout;
@@ -65,13 +64,17 @@ const data = [
 ];
 
 const columns = [{
-  title: '播放',
   dataIndex: 'key',
-  render: text => <a href="">{text}</a>,
+  // render: text => <a href="">{text}</a>,
+}, {
+  title: '播放',
+  dataIndex: 'play',
+  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+  render: text => <text>{text}</text>,
 }, {
   title: 'image',
   dataIndex: 'src',
-  render: text => <img src={text} alt={'g'} width={'100px'} height={'100px'} />,
+  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
 }, {
   title: '歌曲标题',
   dataIndex: 'song',
@@ -90,6 +93,7 @@ const columns = [{
 
 const datas = [{
   key: '1',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -97,27 +101,31 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '2',
-  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  play: '▶️',
+  src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   song: '李白',
   time: '04:12',
   autor: '李荣浩',
   albums: '《李白》',
 }, {
   key: '3',
-  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  play: '▶️',
+  src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   song: '80000(Prod.By DROYC)',
   time: '01:48',
   autor: 'PRC 巴音汗',
   albums: '《80000(Prod.By DROYC)》',
 }, {
   key: '4',
-  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-  song: '丑八怪',
+  play: '▶️',
+  src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
+  song: '红昭愿',
   time: '04:26',
-  autor: '薛之谦',
-  albums: '《意外》',
+  autor: '音阙诗听',
+  albums: '《红昭愿》',
 }, {
   key: '5',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -125,6 +133,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '6',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -132,6 +141,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '7',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -139,6 +149,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '8',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -146,6 +157,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '9',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -153,6 +165,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '10',
+  play: '▶️',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -220,15 +233,10 @@ class BasicLayout extends React.Component {
             <Menu.Item key="1"><Link to="/">发现音乐</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/list">我的音乐</Link></Menu.Item>
             {/* <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item> */}
-            <Menu.Item key="4"><Link to="/a">商城</Link></Menu.Item>
-            <Menu.Item key="5">音乐人</Menu.Item>
-            <Menu.Item key="6">下载客户端</Menu.Item>
+            <Menu.Item key="4"><a href="http://music.163.com/store/product">商城</a></Menu.Item>
+            <Menu.Item key="5"><Link to="/musicians">音乐人</Link></Menu.Item>
+            <Menu.Item key="6"><Link to="/download">下载客户端</Link></Menu.Item>
           </Menu>
-          {/* <Tabs defaultActiveKey="1" onChange={callback}>
-            <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
-            <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
-            <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
-          </Tabs> */}
           <div style={{ border: '2px solid white', width: '200px' }} />
           <HeaderSearch
             // style={{ marginTop: '16px', marginLeft: '20px' }}
@@ -276,29 +284,23 @@ class BasicLayout extends React.Component {
               style={{ marginTop: '10px', background: 'black' }}
             >
               <SubMenu title={<span><Icon type="clock-circle-o" /><span>推荐</span></span>}>
-                <Menu.Item key="1"><Link to="/a">发现音乐</Link></Menu.Item>
+                <Menu.Item key="1"><Link to="/">发现音乐</Link></Menu.Item>
                 <Menu.Item key="2"><Link to="/b">私人FM</Link></Menu.Item>
                 <Menu.Item key="3">MV</Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="edit" /><span>我的音乐</span></span>}>
-                <Menu.Item key="4" Link to="/www.baidu.com">本地音乐</Menu.Item>
+                <Menu.Item key="4"><Link to="/list">本地音乐</Link></Menu.Item>
                 <Menu.Item key="5">下载管理</Menu.Item>
                 <Menu.Item key="6">我的歌手</Menu.Item>
                 <Menu.Item key="6">我的电台</Menu.Item>
               </SubMenu>
               <SubMenu key="sub3" title={<span><Icon type="exception" /><span>创建的歌单</span></span>}>
-                <Menu.Item key="7">我喜欢的音乐</Menu.Item>
+                <Menu.Item key="7"><Link to="/list">我喜欢的音乐</Link></Menu.Item>
                 <Menu.Item key="8">标准列表</Menu.Item>
               </SubMenu>
               <SubMenu key="sub4" title={<span><Icon type="layout" /><span>我的收藏</span></span>}>
                 <Menu.Item key="13"><Link to="/pic1">图1</Link></Menu.Item>
                 <Menu.Item key="14"><Link to="/pic2">图2</Link></Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub5" title={<span><Icon type="check-circle-o" /><span>结果</span></span>}>
-                <Menu.Item key="15">成功</Menu.Item>
-                <Menu.Item key="16">失败</Menu.Item>
-                <Menu.Item key="17">Option 11</Menu.Item>
-                <Menu.Item key="18">Option 12</Menu.Item>
               </SubMenu>
               <SubMenu key="sub6" title={<span><Icon type="exclamation-circle-o" /><span>异常</span></span>}>
                 <Menu.Item key="19">Option 9</Menu.Item>
@@ -331,10 +333,6 @@ class BasicLayout extends React.Component {
                 <svg className={styles.svgb}>
                   <polygon points="0,100 90,90 100,0 110,90 200,100 110,110 100,200 90,110" style={{ fill: '#cccccc', strokeWidth: '1' }} />
                 </svg>
-                {/* <svg className={styles.svgc}>
-                  <polygon
-                  points="0,0 1000,100 650,250" style={{ fill: '#cccccc', strokeWidth: '1' }} />
-                </svg> */}
                 <span style={{ position: 'absolute', top: '180px', left: '1072px', zIndex: '1000', color: '#000000' }}>🎵</span>
               </div>
               <div className={styles.wrap}>
@@ -365,7 +363,7 @@ class BasicLayout extends React.Component {
                         // border: '1px solid black',
                         position: 'relative',
                         top: '-30px',
-                        left: '10px',
+                        left: '18px',
                         opacity: '0.6',
                         background: 'black',
                         display: 'flex',
@@ -373,101 +371,135 @@ class BasicLayout extends React.Component {
                         padding: '3px 0 5px 5px',
                       }}
                     >
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 30 万</span>
+                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
                       <img
                         src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
                         style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
                       />
                     </div>
-                    <div style={{ width: '100%', height: '30px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
                   </Card.Grid>
                   <Card.Grid style={gridStyle}>
                     <img
-                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      src="http://img.ivsky.com/img/tupian/t/201103/18/qinjin_daziran-006.jpg" alt="this is pic"
                       style={{ width: '150px', height: '150px' }}
                     />
                     <div
                       style={{
                         width: '150px',
                         height: '30px',
-                        // border: '1px solid black',
-                        position: 'absolute',
-                        top: '225px',
-                        left: '285px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
                         opacity: '0.6',
-                        background: 'black' }}
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
                     >
-                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 70 万</span>
                       <img
                         src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
                         style={{ width: '50px', height: '50px', marginTop: '-10px', marginLeft: '90px' }}
                       />
                     </div>
-                    <div style={{ width: '100%', height: '30px', marginTop: '20px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>倾听自然 . 雨声轻弹</div>
                   </Card.Grid>
                   <Card.Grid style={gridStyle}>
                     <img
-                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      src="http://p1.music.126.net/jDicOuPLwo2pEAvj3tLPOQ==/19224960812054294.jpg?param=140y140" alt="this is pic"
                       style={{ width: '150px', height: '150px' }}
                     />
                     <div
                       style={{
                         width: '150px',
                         height: '30px',
-                        // border: '1px solid black',
-                        position: 'absolute',
-                        top: '225px',
-                        left: '503px',
-                        opacity: '0.5',
-                        background: 'black' }}
-                    >
-                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
-                      <img
-                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
-                      />
-                    </div>
-                    <div style={{ width: '100%', height: '30px', marginTop: '20px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
-                  </Card.Grid>
-                  <Card.Grid style={gridStyle}>
-                    <img
-                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
-                      style={{ width: '150px', height: '150px' }}
-                    />
-                    <div
-                      style={{
-                        width: '150px',
-                        height: '30px',
-                        // border: '1px solid black',
-                        position: 'absolute',
-                        top: '225px',
-                        left: '721px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
                         opacity: '0.6',
-                        background: 'black' }}
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
                     >
-                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 90 万</span>
                       <img
                         src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
                         style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
                       />
                     </div>
-                    <div style={{ width: '100%', height: '30px', marginTop: '20px', fontSize: '15px', fontStyle: 'normal' }}>闭上眼,带你穿越回2004年</div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>Fade (Remix)</div>
                   </Card.Grid>
                   <Card.Grid style={gridStyle}>
                     <img
-                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      src="http://p4.music.126.net/sg9zGM77YWeSXpKpH98h_A==/2528876744145400.jpg?param=200y200" alt="this is pic"
                       style={{ width: '150px', height: '150px' }}
                     />
                     <div
                       style={{
                         width: '150px',
                         height: '30px',
-                        // border: '1px solid black',
-                        position: 'absolute',
-                        top: '400px',
-                        // left: '65px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
                         opacity: '0.6',
-                        background: 'black' }}
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 330 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>史诗级配乐,听了想去战斗！</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p4.music.126.net/eXhh2CjjqEn9KjKs8Qek1A==/18909400974912277.jpg?param=200y200" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 530 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>「纯音乐｜节奏控」一杯提神的薄荷茶。</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p3.music.126.net/QeejsDZArWrU9rDqMUIhnA==/18619129906901250.jpg?param=200y200" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
                     >
                       <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
                       <img
@@ -475,14 +507,34 @@ class BasicLayout extends React.Component {
                         style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
                       />
                     </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>布鲁斯吉他·弹动你的神经,触动你的情怀</div>
                   </Card.Grid>
                   <Card.Grid style={gridStyle}>
                     <img
-                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      src="http://p4.music.126.net/6QbE9r2JeqBz3j3Kva--4A==/109951163038217098.jpg?param=200y200" alt="this is pic"
                       style={{ width: '150px', height: '150px' }}
-                    />Content
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 585 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>古风·殇恋｜待到红颜消 杳杳无归期</div>
                   </Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性化推荐
@@ -491,16 +543,186 @@ class BasicLayout extends React.Component {
                 <Card title="Personalized recommendation" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>
                     <img
+                      src="http://p1.music.126.net/d-8mqXQeaFrzVnhIpJZ_bw==/109951163024862695.jpg?param=140y140" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 730 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>每日歌曲推荐</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p4.music.126.net/_n1pXxJUowBgAOGGqy2drg==/18914898533114628.jpg?param=200y200" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>小语种（法、德、俄语等）</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p3.music.126.net/g81kgQtljm16W6Co4tyivw==/6659741930176932.jpg?param=200y200" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 830 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>气势磅礴的背景音乐</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p4.music.126.net/jJH4QgOgcYKKR71ncKHcYA==/3246857838870610.jpg?param=200y200" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 930 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>震撼纯音&史诗级神BGM</div>
+                  </Card.Grid>
+                  {/* <Card.Grid style={gridStyle}>
+                    <img
                       src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
                       style={{ width: '150px', height: '150px' }}
                     />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid> */}
+                  {/* <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
                   </Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid> */}
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />新碟推荐
@@ -512,14 +734,187 @@ class BasicLayout extends React.Component {
                 </div>
                 <Card title="The new disc recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
                   <Card.Grid style={gridStyle}>
-                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+                    <img
+                      src="http://p4.music.126.net/JgXdIpvSVmV48Lm8DUwR8g==/109951163081363543.jpg?param=177y177" alt="this is pic"
+                      style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver' }}
+                    />
+                    {/* <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 330 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div> */}
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black', marginTop: '20px' }}>Merry & Happy</div>
                   </Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}>Content<img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}>Content<img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-                  <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />Content</Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p4.music.126.net/MqEwyPK1SKmSFuq07BhkDg==/109951163044129482.jpg?param=177y177" alt="this is pic"
+                      style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver' }}
+                    />
+                    {/* <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 530 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div> */}
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black', marginTop: '20px' }}>音乐好朋友 第一季</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p4.music.126.net/fNbj5uDwltSDLbETdnEYYQ==/109951163069265719.jpg?param=177y177" alt="this is pic"
+                      style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver' }}
+                    />
+                    {/* <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 650 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div> */}
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black', marginTop: '20px' }}>渡(The Crossing)</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://p4.music.126.net/mNGUGwmo3RRDWuYWT5cn3w==/18858823439726982.jpg?param=177y177" alt="this is pic"
+                      style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver' }}
+                    />
+                    {/* <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div> */}
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black', marginTop: '20px' }}>One More Light Live</div>
+                  </Card.Grid>
+                  {/* <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid>
+                  <Card.Grid style={gridStyle}>
+                    <img
+                      src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic"
+                      style={{ width: '150px', height: '150px' }}
+                    />
+                    <div
+                      style={{
+                        width: '150px',
+                        height: '30px',
+                        position: 'relative',
+                        top: '-30px',
+                        left: '18px',
+                        opacity: '0.6',
+                        background: 'black',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '3px 0 5px 5px' }}
+                    >
+                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 30 万</span>
+                      <img
+                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
+                      />
+                    </div>
+                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                  </Card.Grid> */}
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />榜单推荐
@@ -538,6 +933,7 @@ class BasicLayout extends React.Component {
                   <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
                 </Card>
                 <Table
+                  style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '1000px' }}
                   pagination={{ pageSize: 6 }}
                   columns={columns}
                   dataSource={datas}
