@@ -328,7 +328,7 @@ class BasicLayout extends React.Component {
                 overflow: '-webkit-marquee' }}
             >Musicians
             </p>
-            <div className={styles.marquee}> <div> <span>ONE LOVE ONE HEART</span> </div> <div aria-hidden="true"> <span>ONE LOVE ONE HEART</span> </div> </div>
+            <div className={styles.marquee} style={{ marginTop: '280px' }}> <div> <span>ONE LOVE ONE HEART Musicians</span> </div> <div aria-hidden="true"> <span>ONE LOVE ONE HEART</span> </div> </div>
             <div className={styles.main}>
               {/* <Carousel vertical autoplay>
                 <div><img src="http://p1.music.126.net/uqVB0u2spm_t0OUAdvXbCQ==/18493785580103375.jpg" alt="pic'" /></div>

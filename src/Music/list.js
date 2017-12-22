@@ -3,12 +3,15 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
+import One from '../Music/one';
+import Two from '../Music/two';
+import Three from '../Music/three';
 import styles from '../Music/list.less';
 
 const { Content, Footer } = Layout;
@@ -151,86 +154,86 @@ const datas = [{
 
 
 const data = [
-  {
+  { id: 1,
     title: '薛之谦',
     song: '丑八怪',
     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   },
-  {
+  { id: 2,
     title: '李荣浩',
     song: '李白',
     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   },
-  {
+  { id: 3,
     title: 'PRC 巴音汗',
     song: '80000(Prod.By DROYC)',
     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   },
-  {
+  { id: 4,
     title: '音阙诗听',
     song: '红昭愿',
     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
   },
 ];
 
-const list = [
-  {
-    title: '薛之谦',
-    song: '丑八怪',
-    src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-    pic: 'picppppppppp',
-  },
-  {
-    title: '李荣浩',
-    song: '李白',
-    src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-  },
-  {
-    title: 'PRC 巴音汗',
-    song: '80000(Prod.By DROYC)',
-    src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-  },
-  {
-    title: '音阙诗听',
-    song: '红昭愿',
-    src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-  },
-  {
-    title: '薛之谦',
-    song: '丑八怪',
-    src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-  },
-  {
-    title: '李荣浩',
-    song: '李白',
-    src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-  },
-  {
-    title: 'PRC 巴音汗',
-    song: '80000(Prod.By DROYC)',
-    src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-  },
-  {
-    title: '音阙诗听',
-    song: '红昭愿',
-    src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-  },
-  {
-    title: '1',
-  },
-  {
-    title: '2',
-  },
-  {
-    title: '3',
-  },
-  {
-    title: '4',
-  },
-  {
-    title: '5',
-  },
-];
+// const list = [
+//   {
+//     title: '薛之谦',
+//     song: '丑八怪',
+//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+//     pic: 'picppppppppp',
+//   },
+//   {
+//     title: '李荣浩',
+//     song: '李白',
+//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
+//   },
+//   {
+//     title: 'PRC 巴音汗',
+//     song: '80000(Prod.By DROYC)',
+//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
+//   },
+//   {
+//     title: '音阙诗听',
+//     song: '红昭愿',
+//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
+//   },
+//   {
+//     title: '薛之谦',
+//     song: '丑八怪',
+//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+//   },
+//   {
+//     title: '李荣浩',
+//     song: '李白',
+//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
+//   },
+//   {
+//     title: 'PRC 巴音汗',
+//     song: '80000(Prod.By DROYC)',
+//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
+//   },
+//   {
+//     title: '音阙诗听',
+//     song: '红昭愿',
+//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
+//   },
+//   {
+//     title: '1',
+//   },
+//   {
+//     title: '2',
+//   },
+//   {
+//     title: '3',
+//   },
+//   {
+//     title: '4',
+//   },
+//   {
+//     title: '5',
+//   },
+// ];
 
 const menu = (
   <Menu>
@@ -339,67 +342,74 @@ class BasicLayout extends React.Component {
             <div className={styles.main}>
               <div className={styles.left}>
                 <List
-                    // style={{ color: 'white' }}
                   itemLayout="horizontal"
                   dataSource={data}
                   renderItem={item => (
                     <List.Item>
                       <List.Item.Meta
-                        // style={{ width: '100%' }}
                         avatar={<Avatar src={item.src} />}
-                        title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
+                        title={<Link to={`/list/page${item.id}`} className={styles.title} style={{ color: 'wheat' }}>{item.title}</Link>}
                         description={<span style={{ color: 'white' }}>{item.song}</span>}
                       />
                     </List.Item>
                     )}
                 />
               </div>
-              <div className={styles.right}>
-                <div className={styles.top}>
-                  <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
-                  我的音乐🎵
-                </div>
-                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-                  {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
-                  <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>流行</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>摇滚</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>民谣</a>
-                  <Divider type="vertical" />
-                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
-                  <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
-                </div>
-                {/* <List
-                  className={styles.list}
-                  // style={{ padding: '10px', marginTop: '10px' }}
-                  itemLayout="horizontal"
-                  dataSource={list}
-                  renderItem={item => (
-                    <List.Item>
-                      <List.Item.Meta
-                        style={{ width: '100%' }}
-                        avatar={<Avatar src={item.pic} />}
-                        title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
-                        description={<span style={{ color: 'white' }}><Icon type="play-circle-o" />{item.song}</span>}
-                      />
-                    </List.Item>
-                    )}
-                /> */}
-                <Table
-                  pagination={{ pageSize: 6 }}
-                  columns={columns}
-                  dataSource={datas}
-                  bordered
-                  // title={() => 'Header'}
-                  footer={() => 'Footer'}
-                />
+              <Switch>
+                <Route path="/list/page2" render={() => <One />} />
+                <Route path="/list/page3" render={() => <Two />} />
+                <Route path="/list/page4" render={() => <Three />} />
+                {/* <Route path="/two" render={() => <One />} /> */}
+                <div className={styles.right}>
+                  {/* <Switch> */}
+                  {/* <Route path="/b" render={() => <h3>监控页</h3>} /> */}
+                  {/* </Switch> */}
+                  <div className={styles.top}>
+                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
+                    我的音乐🎵
+                  </div>
+                  <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                    {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
+                    <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
+                    <Divider type="vertical" />
+                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
+                    <Divider type="vertical" />
+                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>流行</a>
+                    <Divider type="vertical" />
+                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>摇滚</a>
+                    <Divider type="vertical" />
+                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>民谣</a>
+                    <Divider type="vertical" />
+                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
+                    <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
+                  </div>
+                  {/* <List
+                    className={styles.list}
+                    // style={{ padding: '10px', marginTop: '10px' }}
+                    itemLayout="horizontal"
+                    dataSource={list}
+                    renderItem={item => (
+                      <List.Item>
+                        <List.Item.Meta
+                          style={{ width: '100%' }}
+                          avatar={<Avatar src={item.pic} />}
+                          title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
+                          description={<span style={{ color: 'white' }}><Icon type="play-circle-o" />{item.song}</span>}
+                        />
+                      </List.Item>
+                      )}
+                  /> */}
+                  <Table
+                    pagination={{ pageSize: 6 }}
+                    columns={columns}
+                    dataSource={datas}
+                    bordered
+                    // title={() => 'Header'}
+                    footer={() => 'Footer'}
+                  />
 
-              </div>
+                </div>
+              </Switch>
             </div>
           </Content>
         </Layout>

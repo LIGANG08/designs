@@ -6,6 +6,9 @@ import Music from './layouts/Music';
 import list from './Music/list';
 import musicians from './Music/musicians';
 import download from './Music/download';
+// import one from './Music/one';
+// import two from './Music/two';
+// import three from './Music/three';
 
 function RouterConfig({ history }) {
   return (
@@ -17,6 +20,9 @@ function RouterConfig({ history }) {
         <Route path="/list" component={list} />
         <Route path="/musicians" component={musicians} />
         <Route path="/download" component={download} />
+        {/* <Route path="/one" component={one} /> */}
+        {/* <Route path="/two" component={two} /> */}
+        {/* <Route path="/three" component={three} /> */}
       </Switch>
     </Router>
   );

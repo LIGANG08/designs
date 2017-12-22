@@ -97,7 +97,7 @@ class BasicLayout extends React.Component {
             <Menu.Item key="2"><Link to="/list">我的音乐</Link></Menu.Item>
             {/* <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item> */}
             <Menu.Item key="4"><Link to="/a">商城</Link></Menu.Item>
-            <Menu.Item key="5">音乐人</Menu.Item>
+            <Menu.Item key="5"><Link to="/musicians">音乐人</Link></Menu.Item>
             <Menu.Item key="6">下载客户端</Menu.Item>
           </Menu>
           {/* <Tabs defaultActiveKey="1" onChange={callback}>
@@ -143,7 +143,9 @@ class BasicLayout extends React.Component {
         </div>
         <Layout>
           <Content className={styles.content}>
-            <marquee style={{ background: 'ulr(http://wandoujia.com/api/wdapi.js)', fontSize: '60px', scrolldelay: '1000' }}>动心音乐,时刻与你相伴</marquee>
+            <div>
+              <marquee style={{ background: 'ulr(http://wandoujia.com/api/wdapi.js)', fontSize: '60px', scrolldelay: '1000' }}>动心音乐,时刻与你相伴</marquee>
+            </div>
           </Content>
         </Layout>
         <Footer className={styles.footer}>
