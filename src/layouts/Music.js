@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Table, List } from 'antd';
+import { Layout, Menu, Icon, Carousel, Card, Divider, Avatar, Dropdown, Table, List, Popover, Button } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -202,6 +202,13 @@ const gridStyle = {
   Justifycontent: 'center',
 };
 
+const content = (
+  <div style={{ width: '1200px', background: 'black', opacity: '0.5' }}>
+    <p>Content</p>
+    <p>Content</p>
+  </div>
+);
+
 class BasicLayout extends React.Component {
 
 
@@ -213,6 +220,17 @@ class BasicLayout extends React.Component {
   //     collapsed: !this.state.collapsed,
   //   });
   // }
+  constructor(props) {
+    super(props);
+    this.state = { isToggleOn: 'true' };
+    // 特别注意这一行语句
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn,
+    }));
+  }
 
   render() {
     const layout = (
@@ -314,7 +332,7 @@ class BasicLayout extends React.Component {
           <Content className={styles.content}>
             <div className={styles.main}>
               <div className={styles.top}>
-                <Carousel classname={styles.move} autoplay>
+                <Carousel classname={styles.move} autoplay={{ second: '5s' }}>
                   <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
@@ -950,6 +968,7 @@ class BasicLayout extends React.Component {
             </div>
             <div className={styles.right}>猜你喜欢<hr />
               <List
+                onClick={this.onlist}
                 // style={{ color: 'white' }}
                 itemLayout="horizontal"
                 dataSource={data}
@@ -994,6 +1013,12 @@ class BasicLayout extends React.Component {
             <Route path="/a" render={() => <h3>分析页</h3>} />
             <Route path="/b" render={() => <h3>监控页</h3>} />
           </Switch> */}
+          <Popover content={content} >
+            <div style={{ border: '1px solid black' }}>Hover</div>
+          </Popover>
+          <button onClick={this.handleClick}>
+            {this.state.isToggleOn ? 'ON' : 'OFF'}
+          </button>
         </Footer>
       </Layout>
     );

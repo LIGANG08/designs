@@ -144,7 +144,7 @@ class BasicLayout extends React.Component {
         <Layout>
           <Content className={styles.content}>
             <div>
-              <marquee style={{ background: 'ulr(http://wandoujia.com/api/wdapi.js)', fontSize: '60px', scrolldelay: '1000' }}>动心音乐,时刻与你相伴</marquee>
+              {/* <marquee style={{ background: 'ulr(http://wandoujia.com/api/wdapi.js)', fontSize: '60px', scrolldelay: '1000' }}>动心音乐,时刻与你相伴</marquee> */}
             </div>
           </Content>
         </Layout>

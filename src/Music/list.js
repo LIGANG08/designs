@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table } from 'antd';
+import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table, Popover } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -49,7 +49,9 @@ const columns = [{
   title: '播放',
   dataIndex: 'play',
   // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-  render: text => <text>{text}</text>,
+  render: (text) => {
+    return <img src={require(text)} alt={'g'} width={'60px'} height={'60px'} />;
+  },
 }, {
   title: 'image',
   dataIndex: 'src',
@@ -72,7 +74,7 @@ const columns = [{
 
 const datas = [{
   key: '1',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -80,7 +82,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '2',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   song: '李白',
   time: '04:12',
@@ -88,7 +90,7 @@ const datas = [{
   albums: '《李白》',
 }, {
   key: '3',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   song: '80000(Prod.By DROYC)',
   time: '01:48',
@@ -96,7 +98,7 @@ const datas = [{
   albums: '《80000(Prod.By DROYC)》',
 }, {
   key: '4',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
   song: '红昭愿',
   time: '04:26',
@@ -104,7 +106,7 @@ const datas = [{
   albums: '《红昭愿》',
 }, {
   key: '5',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -112,7 +114,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '6',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -120,7 +122,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '7',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -128,7 +130,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '8',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -136,7 +138,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '9',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -144,7 +146,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '10',
-  play: '▶️',
+  play: '../image/play.png',
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -154,27 +156,38 @@ const datas = [{
 
 
 const data = [
-  { id: 1,
+  {
+    id: 1,
     title: '薛之谦',
     song: '丑八怪',
     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   },
-  { id: 2,
+  {
+    id: 2,
     title: '李荣浩',
     song: '李白',
     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   },
-  { id: 3,
+  {
+    id: 3,
     title: 'PRC 巴音汗',
     song: '80000(Prod.By DROYC)',
     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   },
-  { id: 4,
+  {
+    id: 4,
     title: '音阙诗听',
     song: '红昭愿',
     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
   },
 ];
+
+const content = (
+  <div style={{ width: '1200px', background: 'black', opacity: '0.5' }}>
+    <p>Content</p>
+    <p>Content</p>
+  </div>
+);
 
 // const list = [
 //   {
@@ -271,6 +284,28 @@ class BasicLayout extends React.Component {
   //     collapsed: !this.state.collapsed,
   //   });
   // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isToggleOn: 'true',
+      bot: '-90px',
+    };
+    // 特别注意这一行语句
+    this.handleClick = this.handleClick.bind(this);
+    this.BottomBar = this.BottomBar.bind(this);
+    this.BottomBarLeave = this.BottomBarLeave.bind(this);
+  }
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn,
+    }));
+  }
+  BottomBar() {
+    this.setState({ bot: 0 });
+  }
+  BottomBarLeave() {
+    this.setState({ bot: '-90px' });
+  }
 
   render() {
     const layout = (
@@ -295,11 +330,6 @@ class BasicLayout extends React.Component {
             <Menu.Item key="5"><Link to="/musicians">音乐人</Link></Menu.Item>
             <Menu.Item key="6"><Link to="/download">下载客户端</Link></Menu.Item>
           </Menu>
-          {/* <Tabs defaultActiveKey="1" onChange={callback}>
-            <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
-            <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
-            <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
-          </Tabs> */}
           <div style={{ border: '2px solid white', width: '200px' }} />
           <HeaderSearch
             // style={{ marginTop: '16px', marginLeft: '20px' }}
@@ -352,20 +382,21 @@ class BasicLayout extends React.Component {
                         description={<span style={{ color: 'white' }}>{item.song}</span>}
                       />
                     </List.Item>
-                    )}
+                  )}
                 />
               </div>
               <Switch>
                 <Route path="/list/page2" render={() => <One />} />
                 <Route path="/list/page3" render={() => <Two />} />
-                <Route path="/list/page4" render={() => <Three />} />
+                <Route path="/list/page" render={() => <Three />} />
                 {/* <Route path="/two" render={() => <One />} /> */}
                 <div className={styles.right}>
                   {/* <Switch> */}
                   {/* <Route path="/b" render={() => <h3>监控页</h3>} /> */}
                   {/* </Switch> */}
                   <div className={styles.top}>
-                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
+                    <img src={require('../image/play.png')} alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
+                    {/* <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} /> */}
                     我的音乐🎵
                   </div>
                   <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
@@ -383,22 +414,6 @@ class BasicLayout extends React.Component {
                     <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
                     <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
                   </div>
-                  {/* <List
-                    className={styles.list}
-                    // style={{ padding: '10px', marginTop: '10px' }}
-                    itemLayout="horizontal"
-                    dataSource={list}
-                    renderItem={item => (
-                      <List.Item>
-                        <List.Item.Meta
-                          style={{ width: '100%' }}
-                          avatar={<Avatar src={item.pic} />}
-                          title={<a className={styles.title} href="https://ant.design" style={{ color: 'wheat' }}>{item.title}</a>}
-                          description={<span style={{ color: 'white' }}><Icon type="play-circle-o" />{item.song}</span>}
-                        />
-                      </List.Item>
-                      )}
-                  /> */}
                   <Table
                     pagination={{ pageSize: 6 }}
                     columns={columns}
@@ -440,6 +455,19 @@ class BasicLayout extends React.Component {
             <Route path="/a" render={() => <h3>分析页</h3>} />
             <Route path="/b" render={() => <h3>监控页</h3>} />
           </Switch> */}
+          <Popover content={content} >
+            <div style={{ border: '1px solid black' }}>Hover</div>
+          </Popover>
+          <div onMouseOver={this.BottomBar} onMouseLeave={this.BottomBarLeave} style={{ height: '100px', width: '93%', background: 'black', opacity: '0.5', position: 'fixed', bottom: this.state.bot, transition: 'bottom 1s' }}>
+            <p style={{ color: 'wheat', float: 'right', right: '10px' }}>Content</p>
+            <div style={{ border: '1px solid red' }}>
+              <img src={require('../image/play.png')} alt="this is pic" style={{ width: '40px', height: '40px', marginTop: '0px' }} />
+            </div>
+            <p>Content</p>
+          </div>
+          <button onClick={this.handleClick}>
+            {this.state.isToggleOn ? 'ON' : 'OFF'}
+          </button>
         </Footer>
       </Layout>
     );
@@ -450,5 +478,5 @@ class BasicLayout extends React.Component {
     );
   }
 }
-export default connect()(BasicLayout);
 
+export default connect()(BasicLayout);
