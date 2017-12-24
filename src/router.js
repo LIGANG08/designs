@@ -6,6 +6,7 @@ import Music from './layouts/Music';
 import list from './Music/list';
 import musicians from './Music/musicians';
 import download from './Music/download';
+import onClick from './Music/onClick';
 // import one from './Music/one';
 // import two from './Music/two';
 // import three from './Music/three';
@@ -23,6 +24,7 @@ function RouterConfig({ history }) {
         {/* <Route path="/one" component={one} /> */}
         {/* <Route path="/two" component={two} /> */}
         {/* <Route path="/three" component={three} /> */}
+        <Route path="/onClick" component={onClick} />
       </Switch>
     </Router>
   );

@@ -50,7 +50,7 @@ const columns = [{
   dataIndex: 'play',
   // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
   render: (text) => {
-    return <img src={require(text)} alt={'g'} width={'60px'} height={'60px'} />;
+    return <img src={text} alt={'g'} width={'60px'} height={'60px'} />;
   },
 }, {
   title: 'image',
@@ -74,7 +74,7 @@ const columns = [{
 
 const datas = [{
   key: '1',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -82,7 +82,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '2',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   song: '李白',
   time: '04:12',
@@ -90,7 +90,7 @@ const datas = [{
   albums: '《李白》',
 }, {
   key: '3',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   song: '80000(Prod.By DROYC)',
   time: '01:48',
@@ -98,7 +98,7 @@ const datas = [{
   albums: '《80000(Prod.By DROYC)》',
 }, {
   key: '4',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
   song: '红昭愿',
   time: '04:26',
@@ -106,7 +106,7 @@ const datas = [{
   albums: '《红昭愿》',
 }, {
   key: '5',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -114,7 +114,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '6',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -122,7 +122,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '7',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -130,7 +130,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '8',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -138,7 +138,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '9',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -146,7 +146,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '10',
-  play: '../image/play.png',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -284,18 +284,31 @@ class BasicLayout extends React.Component {
   //     collapsed: !this.state.collapsed,
   //   });
   // }
-  constructor(props) {
-    super(props);
+
+
+  constructor() {
+    super();
     this.state = {
       isToggleOn: 'true',
       bot: '-90px',
+      windowHeight: 0,
+      windowWidth: 0,
     };
     // 特别注意这一行语句
     this.handleClick = this.handleClick.bind(this);
     this.BottomBar = this.BottomBar.bind(this);
     this.BottomBarLeave = this.BottomBarLeave.bind(this);
   }
+
+  componentWillMount() {
+    this.setState({
+      windowWidth: document.querySelector('body').offsetWidth,
+      windowHeight: document.querySelector('body').offsetHeight,
+    });
+  }
+
   handleClick() {
+    console.log('ok');
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn,
     }));
@@ -313,7 +326,7 @@ class BasicLayout extends React.Component {
         <div className={styles.header}>
           <div className={styles.logo} style={{ background: '#242424' }}>
             <a href="http://music.163.com">
-              <img src="http://i03.pic.sogou.com/ed0215a1ff39103d" alt="logo" style={{ margin: '10px' }} />
+              <img src="http://i03.pic.sogou.com/ed0215a1ff39103d" alt="logo" />
               <h1>网易云音乐</h1>
             </a>
           </div>
@@ -395,8 +408,8 @@ class BasicLayout extends React.Component {
                   {/* <Route path="/b" render={() => <h3>监控页</h3>} /> */}
                   {/* </Switch> */}
                   <div className={styles.top}>
-                    <img src={require('../image/play.png')} alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
-                    {/* <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} /> */}
+                    {/* <img src={require('../image/play.png')} alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} /> */}
+                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
                     我的音乐🎵
                   </div>
                   <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
@@ -415,6 +428,8 @@ class BasicLayout extends React.Component {
                     <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
                   </div>
                   <Table
+                    onClick={this.handleClick}
+                    // {this.state.isToggleOn ? 'ON' : 'OFF'}
                     pagination={{ pageSize: 6 }}
                     columns={columns}
                     dataSource={datas}

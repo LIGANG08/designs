@@ -70,7 +70,9 @@ const columns = [{
   title: '播放',
   dataIndex: 'play',
   // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-  render: text => <text>{text}</text>,
+  render: (text) => {
+    return <img src={text} alt={'g'} width={'60px'} height={'60px'} />;
+  },
 }, {
   title: 'image',
   dataIndex: 'src',
@@ -93,7 +95,7 @@ const columns = [{
 
 const datas = [{
   key: '1',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -101,7 +103,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '2',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   song: '李白',
   time: '04:12',
@@ -109,7 +111,7 @@ const datas = [{
   albums: '《李白》',
 }, {
   key: '3',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   song: '80000(Prod.By DROYC)',
   time: '01:48',
@@ -117,7 +119,7 @@ const datas = [{
   albums: '《80000(Prod.By DROYC)》',
 }, {
   key: '4',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
   song: '红昭愿',
   time: '04:26',
@@ -125,7 +127,7 @@ const datas = [{
   albums: '《红昭愿》',
 }, {
   key: '5',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -133,7 +135,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '6',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -141,7 +143,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '7',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -149,7 +151,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '8',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -157,7 +159,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '9',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -165,7 +167,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '10',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
