@@ -4,7 +4,7 @@
 
 import React from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table, Popover } from 'antd';
+import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table, Popover, Input } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -56,11 +56,13 @@ class BasicLayout extends React.Component {
       isToggleOn: 'true',
       bot: '-90px',
       background: 'orange',
-      pressStatus: 'normal',
+      status: 'orange',
       color: 'red',
+      src: require('../image/play.png'),
+      rtitle: '',
     };
     // 特别注意这一行语句
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
     // this.pClick = this.pClick.bind(this);
   }
   // handleClick() {
@@ -70,37 +72,50 @@ class BasicLayout extends React.Component {
   //   console.log(this);
   // }
 
-  onPressIn(word, e) {
+
+  onClick(word, e) {
     console.log('ok');
     console.log(e.target.innerHTML);
     console.log(this);
     console.log(this, word);
     console.log(this.state.background);
     // this.state.background:'red';
-    this.setState({ pressStatus: 'normal' });
+    // this.setState({ background: 'blue' });
   }
 
-  onPressOut() {
+  // handleClick() {
+  //   this.setState(prevState => ({
+  //     isToggleOn: !prevState.isToggleOn,
+  //   }));
+  //   console.log(this);
+  // }
+
+  pClick(event) {
     // this.state.background:'red';
-    this.setState({ background: 'red', color: 'blue' });
-    this.setState({ pressStatus: 'normal' });
-  }
-
-  handleClick() {
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
-    console.log(this);
+    // this.setState({ background: 'orange' ? 'red' : 'orange' });
+    // this.setState({
+    //   status: (this.state.status === 'orange' ? 'red' : 'orange'),
+    // });
+    this.setState({
+      background: (this.state.background === 'orange' ? 'red' : 'orange'),
+      src: (this.state.src === require('../image/play.png') ? require('../image/y.png') : require('../image/play.png')),
+      rtitle: event.target.value,
+    });
+    // alert(this.state.rtitle);
+    console.log(this.state.background);
+    console.log(this.state.src);
   }
 
   render() {
     const layout = (
       <Layout>
-        <Content>
-          <button onClick={this.handleClick.bind(this)}>
-            {this.setState.background ? 'black' : 'red'}
-          </button>
-          <p onPressIn={this.onPressIn.bind(this)} onPressOut={this.onPressOut.bind(this)} style={{ marginTop: '20px', marginLeft: '20px', background: this.state.background }}>按钮</p>
+        <Content >
+          <div>
+            <Input type="text" value={this.state.rtitle} onChange={this.textChange} />
+          </div>
+          <button onClick={this.pClick.bind(this)}>{ this.state.background }</button>
+          <p style={{ marginTop: '20px', marginLeft: '20px', background: this.state.background }}>按钮</p>
+          <img src={this.state.src} alt="pic" />
         </Content>
       </Layout>
     );

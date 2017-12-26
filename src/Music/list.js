@@ -80,6 +80,7 @@ const datas = [{
   time: '04:26',
   autor: '薛之谦',
   albums: '《意外》',
+  background: 'this.state.background',
 }, {
   key: '2',
   play: require('../image/play.png'),
@@ -293,9 +294,11 @@ class BasicLayout extends React.Component {
       bot: '-90px',
       windowHeight: 0,
       windowWidth: 0,
+      background: 'orange',
+      selectedRowKeys: [],
     };
     // 特别注意这一行语句
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
     this.BottomBar = this.BottomBar.bind(this);
     this.BottomBarLeave = this.BottomBarLeave.bind(this);
   }
@@ -307,12 +310,21 @@ class BasicLayout extends React.Component {
     });
   }
 
-  handleClick() {
-    console.log('ok');
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
+  // handleClick() {
+  //   console.log('ok');
+  //   this.setState(prevState => ({
+  //     isToggleOn: !prevState.isToggleOn,
+  //   }));
+  // }
+  onClick(e) {
+    this.setState({
+      background: (this.state.background === 'orange' ? 'red' : 'orange'),
+      selectedRowKeys: [],
+      current: e.key,
+    });
+    console.log(this.state.selectedRowKeys);
   }
+
   BottomBar() {
     this.setState({ bot: 0 });
   }
@@ -428,7 +440,8 @@ class BasicLayout extends React.Component {
                     <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
                   </div>
                   <Table
-                    onClick={this.handleClick}
+                    onClick={this.onClick.bind(this)}
+                    selectedRowKeys
                     // {this.state.isToggleOn ? 'ON' : 'OFF'}
                     pagination={{ pageSize: 6 }}
                     columns={columns}
@@ -437,7 +450,6 @@ class BasicLayout extends React.Component {
                     // title={() => 'Header'}
                     footer={() => 'Footer'}
                   />
-
                 </div>
               </Switch>
             </div>
