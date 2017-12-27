@@ -322,7 +322,7 @@ class BasicLayout extends React.Component {
       selectedRowKeys: [],
       current: e.key,
     });
-    console.log(this.state.selectedRowKeys);
+    console.log(this.state.background);
   }
 
   BottomBar() {
@@ -410,7 +410,7 @@ class BasicLayout extends React.Component {
                   )}
                 />
               </div>
-              <Switch>
+              {/* <Switch> */}
                 <Route path="/list/page2" render={() => <One />} />
                 <Route path="/list/page3" render={() => <Two />} />
                 <Route path="/list/page" render={() => <Three />} />
@@ -441,6 +441,7 @@ class BasicLayout extends React.Component {
                   </div>
                   <Table
                     onClick={this.onClick.bind(this)}
+                    dataIndex={this.props.key}
                     selectedRowKeys
                     // {this.state.isToggleOn ? 'ON' : 'OFF'}
                     pagination={{ pageSize: 6 }}
@@ -451,7 +452,7 @@ class BasicLayout extends React.Component {
                     footer={() => 'Footer'}
                   />
                 </div>
-              </Switch>
+              {/* </Switch> */}
             </div>
           </Content>
         </Layout>

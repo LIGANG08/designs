@@ -39,6 +39,43 @@ const query = {
   },
 };
 
+const columns = [{
+  dataIndex: 'key',
+  // render: text => <a href="">{text}</a>,
+}, {
+  title: '播放',
+  dataIndex: 'play',
+  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+  render: (text) => {
+    return <img src={text} alt={'g'} width={'60px'} height={'60px'} />;
+  },
+}, {
+  title: 'image',
+  dataIndex: 'src',
+  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+}, {
+  title: '歌曲标题',
+  dataIndex: 'song',
+  render: text => <a href="/#">{text}</a>,
+}];
+
+const datas = [{
+  key: '1',
+  play: require('../image/play.png'),
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+}, {
+  key: '2',
+  play: require('../image/play.png'),
+  src: 'http://i01.pic.sogou.com/358447d676d3a67c',
+  song: '李白',
+}, {
+  key: '3',
+  play: require('../image/play.png'),
+  src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
+  song: '80000(Prod.By DROYC)',
+}];
+
 class BasicLayout extends React.Component {
 
 
@@ -116,6 +153,19 @@ class BasicLayout extends React.Component {
           <button onClick={this.pClick.bind(this)}>{ this.state.background }</button>
           <p style={{ marginTop: '20px', marginLeft: '20px', background: this.state.background }}>按钮</p>
           <img src={this.state.src} alt="pic" />
+          <Table
+            onClick={this.pClick.bind(this)}
+            dataIndex={this.state.key}
+            style={{ background: 'this.state.background' }}
+            selectedRowKeys
+            // {this.state.isToggleOn ? 'ON' : 'OFF'}
+            pagination={{ pageSize: 6 }}
+            columns={columns}
+            dataSource={datas}
+            bordered
+            // title={() => 'Header'}
+            footer={() => 'Footer'}
+          />
         </Content>
       </Layout>
     );
