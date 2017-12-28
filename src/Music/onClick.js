@@ -77,8 +77,6 @@ const datas = [{
 }];
 
 class BasicLayout extends React.Component {
-
-
   // state = {
   //   collapsed: false,
   // };
@@ -97,6 +95,7 @@ class BasicLayout extends React.Component {
       color: 'red',
       src: require('../image/play.png'),
       rtitle: '',
+      ate: new Date(),
     };
     // 特别注意这一行语句
     // this.handleClick = this.handleClick.bind(this);
@@ -118,6 +117,9 @@ class BasicLayout extends React.Component {
     console.log(this.state.background);
     // this.state.background:'red';
     // this.setState({ background: 'blue' });
+    setTimeout((function() {
+      this.setState({ progress: 1 + (0.4 * Math.random()) });
+    }).bind(this), 1000);
   }
 
   // handleClick() {
@@ -137,16 +139,28 @@ class BasicLayout extends React.Component {
       background: (this.state.background === 'orange' ? 'red' : 'orange'),
       src: (this.state.src === require('../image/play.png') ? require('../image/y.png') : require('../image/play.png')),
       rtitle: event.target.value,
+      progress: 1,
     });
     // alert(this.state.rtitle);
     console.log(this.state.background);
     console.log(this.state.src);
+    console.log(this.state.progress);
   }
 
   render() {
+    setTimeout((function() {
+      this.setState({ progress: (0.4 * Math.random()) });
+    }).bind(this), 1000);
+    // setTimeout(alert('对不起, 要你久候'), 3000);
+    // setInterval( pClick, 1000);
     const layout = (
       <Layout>
-        <Content >
+        <Content>
+          <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio>
+          <div>
+            <progress progress={this.state.progress} style={{ width: '' }} />
+            {this.state.progress}s
+          </div>
           <div>
             <Input type="text" value={this.state.rtitle} onChange={this.textChange} />
           </div>
