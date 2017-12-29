@@ -158,7 +158,7 @@ class BasicLayout extends React.Component {
         <Content>
           <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio>
           <div>
-            {/* <progress progress={this.state.progress} /> */}
+            <progress progress={this.state.progress} />
             {this.state.progress}s
           </div>
           <div>
