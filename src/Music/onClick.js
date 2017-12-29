@@ -158,7 +158,7 @@ class BasicLayout extends React.Component {
         <Content>
           <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio>
           <div>
-            <progress progress={this.state.progress} style={{ width: '' }} />
+            {/* <progress progress={this.state.progress} /> */}
             {this.state.progress}s
           </div>
           <div>
@@ -168,7 +168,7 @@ class BasicLayout extends React.Component {
           <p style={{ marginTop: '20px', marginLeft: '20px', background: this.state.background }}>按钮</p>
           <img src={this.state.src} alt="pic" />
           <Table
-            onClick={this.pClick.bind(this)}
+            onClick={this.pClick.bind(this, datas.key)}
             dataIndex={this.state.key}
             style={{ background: 'this.state.background' }}
             selectedRowKeys

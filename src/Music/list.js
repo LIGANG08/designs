@@ -12,6 +12,7 @@ import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import One from '../Music/one';
 import Two from '../Music/two';
 import Three from '../Music/three';
+import Lists from '../components/list';
 import styles from '../Music/list.less';
 
 const { Content, Footer } = Layout;
@@ -50,7 +51,7 @@ const columns = [{
   dataIndex: 'play',
   // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
   render: (text) => {
-    return <img src={text} alt={'g'} width={'60px'} height={'60px'} />;
+    return <img src={text} alt={'g'} width={'30px'} height={'30px'} />;
   },
 }, {
   title: 'image',
@@ -189,66 +190,6 @@ const content = (
     <p>Content</p>
   </div>
 );
-
-// const list = [
-//   {
-//     title: '薛之谦',
-//     song: '丑八怪',
-//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-//     pic: 'picppppppppp',
-//   },
-//   {
-//     title: '李荣浩',
-//     song: '李白',
-//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-//   },
-//   {
-//     title: 'PRC 巴音汗',
-//     song: '80000(Prod.By DROYC)',
-//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-//   },
-//   {
-//     title: '音阙诗听',
-//     song: '红昭愿',
-//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-//   },
-//   {
-//     title: '薛之谦',
-//     song: '丑八怪',
-//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-//   },
-//   {
-//     title: '李荣浩',
-//     song: '李白',
-//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-//   },
-//   {
-//     title: 'PRC 巴音汗',
-//     song: '80000(Prod.By DROYC)',
-//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-//   },
-//   {
-//     title: '音阙诗听',
-//     song: '红昭愿',
-//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-//   },
-//   {
-//     title: '1',
-//   },
-//   {
-//     title: '2',
-//   },
-//   {
-//     title: '3',
-//   },
-//   {
-//     title: '4',
-//   },
-//   {
-//     title: '5',
-//   },
-// ];
-
 const menu = (
   <Menu>
     <Menu.Item>
@@ -410,7 +351,7 @@ class BasicLayout extends React.Component {
                   )}
                 />
               </div>
-              {/* <Switch> */}
+              <Switch>
                 <Route path="/list/page2" render={() => <One />} />
                 <Route path="/list/page3" render={() => <Two />} />
                 <Route path="/list/page" render={() => <Three />} />
@@ -452,8 +393,9 @@ class BasicLayout extends React.Component {
                     footer={() => 'Footer'}
                   />
                 </div>
-              {/* </Switch> */}
+              </Switch>
             </div>
+            <Lists />
           </Content>
         </Layout>
         <Footer className={styles.footer}>
