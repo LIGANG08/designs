@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table, Popover } from 'antd';
+import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Popover } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -37,12 +37,7 @@ const query = {
     minWidth: 1200,
   },
 };
-const content = (
-  <div style={{ width: '1200px', background: 'black', opacity: '0.5' }}>
-    <p>Content</p>
-    <p>Content</p>
-  </div>
-);
+
 const menu = (
   <Menu>
     <Menu.Item>
@@ -93,11 +88,14 @@ class BasicLayout extends React.Component {
     super();
     this.state = {
       isToggleOn: 'true',
-      bot: '-90px',
+      bot: '-110px',
+      isLock: false,
       windowHeight: 0,
       windowWidth: 0,
       background: 'orange',
       selectedRowKeys: [],
+      src: require('../image/playb.png'),
+      pic: require('../image/unlock.png'),
     };
     // 特别注意这一行语句
     // this.handleClick = this.handleClick.bind(this);
@@ -111,23 +109,30 @@ class BasicLayout extends React.Component {
       windowHeight: document.querySelector('body').offsetHeight,
     });
   }
-  onClick(e) {
+  onClick() {
     this.setState({
-      background: (this.state.background === 'orange' ? 'red' : 'orange'),
-      selectedRowKeys: [],
-      current: e.key,
+      src: (this.state.src === require('../image/playb.png') ? require('../image/pause.png') : require('../image/playb.png')),
     });
     console.log(this.state.background);
+  }
+
+  Click() {
+    this.setState({
+      isLock: !this.state.isLock,
+      bot: 0,
+      pic: (this.state.pic === require('../image/unlock.png') ? require('../image/lock.png') : require('../image/unlock.png')),
+    });
   }
 
   BottomBar() {
     this.setState({ bot: 0 });
   }
   BottomBarLeave() {
-    this.setState({ bot: '-90px' });
+    this.setState({ bot: '-110px' });
   }
 
   render() {
+    const bottom = this.state.isLock ? 0 : this.state.bot;
     const layout = (
       <Layout>
         <div className={styles.header}>
@@ -230,25 +235,24 @@ class BasicLayout extends React.Component {
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#C10D0C' }} />
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#87d068' }} />
           </div>
-          {/* <Switch>
-            <Route path="/a" render={() => <h3>分析页</h3>} />
-            <Route path="/b" render={() => <h3>监控页</h3>} />
-          </Switch> */}
-          <Popover content={content} >
-            <div style={{ border: '1px solid black' }}>Hover</div>
-          </Popover>
-          <div onMouseOver={this.BottomBar} onMouseLeave={this.BottomBarLeave} style={{ height: '100px', width: '93%', background: 'black', opacity: '0.5', position: 'fixed', bottom: this.state.bot, transition: 'bottom 1s' }}>
-            <p style={{ color: 'wheat', float: 'right', right: '10px' }}>Content</p>
-            <div style={{ border: '1px solid red' }}>
-              <img src={require('../image/play.png')} alt="this is pic" style={{ width: '40px', height: '40px', marginTop: '0px' }} />
-            </div>
-            <p>Content</p>
-          </div>
-          <button onClick={this.handleClick}>
-            {this.state.isToggleOn ? 'ON' : 'OFF'}
-          </button>
         </Footer>
         {/* <Lists /> */}
+        <div onMouseOver={this.BottomBar} onMouseLeave={this.BottomBarLeave} style={{ height: '120px', width: '100%', background: 'black', opacity: '0.5', position: 'fixed', left: '0', bottom, transition: 'bottom 1s' }}>
+          <img onClick={this.Click.bind(this)} src={this.state.pic} style={{ color: this.state.color, float: 'right', right: '10px', width: '30px', height: '30px' }} alt="" />
+          <div style={{ border: '1px solid red' }}>
+            <img onClick={this.onClick.bind(this)} src={this.state.src} alt="this is pic" style={{ width: '40px', height: '40px', marginTop: '20px', marginLeft: '150px' }} />
+          </div>
+          <audio
+            controls={'true'}
+            id={`audio${26662115}`}
+            src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}
+            preload={'true'}
+            onCanPlay={() => this.controlAudio('allTime')}
+            // onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
+          >
+            您的浏览器不支持 audio 标签。
+          </audio>
+        </div>
       </Layout>
     );
     return (

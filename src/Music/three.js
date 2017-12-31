@@ -9,7 +9,7 @@ import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 // import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-import styles from '../Music/one.less';
+import styles from '../Music/list.less';
 
 const { Content } = Layout;
 // const TabPane = Tabs.TabPane;
@@ -45,8 +45,8 @@ const columns = [{
 }, {
   title: '播放',
   dataIndex: 'play',
-  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-  render: text => <text>{text}</text>,
+  render: text => <img src={text} alt={'g'} width={'30px'} height={'30px'} />,
+  // render: text => <text>{text}</text>,
 }, {
   title: 'image',
   dataIndex: 'src',
@@ -69,15 +69,16 @@ const columns = [{
 
 const datas = [{
   key: '1',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
   autor: '薛之谦',
   albums: '《意外》',
+  background: 'this.state.background',
 }, {
   key: '2',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   song: '李白',
   time: '04:12',
@@ -85,7 +86,7 @@ const datas = [{
   albums: '《李白》',
 }, {
   key: '3',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   song: '80000(Prod.By DROYC)',
   time: '01:48',
@@ -93,7 +94,7 @@ const datas = [{
   albums: '《80000(Prod.By DROYC)》',
 }, {
   key: '4',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
   song: '红昭愿',
   time: '04:26',
@@ -101,7 +102,7 @@ const datas = [{
   albums: '《红昭愿》',
 }, {
   key: '5',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -109,7 +110,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '6',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -117,7 +118,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '7',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -125,7 +126,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '8',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -133,7 +134,7 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '9',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
@@ -141,121 +142,13 @@ const datas = [{
   albums: '《意外》',
 }, {
   key: '10',
-  play: '▶️',
+  play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
   time: '04:26',
   autor: '薛之谦',
   albums: '《意外》',
 }];
-
-
-const data = [
-  { id: 1,
-    title: '薛之谦',
-    song: '丑八怪',
-    src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-  },
-  { id: 2,
-    title: '李荣浩',
-    song: '李白',
-    src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-  },
-  { id: 3,
-    title: 'PRC 巴音汗',
-    song: '80000(Prod.By DROYC)',
-    src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-  },
-  { id: 4,
-    title: '音阙诗听',
-    song: '红昭愿',
-    src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-  },
-];
-
-// const list = [
-//   {
-//     title: '薛之谦',
-//     song: '丑八怪',
-//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-//     pic: 'picppppppppp',
-//   },
-//   {
-//     title: '李荣浩',
-//     song: '李白',
-//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-//   },
-//   {
-//     title: 'PRC 巴音汗',
-//     song: '80000(Prod.By DROYC)',
-//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-//   },
-//   {
-//     title: '音阙诗听',
-//     song: '红昭愿',
-//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-//   },
-//   {
-//     title: '薛之谦',
-//     song: '丑八怪',
-//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-//   },
-//   {
-//     title: '李荣浩',
-//     song: '李白',
-//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-//   },
-//   {
-//     title: 'PRC 巴音汗',
-//     song: '80000(Prod.By DROYC)',
-//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-//   },
-//   {
-//     title: '音阙诗听',
-//     song: '红昭愿',
-//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-//   },
-//   {
-//     title: '1',
-//   },
-//   {
-//     title: '2',
-//   },
-//   {
-//     title: '3',
-//   },
-//   {
-//     title: '4',
-//   },
-//   {
-//     title: '5',
-//   },
-// ];
-
-// const menu = (
-//   <Menu>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/"><Icon type="smile-o" style={{ marginRight: '10px' }} />我的主页</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/"><Icon type="aliwangwang-o" style={{ marginRight: '10px' }} />我的消息</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/"><Icon type="setting" style={{ marginRight: '10px' }} />个人设置</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/"><Icon type="poweroff" style={{ marginRight: '10px' }} />退出</a>
-//     </Menu.Item>
-//   </Menu>
-// );
-
-
-// const SubMenu = Menu.SubMenu;
-// const { SubMenu } = Menu;
-// const gridStyle = {
-//   width: '25%',
-//   textAlign: 'center',
-// };
 
 class Three extends React.Component {
   // render() {

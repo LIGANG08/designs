@@ -3,16 +3,11 @@
  */
 
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import { Layout, Icon, Divider, Avatar, List, Table, Popover } from 'antd';
+// import { Link, Route } from 'react-router-dom';
+import { Layout, Icon, Divider, Table, Popover } from 'antd';
 // import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-// import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-// import One from '../Music/one';
-// import Two from '../Music/two';
-// import Three from '../Music/three';
-// import Lists from '../components/list';
 import styles from '../List/list.less';
 
 const { Content } = Layout;
@@ -212,63 +207,42 @@ class Lists extends React.Component {
       <Layout>
         <Layout>
           <Content className={styles.content}>
-            {/* <div className={styles.main}> */}
             <div className={styles.main}>
-              {/* <Switch> */}
-                <Route path="/list/page2" render={() => <One />} />
-                <Route path="/list/page3" render={() => <Two />} />
-                <Route path="/list/page" render={() => <Three />} />
-                {/* <Route path="/two" render={() => <One />} /> */}
-                <div className={styles.right}>
-                  {/* <Switch> */}
-                  {/* <Route path="/b" render={() => <h3>监控页</h3>} /> */}
-                  {/* </Switch> */}
-                  <div className={styles.top}>
-                    {/* <img src={require('../image/play.png')} alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} /> */}
-                    <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
-                    我的音乐🎵
-                  </div>
-                  <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-                    {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
-                    <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
-                    <Divider type="vertical" />
-                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
-                    <Divider type="vertical" />
-                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>流行</a>
-                    <Divider type="vertical" />
-                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>摇滚</a>
-                    <Divider type="vertical" />
-                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>民谣</a>
-                    <Divider type="vertical" />
-                    <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
-                    <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
-                  </div>
-                  <Table
-                    dataIndex={this.props.key}
-                    selectedRowKeys
-                    // {this.state.isToggleOn ? 'ON' : 'OFF'}
-                    pagination={{ pageSize: 6 }}
-                    columns={columns}
-                    dataSource={datas}
-                    bordered
-                    // title={() => 'Header'}
-                    footer={() => 'Footer'}
-                  />
+              <div className={styles.right}>
+                <div className={styles.top}>
+                  <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
+                  我的音乐🎵
                 </div>
-              {/* </Switch> */}
+                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                  {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
+                  <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>流行</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>摇滚</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>民谣</a>
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
+                  <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
+                </div>
+                <Table
+                  dataIndex={this.props.key}
+                  selectedRowKeys
+                  // {this.state.isToggleOn ? 'ON' : 'OFF'}
+                  pagination={{ pageSize: 6 }}
+                  columns={columns}
+                  dataSource={datas}
+                  bordered
+                  // title={() => 'Header'}
+                  footer={() => 'Footer'}
+                />
+              </div>
             </div>
           </Content>
         </Layout>
-        <Popover content={content} >
-          <div style={{ border: '1px solid black' }}>Hover</div>
-        </Popover>
-        {/* <div onMouseOver={this.BottomBar} onMouseLeave={this.BottomBarLeave} style={{ height: '100px', width: '93%', background: 'black', opacity: '0.5', position: 'fixed', bottom: this.state.bot, transition: 'bottom 1s' }}>
-            <p style={{ color: 'wheat', float: 'right', right: '10px' }}>Content</p>
-            <div style={{ border: '1px solid red' }}>
-              <img src={require('../image/play.png')} alt="this is pic" style={{ width: '40px', height: '40px', marginTop: '0px' }} />
-            </div>
-            <p>Content</p>
-        </div> */}
       </Layout>
     );
     return (

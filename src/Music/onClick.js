@@ -4,10 +4,11 @@
 
 import React from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Table, Popover, Input } from 'antd';
+import { Layout, Input, Table } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
+import styles from './onClick.less';
 
 
 const { Content } = Layout;
@@ -39,41 +40,24 @@ const query = {
   },
 };
 
-const columns = [{
-  dataIndex: 'key',
-  // render: text => <a href="">{text}</a>,
-}, {
-  title: '播放',
-  dataIndex: 'play',
-  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-  render: (text) => {
-    return <img src={text} alt={'g'} width={'60px'} height={'60px'} />;
-  },
-}, {
-  title: 'image',
-  dataIndex: 'src',
-  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-}, {
-  title: '歌曲标题',
-  dataIndex: 'song',
-  render: text => <a href="/#">{text}</a>,
-}];
-
 const datas = [{
   key: '1',
   play: require('../image/play.png'),
   src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
   song: '丑八怪',
+  url: 'http://music.163.com/song/media/outer/url?id=483671599.mp3',
 }, {
   key: '2',
   play: require('../image/play.png'),
   src: 'http://i01.pic.sogou.com/358447d676d3a67c',
   song: '李白',
+  url: 'http://music.163.com/song/media/outer/url?id=26662115.mp3',
 }, {
   key: '3',
   play: require('../image/play.png'),
   src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
   song: '80000(Prod.By DROYC)',
+  url: 'http://music.163.com/song/media/outer/url?id=476592630.mp3',
 }];
 
 class BasicLayout extends React.Component {
@@ -94,12 +78,12 @@ class BasicLayout extends React.Component {
       status: 'orange',
       color: 'red',
       src: require('../image/play.png'),
-      rtitle: '',
-      ate: new Date(),
+      pic: require('../image/play.png'),
     };
     // 特别注意这一行语句
     // this.handleClick = this.handleClick.bind(this);
     // this.pClick = this.pClick.bind(this);
+    this.onPlaySong = this.onPlaySong.bind(this);
   }
   // handleClick() {
   //   this.setState(prevState => ({
@@ -108,6 +92,12 @@ class BasicLayout extends React.Component {
   //   console.log(this);
   // }
 
+  onPlaySong(r) {
+    console.log(r);
+    this.setState({
+      src: (this.state.pic === require('../image/play.png') ? require('../image/play.png') : require('../image/pause.png')),
+    });
+  }
 
   onClick(word, e) {
     console.log('ok');
@@ -117,9 +107,9 @@ class BasicLayout extends React.Component {
     console.log(this.state.background);
     // this.state.background:'red';
     // this.setState({ background: 'blue' });
-    setTimeout((function() {
-      this.setState({ progress: 1 + (0.4 * Math.random()) });
-    }).bind(this), 1000);
+    // setTimeout((function() {
+    //   this.setState({ progress: 1 + (0.4 * Math.random()) });
+    // }).bind(this), 1000);
   }
 
   // handleClick() {
@@ -148,25 +138,52 @@ class BasicLayout extends React.Component {
   }
 
   render() {
-    setTimeout((function() {
+    const columns = [{
+      dataIndex: 'key',
+      // render: text => <a href="">{text}</a>,
+    }, {
+      title: '播放',
+      dataIndex: 'play',
+      // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+      render: (text, record) => {
+        // return <img onClick={() => this.onPlaySong(record)} src={(this.state.src === require('../image/play.png') ? require('../image/play.png') : require('../image/pause.png'))} alt={'g'} width={'60px'} height={'60px'} />;
+        return <img onClick={this.onPlaySong.bind(this, record)} src={this.state.pic} alt={'g'} width={'60px'} height={'60px'} />;
+      },
+    }, {
+      title: 'image',
+      dataIndex: 'src',
+      render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+    }, {
+      title: '歌曲标题',
+      dataIndex: 'song',
+      render: text => <a href="/#">{text}</a>,
+    }];
+    setTimeout(() => {
       this.setState({ progress: (0.4 * Math.random()) });
-    }).bind(this), 1000);
+    }, 1000);
     // setTimeout(alert('对不起, 要你久候'), 3000);
     // setInterval( pClick, 1000);
     const layout = (
       <Layout>
         <Content>
-          <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio>
+          {/* <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio> */}
           <div>
-            <progress progress={this.state.progress} />
-            {this.state.progress}s
+            {/* <progress progress={this.state.progress} /> */}
+            <div className={styles.progress}>
+              <span className={styles.start} />
+              <div className={styles.progressbar}>
+                <div className={styles.now} />{this.state.progress}s
+              </div>
+              <span className={styles.end} />
+            </div>
+            {/* {this.state.progress}s */}
           </div>
           <div>
             <Input type="text" value={this.state.rtitle} onChange={this.textChange} />
           </div>
           <button onClick={this.pClick.bind(this)}>{ this.state.background }</button>
           <p style={{ marginTop: '20px', marginLeft: '20px', background: this.state.background }}>按钮</p>
-          <img src={this.state.src} alt="pic" />
+          <img onClick={this.pClick.bind(this)} src={this.state.src} alt="pic" />
           <Table
             onClick={this.pClick.bind(this, datas.key)}
             dataIndex={this.state.key}
@@ -181,6 +198,50 @@ class BasicLayout extends React.Component {
             footer={() => 'Footer'}
           />
         </Content>
+        <div className="audioBox" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '120px', background: 'silver' }}>
+          <audio
+            controls={'true'}
+            // currentTime={'1000'}
+            id={`audio${483671599}`}
+            src={'http://music.163.com/song/media/outer/url?id=483671599.mp3'}
+            preload={'true'}
+            // onCanPlay={() => this.controlAudio('allTime')}
+            // onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
+          >光
+            您的浏览器不支持 audio 标签。
+          </audio>
+          <i
+            className={this.state.isPlay ? 'pause' : 'play'}
+            // onClick={() => this.controlAudio(this.state.isPlay ? 'pause' : 'play')}
+          />
+          <audio
+            controls={'true'}
+            id={`audio${26662115}`}
+            src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}
+            preload={'true'}
+            // onCanPlay={() => this.controlAudio('allTime')}
+            // onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
+          >
+            您的浏览器不支持 audio 标签。
+          </audio>
+          <audio
+            controls={'true'}
+            id={`audio${476592630}`}
+            src={'http://music.163.com/song/media/outer/url?id=476592630.mp3'}
+            preload={'true'}
+            // onCanPlay={() => this.controlAudio('allTime')}
+            // onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
+          >
+            您的浏览器不支持 audio 标签。
+          </audio>
+        </div>
+        <div className={styles.progress}>
+          <span className={styles.start} />
+          <div className={styles.progressbar}>
+            <div className={styles.now} />
+          </div>
+          <span className={styles.end} />
+        </div>
       </Layout>
     );
     return (
