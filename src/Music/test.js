@@ -98,9 +98,26 @@ class BasicLayout extends React.Component {
     // console.log(r.target.key);
     this.setState({
       pic: (this.state.pic === require('../image/playb.png') ? require('../image/pause.png') : require('../image/playb.png')),
-      isPlay: !this.state.isPlay,
+      isPlay: this.player.play(),
+      url: this.state.url,
+      id: 483671599,
     });
   }
+
+  // this.play = () => {
+  //   if (!this.player) {
+  //     return false;
+  //   }
+  //   if (this.player.readyState === 4 && !this.player.ended) {
+  //     this.player.play();
+  //   }
+  // };
+  // // 暂停
+  // this.pause = () => {
+  //   if (this.player) {
+  //     this.player.pause();
+  //   }
+  // };
 
   onClick(word, e) {
     console.log('ok');
@@ -108,26 +125,8 @@ class BasicLayout extends React.Component {
     console.log(this);
     console.log(this, word);
     console.log(this.state.background);
-    // this.state.background:'red';
-    // this.setState({ background: 'blue' });
-    // setTimeout((function() {
-    //   this.setState({ progress: 1 + (0.4 * Math.random()) });
-    // }).bind(this), 1000);
   }
 
-  // controlAudio() {
-  //   const { key, url } = this.props;
-  //   console.log(url.target.innerHTML);
-  //   console.log(this.key);
-  //   // const audio = document.getElementById(`audio${id}`);
-  // }
-
-  // handleClick() {
-  //   this.setState(prevState => ({
-  //     isToggleOn: !prevState.isToggleOn,
-  //   }));
-  //   console.log(this);
-  // }
 
   pClick(event) {
     // this.state.background:'red';
@@ -154,10 +153,8 @@ class BasicLayout extends React.Component {
     }, {
       title: '播放',
       dataIndex: 'play',
-      // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
       render: (text, record) => {
-        // return <img onClick={() => this.onPlaySong(record, record.key)} src={(record.play === require('../image/play.png') ? require('../image/play.png') : require('../image/pause.png'))} alt={'g'} width={'60px'} height={'60px'} />;
-        return <img onClick={this.onPlaySong.bind(this, record.song)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
+        return <img onClick={this.onPlaySong.bind(record.key)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
       },
     }, {
       title: 'image',
@@ -176,9 +173,8 @@ class BasicLayout extends React.Component {
     const layout = (
       <Layout>
         <Content>
-          {/* <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio> */}
+          <audio controls={'true'} id="483671599" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio>
           <div>
-            {/* <progress progress={this.state.progress} /> */}
             <div className={styles.progress}>
               <span className={styles.start} />
               <div className={styles.progressbar}>
@@ -199,7 +195,6 @@ class BasicLayout extends React.Component {
             dataIndex={this.state.key}
             style={{ background: 'this.state.background' }}
             selectedRowKeys
-            // {this.state.isToggleOn ? 'ON' : 'OFF'}
             pagination={{ pageSize: 6 }}
             columns={columns}
             dataSource={datas}
@@ -214,15 +209,12 @@ class BasicLayout extends React.Component {
             // currentTime={'1000'}
             id={`audio${483671599}`}
             src={'http://music.163.com/song/media/outer/url?id=483671599.mp3'}
-            // preload={'true'}
-            // onCanPlay={() => this.controlAudio('allTime')}
-            // onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
           >光
             您的浏览器不支持 audio 标签。
           </audio>
           <i
             className={this.state.isPlay ? 'pause' : 'play'}
-            // onClick={() => this.controlAudio(this.state.isPlay ? 'pause' : 'play')}
+            onClick={() => this.controlAudio(this.state.isPlay ? 'pause' : 'play')}
           />
           <audio
             controls={'true'}
