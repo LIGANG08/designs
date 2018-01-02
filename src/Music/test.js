@@ -93,14 +93,16 @@ class BasicLayout extends React.Component {
   //   console.log(this);
   // }
 
-  onPlaySong(r) {
+  onPlaySong(r, index) {
     console.log(r);
+    console.log(index);
+    if (index === 0) {
+      // throw new Error('event cannot be undefined');
+      console.log(index);
+    }
     // console.log(r.target.key);
     this.setState({
       pic: (this.state.pic === require('../image/playb.png') ? require('../image/pause.png') : require('../image/playb.png')),
-      isPlay: this.player.play(),
-      url: this.state.url,
-      id: 483671599,
     });
   }
 
@@ -153,8 +155,8 @@ class BasicLayout extends React.Component {
     }, {
       title: '播放',
       dataIndex: 'play',
-      render: (text, record) => {
-        return <img onClick={this.onPlaySong.bind(record.key)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
+      render: (text, record, index) => {
+        return <img id={index} onClick={this.onPlaySong.bind(this, index)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
       },
     }, {
       title: 'image',
