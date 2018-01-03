@@ -98,7 +98,7 @@ class BasicLayout extends React.Component {
     console.log(index);
     if (index === 0) {
       // throw new Error('event cannot be undefined');
-      console.log(index);
+      console.log(`index=${index}`);
     }
     // console.log(r.target.key);
     this.setState({
@@ -156,7 +156,7 @@ class BasicLayout extends React.Component {
       title: '播放',
       dataIndex: 'play',
       render: (text, record, index) => {
-        return <img id={index} onClick={this.onPlaySong.bind(this, index)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
+        return <img id={index} onClick={this.onPlaySong.bind(this, record, index)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
       },
     }, {
       title: 'image',
@@ -170,6 +170,17 @@ class BasicLayout extends React.Component {
     setTimeout(() => {
       this.setState({ progress: (0.4 * Math.random()) });
     }, 1000);
+    // const rowSelection = {
+    //   onChange(selectedRowKeys, selectedRows) {
+    //     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    //   },
+    //   onSelect(record, selected, selectedRows) {
+    //     console.log(record, selected, selectedRows);
+    //   },
+    //   onSelectAll(selected, selectedRows, changeRows) {
+    //     console.log(selected, selectedRows, changeRows);
+    //   },
+    // };
     // setTimeout(alert('对不起, 要你久候'), 3000);
     // setInterval( pClick, 1000);
     const layout = (
@@ -198,6 +209,7 @@ class BasicLayout extends React.Component {
             style={{ background: 'this.state.background' }}
             selectedRowKeys
             pagination={{ pageSize: 6 }}
+            // rowSelection={rowSelection}
             columns={columns}
             dataSource={datas}
             bordered
