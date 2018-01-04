@@ -170,17 +170,17 @@ class BasicLayout extends React.Component {
     setTimeout(() => {
       this.setState({ progress: (0.4 * Math.random()) });
     }, 1000);
-    // const rowSelection = {
-    //   onChange(selectedRowKeys, selectedRows) {
-    //     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    //   },
-    //   onSelect(record, selected, selectedRows) {
-    //     console.log(record, selected, selectedRows);
-    //   },
-    //   onSelectAll(selected, selectedRows, changeRows) {
-    //     console.log(selected, selectedRows, changeRows);
-    //   },
-    // };
+    const rowSelection = {
+      onChange(selectedRowKeys, selectedRows) {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+      },
+      onSelect(record, selected, selectedRows) {
+        console.log(record, selected, selectedRows);
+      },
+      onSelectAll(selected, selectedRows, changeRows) {
+        console.log(selected, selectedRows, changeRows);
+      },
+    };
     // setTimeout(alert('对不起, 要你久候'), 3000);
     // setInterval( pClick, 1000);
     const layout = (
@@ -209,7 +209,7 @@ class BasicLayout extends React.Component {
             style={{ background: 'this.state.background' }}
             selectedRowKeys
             pagination={{ pageSize: 6 }}
-            // rowSelection={rowSelection}
+            rowSelection={rowSelection}
             columns={columns}
             dataSource={datas}
             bordered
