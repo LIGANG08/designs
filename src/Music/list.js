@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Popover } from 'antd';
+import { Layout, Menu, Icon, Divider, Avatar, Dropdown, List, Modal, Button } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -55,6 +55,51 @@ const menu = (
   </Menu>
 );
 
+const playlist = (
+  <Menu
+    style={{ width: '250px', marginTop: '10px', marginLeft: '-2px' }}
+  >
+    <Menu.Item key="0">
+      <div style={{ background: 'silver', margin: '10px 0', display: 'flex', alignItems: 'center' }}>
+        <img
+          src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt=""
+          style={{ width: '60px', height: '60px', margin: '10px' }}
+        />
+        <div style={{ border: '1px solid silver', marginLeft: 'px', marginTop: '', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '10px' }}>
+          <span style={{ fontSize: '15px' }}>我喜欢的音乐</span>
+          <span style={{ marginTop: '10px', fontSize: '12px', color: '#999' }}>100首</span>
+        </div>
+      </div>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item key="1">
+      <div style={{ background: 'silver', margin: '10px 0', display: 'flex', alignItems: 'center' }}>
+        <img
+          src="http://i01.pic.sogou.com/358447d676d3a67c" alt=""
+          style={{ width: '60px', height: '60px', margin: '10px' }}
+        />
+        <div style={{ border: '1px solid silver', marginLeft: 'px', marginTop: '', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '10px' }}>
+          <span style={{ fontSize: '15px' }}>我喜欢的音乐</span>
+          <span style={{ marginTop: '10px', fontSize: '12px', color: '#999' }}>380首</span>
+        </div>
+      </div>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item key="3">
+      <div style={{ background: 'silver', margin: '10px 0', display: 'flex', alignItems: 'center' }}>
+        <img
+          src="http://i04.pic.sogou.com/a2e555b84cdbdbaa" alt=""
+          style={{ width: '60px', height: '60px', margin: '10px' }}
+        />
+        <div style={{ border: '1px solid silver', marginLeft: 'px', marginTop: '', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '10px' }}>
+          <span style={{ fontSize: '15px' }}>我喜欢的音乐</span>
+          <span style={{ marginTop: '10px', fontSize: '12px', color: '#999' }}>10首</span>
+        </div>
+      </div>
+    </Menu.Item>
+  </Menu>
+);
+
 const data = [
   {
     id: 1,
@@ -96,6 +141,8 @@ class BasicLayout extends React.Component {
       selectedRowKeys: [],
       src: require('../image/playb.png'),
       pic: require('../image/unlock.png'),
+      spic: require('../image/close.png'),
+      number: 7,
     };
     // 特别注意这一行语句
     // this.handleClick = this.handleClick.bind(this);
@@ -129,6 +176,31 @@ class BasicLayout extends React.Component {
   }
   BottomBarLeave() {
     this.setState({ bot: '-110px' });
+  }
+
+  sClick() {
+    this.setState({
+      spic: (this.state.spic === require('../image/close.png') ? require('../image/open.png') : require('../image/close.png')),
+    });
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
   }
 
   render() {
@@ -186,6 +258,30 @@ class BasicLayout extends React.Component {
             {/* <div className={styles.main}> */}
             <div className={styles.main}>
               <div className={styles.left}>
+                <div style={{ border: '1px solid', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0px' }}>
+                  <Dropdown overlay={playlist} trigger={['click']}>
+                    <a onClick={this.sClick.bind(this)} style={{ color: 'black' }}>
+                      <img src={this.state.spic} alt="" style={{ width: '25px', height: '25px' }} />创建歌单({this.state.number})
+                    </a>
+                  </Dropdown>
+                  <div>
+                    <Button type="primary" style={{ background: 'gray', border: '1px solid gray' }} onClick={this.showModal}><img src={require('../image/add.png')} alt="" style={{ width: '30px', height: '30px' }} />新建</Button>
+                    <Modal
+                      title="新建歌单"
+                      visible={this.state.visible}
+                      onOk={this.handleOk}
+                      onCancel={this.handleCancel}
+                      mask={false}
+                      cancelText="取消"
+                      okText="新建"
+                      bodyStyle={{ background: 'gray', height: '100px' }}
+                      style={{ marginTop: '130px', textAlign: 'center' }}
+                    >
+                      <span>歌单名：</span><input />
+                      <span style={{ color: 'silver', fontSize: '13px', position: 'absolute', top: '120px', left: '155px' }}>可以通过”收藏“将歌曲加入到歌单中</span>
+                    </Modal>
+                  </div>
+                </div>
                 <List
                   itemLayout="horizontal"
                   dataSource={data}
@@ -212,9 +308,9 @@ class BasicLayout extends React.Component {
             </div>
           </Content>
         </Layout>
-        <Footer className={styles.footer}>
+        {/* <Footer className={styles.footer}>
           <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-            {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐 */}
+            <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐
             <Divider type="vertical" />
             <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>关于网易</span></a>
             <Divider type="vertical" />
@@ -235,7 +331,7 @@ class BasicLayout extends React.Component {
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#C10D0C' }} />
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#87d068' }} />
           </div>
-        </Footer>
+        </Footer> */}
         {/* <Lists /> */}
         <div onMouseOver={this.BottomBar} onMouseLeave={this.BottomBarLeave} style={{ height: '120px', width: '100%', background: 'black', opacity: '0.5', position: 'fixed', left: '0', bottom, transition: 'bottom 1s' }}>
           <img onClick={this.Click.bind(this)} src={this.state.pic} style={{ color: this.state.color, float: 'right', right: '10px', width: '30px', height: '30px' }} alt="" />
@@ -247,10 +343,9 @@ class BasicLayout extends React.Component {
             id={`audio${26662115}`}
             src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}
             preload={'true'}
-            onCanPlay={() => this.controlAudio('allTime')}
+            // onCanPlay={() => this.controlAudio('allTime')}
             // onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
-          >
-            您的浏览器不支持 audio 标签。
+          >s
           </audio>
         </div>
       </Layout>

@@ -4,7 +4,7 @@
 
 import React from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Input, Table } from 'antd';
+import { Layout, Input, Table, Modal, Button, Menu, Dropdown, Icon } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -60,6 +60,19 @@ const datas = [{
   url: 'http://music.163.com/song/media/outer/url?id=476592630.mp3',
 }];
 
+const menu = (
+  <Menu>
+    <Menu.Item key="0">
+      <a href="http://www.alipay.com/">1st menu item</a>
+    </Menu.Item>
+    <Menu.Item key="1">
+      <a href="http://www.taobao.com/">2nd menu item</a>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item key="3">3rd menu item</Menu.Item>
+  </Menu>
+);  
+
 class BasicLayout extends React.Component {
   // state = {
   //   collapsed: false,
@@ -79,7 +92,7 @@ class BasicLayout extends React.Component {
       color: 'red',
       src: require('../image/play.png'),
       pic: require('../image/playb.png'),
-      isPlay: false,
+      visible: false,
     };
     // 特别注意这一行语句
     // this.handleClick = this.handleClick.bind(this);
@@ -93,15 +106,6 @@ class BasicLayout extends React.Component {
   //   console.log(this);
   // }
 
-  onPlaySong(r) {
-    console.log(r);
-    // console.log(r.target.key);
-    this.setState({
-      pic: (this.state.pic === require('../image/playb.png') ? require('../image/pause.png') : require('../image/playb.png')),
-      isPlay: !this.state.isPlay,
-    });
-  }
-
   onClick(word, e) {
     console.log('ok');
     console.log(e.target.innerHTML);
@@ -114,6 +118,36 @@ class BasicLayout extends React.Component {
     //   this.setState({ progress: 1 + (0.4 * Math.random()) });
     // }).bind(this), 1000);
   }
+
+  onPlaySong(r) {
+    console.log(r);
+    // console.log(r.target.key);
+    this.setState({
+      pic: (this.state.pic === require('../image/playb.png') ? require('../image/pause.png') : require('../image/playb.png')),
+      isPlay: !this.state.isPlay,
+    });
+  }
+
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
 
   // controlAudio() {
   //   const { key, url } = this.props;
@@ -194,6 +228,11 @@ class BasicLayout extends React.Component {
           <button onClick={this.pClick.bind(this)}>{ this.state.background }</button>
           <p style={{ marginTop: '20px', marginLeft: '20px', background: this.state.background }}>按钮</p>
           <img onClick={this.pClick.bind(this)} src={this.state.src} alt="pic" />
+          <Dropdown overlay={menu} trigger={['click']}>
+            <a>
+              <Icon type="down" />创建歌单
+            </a>
+          </Dropdown>
           <Table
             // onClick={this.pClick.bind(this, datas.key)}
             dataIndex={this.state.key}
@@ -251,6 +290,22 @@ class BasicLayout extends React.Component {
             <div className={styles.now} />
           </div>
           <span className={styles.end} />
+        </div>
+        <div>
+          <Button type="primary" onClick={this.showModal}>Open</Button>
+          <Modal
+            title="新建歌单"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            cancelText="取消"
+            okText="新建"
+            bodyStyle={{ background: 'gray', height: '100px' }}
+            style={{ marginTop: '130px', textAlign: 'center' }}
+          >
+            <span>歌单名：</span><input />
+            <span style={{ color: 'silver', fontSize: '13px', position: 'absolute', top: '120px', left: '155px' }}>可以通过”收藏“将歌曲加入到歌单中</span>
+          </Modal>
         </div>
       </Layout>
     );

@@ -41,27 +41,36 @@ const query = {
 };
 const columns = [{
   dataIndex: 'key',
-  // render: text => <a href="">{text}</a>,
+  width: 50,
+  render: text => <a href="">{text}</a>,
 }, {
   title: '播放',
   dataIndex: 'play',
-  render: text => <img src={text} alt={'g'} width={'30px'} height={'30px'} />,
-  // render: text => <text>{text}</text>,
+  width: 70,
+  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+  render: (text) => {
+    return <img src={text} alt={'g'} width={'35px'} height={'35px'} style={{ marginLeft: 'px' }} />;
+  },
 }, {
-  title: 'image',
+  title: '封面',
   dataIndex: 'src',
-  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+  width: 100,
+  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} style={{ marginLeft: 'px' }} />,
 }, {
   title: '歌曲标题',
   dataIndex: 'song',
-  render: text => <a href="/#">{text}</a>,
+  width: 100,
+  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
 }, {
   title: '时长',
+  width: 100,
   // className: 'column-money',
   dataIndex: 'time',
 }, {
   title: '歌手',
   dataIndex: 'autor',
+  width: 100,
+  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
 }, {
   title: '专辑',
   dataIndex: 'albums',
@@ -199,6 +208,7 @@ class Three extends React.Component {
                 pagination={{ pageSize: 6 }}
                 columns={columns}
                 dataSource={datas}
+                scroll={{ y: 240 }}
                 bordered
                 // title={() => 'Header'}
                 footer={() => 'Footer'}

@@ -4,7 +4,7 @@
 
 import React from 'react';
 // import { Link, Route } from 'react-router-dom';
-import { Layout, Icon, Divider, Table, Popover } from 'antd';
+import { Layout, Icon, Divider, Table } from 'antd';
 // import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -40,29 +40,36 @@ const query = {
 };
 const columns = [{
   dataIndex: 'key',
-  // render: text => <a href="">{text}</a>,
+  width: 50,
+  render: text => <a href="">{text}</a>,
 }, {
   title: '播放',
   dataIndex: 'play',
+  width: 70,
   // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
   render: (text) => {
-    return <img src={text} alt={'g'} width={'30px'} height={'30px'} />;
+    return <img src={text} alt={'g'} width={'35px'} height={'35px'} style={{ marginLeft: 'px' }} />;
   },
 }, {
-  title: 'image',
+  title: '封面',
   dataIndex: 'src',
-  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+  width: 100,
+  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} style={{ marginLeft: 'px' }} />,
 }, {
   title: '歌曲标题',
   dataIndex: 'song',
-  render: text => <a href="/#">{text}</a>,
+  width: 100,
+  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
 }, {
   title: '时长',
+  width: 100,
   // className: 'column-money',
   dataIndex: 'time',
 }, {
   title: '歌手',
   dataIndex: 'autor',
+  width: 100,
+  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
 }, {
   title: '专辑',
   dataIndex: 'albums',
@@ -150,12 +157,12 @@ const datas = [{
   autor: '薛之谦',
   albums: '《意外》',
 }];
-const content = (
-  <div style={{ width: '1200px', background: 'black', opacity: '0.5' }}>
-    <p>Content</p>
-    <p>Content</p>
-  </div>
-);
+// const content = (
+//   <div style={{ width: '1200px', background: 'black', opacity: '0.5' }}>
+//     <p>Content</p>
+//     <p>Content</p>
+//   </div>
+// );
 
 class Lists extends React.Component {
 
@@ -211,7 +218,28 @@ class Lists extends React.Component {
               <div className={styles.right}>
                 <div className={styles.top}>
                   <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
-                  我的音乐🎵
+                  <div className={styles.top_right}>
+                    <div
+                      style={{ border: '', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                    >
+                      <img src={require('../image/a.png')} alt="" style={{ width: '80px', height: '30px' }} />
+                      <span style={{ position: 'absolute', left: '290px', top: '38px', fontSize: '15px' }}>歌单</span>
+                      <div style={{ marginLeft: '10px', fontSize: '20px', color: 'black' }}>我喜欢的音乐🎵</div>
+                      <div style={{ marginLeft: '160px' }}>编辑</div>
+                    </div>
+                    <div style={{ border: '', marginTop: '20px' }}><img src={require('../image/a.jpeg')} alt="" style={{ width: '40px', height: '40px', marginRight: '20px' }} />用户名:<a style={{ color: '#1890ff' }}>Beautiful_sky________</a> 2017-1-7 创建</div>
+                    <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
+                      <div style={{ border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>
+                        <img src={require('../image/play.png')} alt="" style={{ width: '25px', height: '25px', marginLeft: '-2px', marginRight: '5px' }} />播放
+                      </div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>
+                        <img src={require('../image/collect.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />收藏
+                      </div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>下载</div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>分享</div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>评论</div>
+                    </div>
+                  </div>
                 </div>
                 <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
                   {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
@@ -229,15 +257,19 @@ class Lists extends React.Component {
                   <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
                 </div>
                 <Table
+                  // style={{ width: '100%' }}
                   dataIndex={this.props.key}
                   selectedRowKeys
                   // {this.state.isToggleOn ? 'ON' : 'OFF'}
                   pagination={{ pageSize: 6 }}
                   columns={columns}
                   dataSource={datas}
-                  bordered
+                  scroll={{ y: 300 }}
+                  components={'true'}
+                  size={'30px'}
+                  bordered={'true'}
                   // title={() => 'Header'}
-                  footer={() => 'Footer'}
+                  // footer={() => 'Footer'}
                 />
               </div>
             </div>
