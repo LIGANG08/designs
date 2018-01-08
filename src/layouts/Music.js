@@ -13,12 +13,6 @@ import Example from '../components/Example';
 import styles from './Music.less';
 
 const { Sider, Content, Footer } = Layout;
-// const TabPane = Tabs.TabPane;
-// const Search = Input.Search;
-
-// function callback(key) {
-//   console.log(key);
-// }
 
 const query = {
   'screen-xs': {
@@ -66,11 +60,9 @@ const data = [
 
 const columns = [{
   dataIndex: 'key',
-  // render: text => <a href="">{text}</a>,
 }, {
   title: '播放',
   dataIndex: 'play',
-  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
   render: (text) => {
     return <img src={text} alt={'g'} width={'30px'} height={'30px'} />;
   },
@@ -84,7 +76,6 @@ const columns = [{
   render: text => <a href="/#">{text}</a>,
 }, {
   title: '时长',
-  // className: 'column-money',
   dataIndex: 'time',
 }, {
   title: '歌手',
@@ -193,8 +184,6 @@ const menu = (
   </Menu>
 );
 
-
-// const SubMenu = Menu.SubMenu;
 const { SubMenu } = Menu;
 const gridStyle = {
   width: '25%',
@@ -213,20 +202,9 @@ const content = (
 );
 
 class BasicLayout extends React.Component {
-
-
-  // state = {
-  //   collapsed: false,
-  // };
-  // toggle = () => {
-  //   this.setState({
-  //     collapsed: !this.state.collapsed,
-  //   });
-  // }
   constructor(props) {
     super(props);
     this.state = { isToggleOn: 'true' };
-    // 特别注意这一行语句
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
@@ -253,43 +231,26 @@ class BasicLayout extends React.Component {
           >
             <Menu.Item key="1"><Link to="/">发现音乐</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/list">我的音乐</Link></Menu.Item>
-            {/* <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item> */}
-            <Menu.Item key="4"><a href="http://music.163.com/store/product">商城</a></Menu.Item>
+            <Menu.Item key="4">商城</Menu.Item>
             <Menu.Item key="5"><Link to="/musicians">音乐人</Link></Menu.Item>
             <Menu.Item key="6"><Link to="/download">下载客户端</Link></Menu.Item>
           </Menu>
           <div style={{ border: '2px solid white', width: '200px' }} />
           <HeaderSearch
-            // style={{ marginTop: '16px', marginLeft: '20px' }}
             className={styles.Search}
             placeholder="🔍   音乐/电台/用户"
             dataSource={['搜索提示一', '搜索提示二', '搜索提示三']}
             onSearch={(value) => {
-              console.log('input', value); // eslint-disable-line
+              console.log('input', value);
             }}
             onPressEnter={(value) => {
-              console.log('enter', value); // eslint-disable-line
+              console.log('enter', value);
             }}
           />
-          {/* <Search
-            placeholder="🔍   音乐/电台/用户"
-            onSearch={value => console.log(value)}
-            enterButton
-          /> */}
           <div style={{ marginLeft: '100px' }}>
-            {/* <Avatar icon="user" /> */}
-            {/* <Avatar>U</Avatar>
-            <Avatar>USER</Avatar> */}
-            {/* <Avatar src="http://img01.sogoucdn.com/app/a/100520093/803d8006b5d521bb-2eb356b9e8bc4ae6-44161463e36a0cba1f9b67ac4cf56432.jpg" /> */}
-            {/* <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>U</Avatar> */}
-            {/* <Avatar style={{ backgroundColor: '#87d068' }} icon="user" /> */}
             <Dropdown overlay={menu}>
               <a className="ant-dropdown-link" href="/#">
                 <Avatar style={{ backgroundColor: '#1890ff' }} icon="user" />
-                {/* <Avatar src="http://img01.sogoucdn.com/app/a/100520093/803d8006b5d521bb-2eb356b9e8bc4ae6-44161463e36a0cba1f9b67ac4cf56432.jpg" /> */}
-                {/* <Icon type="down" /> */}
-                {/* <Icon type="caret-down" style={{ marginLeft: '10px' }} /> */}
-                {/* <Icon type="down-square-o" /> */}
               </a>
             </Dropdown>
           </div>
@@ -311,8 +272,8 @@ class BasicLayout extends React.Component {
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="edit" /><span>我的音乐</span></span>}>
                 <Menu.Item key="4"><Link to="/list">本地音乐</Link></Menu.Item>
-                <Menu.Item key="5">下载管理</Menu.Item>
-                <Menu.Item key="6">我的歌手</Menu.Item>
+                <Menu.Item key="5"><Link to="/download">下载管理</Link></Menu.Item>
+                <Menu.Item key="6"><Link to="/musicians">我的歌手</Link></Menu.Item>
                 <Menu.Item key="6">我的电台</Menu.Item>
               </SubMenu>
               <SubMenu key="sub3" title={<span><Icon type="exception" /><span>创建的歌单</span></span>}>
@@ -335,7 +296,7 @@ class BasicLayout extends React.Component {
           <Content className={styles.content}>
             <div className={styles.main}>
               <div className={styles.top}>
-                <Carousel classname={styles.move} autoplay={{ second: '5s' }}>
+                <Carousel classname={styles.move} autoplay={{ second: '3s' }}>
                   <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
@@ -381,7 +342,6 @@ class BasicLayout extends React.Component {
                       style={{
                         width: '150px',
                         height: '30px',
-                        // border: '1px solid black',
                         position: 'relative',
                         top: '-30px',
                         left: '18px',
@@ -669,10 +629,6 @@ class BasicLayout extends React.Component {
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />新碟推荐
-                  {/* <Divider type="vertical" />
-                  <a href="/#">Link</a>
-                  <Divider type="vertical" />
-                  <a href="/#">Link</a> */}
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="The new disc recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
@@ -681,25 +637,6 @@ class BasicLayout extends React.Component {
                       src="http://p4.music.126.net/JgXdIpvSVmV48Lm8DUwR8g==/109951163081363543.jpg?param=177y177" alt="this is pic"
                       style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver' }}
                     />
-                    {/* <div
-                      style={{
-                        width: '150px',
-                        height: '30px',
-                        position: 'relative',
-                        top: '-30px',
-                        left: '18px',
-                        opacity: '0.6',
-                        background: 'black',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        padding: '3px 0 5px 5px' }}
-                    >
-                      <span style={{ color: 'wheat', position: 'absolute', top: '6px' }}>浏览: 330 万</span>
-                      <img
-                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                        style={{ width: '50px', height: '50px', marginLeft: '90px', marginTop: '-10px' }}
-                      />
-                    </div> */}
                     <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black', marginTop: '20px' }}>Merry & Happy</div>
                   </Card.Grid>
                   <Card.Grid style={gridStyle}>
@@ -726,10 +663,6 @@ class BasicLayout extends React.Component {
                 </Card>
                 <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', boxShadow: '5px 5px 10px silver' }}>
                   <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />榜单推荐
-                  {/* <Divider type="vertical" />
-                  <a href="/#" style={{ color: 'silver' }}>Link</a>
-                  <Divider type="vertical" />
-                  <a href="/#">Link</a> */}
                   <a href="/#" style={{ float: 'right', lineHeight: '40px', color: '#333', fontSize: '15px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></a>
                 </div>
                 <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
@@ -746,7 +679,6 @@ class BasicLayout extends React.Component {
                   columns={columns}
                   dataSource={datas}
                   bordered
-                  // title={() => 'Header'}
                   footer={() => 'Footer'}
                 />
               </div>
@@ -754,7 +686,6 @@ class BasicLayout extends React.Component {
             <div className={styles.right}>猜你喜欢<hr />
               <List
                 onClick={this.onlist}
-                // style={{ color: 'white' }}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={item => (
@@ -773,7 +704,7 @@ class BasicLayout extends React.Component {
         </Layout>
         <Footer className={styles.footer}>
           <div style={{ fontSize: '20px', margin: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-            {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐 */}
+            <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐
             <Divider type="vertical" />
             <a href="/#" style={{ color: '#666', fontSize: '15px' }}><span>关于网易</span></a>
             <Divider type="vertical" />
@@ -794,10 +725,6 @@ class BasicLayout extends React.Component {
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#C10D0C' }} />
             <Avatar style={{ marginLeft: '10px', backgroundColor: '#87d068' }} />
           </div>
-          {/* <Switch>
-            <Route path="/a" render={() => <h3>分析页</h3>} />
-            <Route path="/b" render={() => <h3>监控页</h3>} />
-          </Switch> */}
           <Popover content={content} >
             <div style={{ border: '1px solid black' }}>Hover</div>
           </Popover>

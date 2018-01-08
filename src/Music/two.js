@@ -3,22 +3,13 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Icon, Divider, Avatar, Dropdown, List, Table } from 'antd';
+import { Layout, Icon, Divider, Table } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-// import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import styles from '../Music/list.less';
 
 const { Content } = Layout;
-// const TabPane = Tabs.TabPane;
-// const Search = Input.Search;
-
-// function callback(key) {
-//   console.log(key);
-// }
-
 const query = {
   'screen-xs': {
     maxWidth: 575,
@@ -47,7 +38,6 @@ const columns = [{
   title: '播放',
   dataIndex: 'play',
   width: 70,
-  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
   render: (text) => {
     return <img src={text} alt={'g'} width={'35px'} height={'35px'} style={{ marginLeft: 'px' }} />;
   },
@@ -55,7 +45,7 @@ const columns = [{
   title: '封面',
   dataIndex: 'src',
   width: 100,
-  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} style={{ marginLeft: 'px' }} />,
+  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
 }, {
   title: '歌曲标题',
   dataIndex: 'song',
@@ -64,7 +54,6 @@ const columns = [{
 }, {
   title: '时长',
   width: 100,
-  // className: 'column-money',
   dataIndex: 'time',
 }, {
   title: '歌手',
@@ -160,14 +149,6 @@ const datas = [{
 }];
 
 class Two extends React.Component {
-  // render() {
-  //   return (
-  //     <div>hello
-  //       <img src="http://i01.pic.sogou.com/358447d676d3a67c" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
-  //     </div>
-  //   );
-  // }
-
   state = {
     collapsed: false,
   };
@@ -181,16 +162,13 @@ class Two extends React.Component {
     const two = (
       <Layout>
         <Content className={styles.content}>
-          {/* <div className={styles.main}> */}
           <div className={styles.main}>
             <div className={styles.right}>
               <div className={styles.top}>
-                {/* <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} /> */}
                 <img src="http://i04.pic.sogou.com/a2e555b84cdbdbaa" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
                 我的音乐🎵
               </div>
               <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-                {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
                 <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
                 <Divider type="vertical" />
                 <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
@@ -210,16 +188,11 @@ class Two extends React.Component {
                 dataSource={datas}
                 scroll={{ y: 240 }}
                 bordered
-                // title={() => 'Header'}
                 footer={() => 'Footer'}
               />
             </div>
           </div>
         </Content>
-        {/* <Switch>
-          <Route path="/a" render={() => <h3>分析页</h3>} />
-          <Route path="/b" render={() => <h3>监控页</h3>} />
-        </Switch> */}
       </Layout>
     );
     return (
