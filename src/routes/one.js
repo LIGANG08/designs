@@ -7,7 +7,8 @@ import { Layout, Icon, Divider, Table } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-import styles from '../Music/list.less';
+import InfiniteScroll from 'react-infinite-scroller';
+import styles from '../routes/list.less';
 
 const { Content } = Layout;
 const query = {
@@ -50,7 +51,7 @@ const columns = [{
   title: '歌曲标题',
   dataIndex: 'song',
   width: 100,
-  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
+  render: text => <div >{text}</div>,
 }, {
   title: '时长',
   width: 100,
@@ -148,7 +149,7 @@ const datas = [{
   albums: '《意外》',
 }];
 
-class Three extends React.Component {
+class One extends React.Component {
   state = {
     collapsed: false,
   };
@@ -159,13 +160,13 @@ class Three extends React.Component {
   }
 
   render() {
-    const three = (
+    const one = (
       <Layout>
         <Content className={styles.content}>
           <div className={styles.main}>
             <div className={styles.right}>
               <div className={styles.top}>
-                <img src="http://i02.pic.sogou.com/78ccb0feab55c76c" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
+                <img src="http://i01.pic.sogou.com/358447d676d3a67c" alt="this is pic" style={{ width: '200px', height: '200px', margin: '20px' }} />
                 我的音乐🎵
               </div>
               <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
@@ -182,14 +183,16 @@ class Three extends React.Component {
                 <a href="/#" style={{ color: '#666', fontSize: '15px' }}>电子</a>
                 <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
               </div>
-              <Table
-                pagination={{ pageSize: 6 }}
-                columns={columns}
-                dataSource={datas}
-                scroll={{ y: 240 }}
-                bordered
-                footer={() => 'Footer'}
-              />
+              <InfiniteScroll>
+                <Table
+                  pagination={{ pageSize: 6 }}
+                  columns={columns}
+                  dataSource={datas}
+                  scroll={{ y: 240 }}
+                  bordered
+                  footer={() => 'Footer'}
+                />
+              </InfiniteScroll>
             </div>
           </div>
         </Content>
@@ -197,10 +200,11 @@ class Three extends React.Component {
     );
     return (
       <ContainerQuery query={query}>
-        {params => <div className={classNames(params)}>{three}</div>}
+        {params => <div className={classNames(params)}>{one}</div>}
       </ContainerQuery>
     );
   }
   }
-export default connect()(Three);
+
+export default connect()(One);
 

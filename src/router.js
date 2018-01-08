@@ -3,11 +3,11 @@ import { Router, Route, Switch } from 'dva/router';
 // import IndexPage from './routes/IndexPage';
 // import BasicLayout from './layouts/BasicLayout';
 import Music from './layouts/Music';
-import list from './Music/list';
-import musicians from './Music/musicians';
-import download from './Music/download';
-import onClick from './Music/onClick';
-import test from './Music/test';
+import list from './routes/list';
+import musicians from './routes/musicians';
+import download from './routes/download';
+import onClick from './routes/onClick';
+import test from './routes/test';
 // import one from './Music/one';
 // import two from './Music/two';
 // import three from './Music/three';s

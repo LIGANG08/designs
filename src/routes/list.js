@@ -9,9 +9,9 @@ import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-import One from '../Music/one';
-import Two from '../Music/two';
-import Three from '../Music/three';
+import One from '../routes/one';
+import Two from '../routes/two';
+import Three from '../routes/three';
 import Lists from '../components/List/list';
 import styles from './list.less';
 

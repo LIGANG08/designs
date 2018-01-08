@@ -297,8 +297,12 @@ class BasicLayout extends React.Component {
             <div className={styles.main}>
               <div className={styles.top}>
                 <Carousel classname={styles.move} autoplay={{ second: '3s' }}>
+                  <div><img src="http://p1.music.126.net/H61l7jss2zgM-2-8bbNvYg==/109951163103329466.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/MwO2V5iAPlXPMKL29aiIPQ==/109951163102317813.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <div><img src="http://p1.music.126.net/IZWfulWM0y0HVkocQG2MNA==/109951163100504335.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <div><img src="http://p1.music.126.net/tSz-w6OCMAxqtWVtphHqVQ==/109951163103245931.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <div><img src="http://p1.music.126.net/0jC49uQ2mnPeWptM7sNAgg==/109951163100181204.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/Gj92V72Sl8u2z6EhLaGF6Q==/19182079858662886.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
@@ -743,4 +747,5 @@ class BasicLayout extends React.Component {
     );
   }
 }
+
 export default connect()(BasicLayout);

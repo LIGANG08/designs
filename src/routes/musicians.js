@@ -9,7 +9,7 @@ import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
-import styles from '../Music/musicians.less';
+import styles from '../routes/musicians.less';
 
 const { Content, Footer } = Layout;
 const query = {
@@ -141,5 +141,6 @@ class BasicLayout extends React.Component {
     );
   }
 }
+
 export default connect()(BasicLayout);
 

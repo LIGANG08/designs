@@ -7,7 +7,7 @@ import { Layout, Icon, Divider, Table } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-import styles from '../Music/list.less';
+import styles from '../routes/list.less';
 
 const { Content } = Layout;
 const query = {
@@ -202,5 +202,6 @@ class Two extends React.Component {
     );
   }
   }
+
 export default connect()(Two);
 
