@@ -297,6 +297,7 @@ class BasicLayout extends React.Component {
             <div className={styles.main}>
               <div className={styles.top}>
                 <Carousel classname={styles.move} autoplay={{ second: '3s' }}>
+                  <div><img src="http://p1.music.126.net/MwO2V5iAPlXPMKL29aiIPQ==/109951163102317813.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
                   <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
