@@ -9,12 +9,6 @@ import classNames from 'classnames';
 import styles from '../List/list.less';
 
 const { Content } = Layout;
-// const TabPane = Tabs.TabPane;
-// const Search = Input.Search;
-
-// function callback(key) {
-//   console.log(key);
-// }
 
 const query = {
   'screen-xs': {
@@ -46,22 +40,21 @@ const columns = [{
   width: 70,
   // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
   render: (text) => {
-    return <img src={text} alt={'g'} width={'35px'} height={'35px'} style={{ marginLeft: 'px' }} />;
+    return <img src={text} alt={'g'} width={'35px'} height={'35px'} />;
   },
 }, {
   title: '封面',
   dataIndex: 'src',
   width: 100,
-  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} style={{ marginLeft: 'px' }} />,
+  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
 }, {
   title: '歌曲标题',
   dataIndex: 'song',
   width: 100,
-  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
+  render: text => <div>{text}</div>,
 }, {
   title: '时长',
   width: 100,
-  // className: 'column-money',
   dataIndex: 'time',
 }, {
   title: '歌手',
@@ -155,42 +148,8 @@ const datas = [{
   autor: '薛之谦',
   albums: '《意外》',
 }];
-// const content = (
-//   <div style={{ width: '1200px', background: 'black', opacity: '0.5' }}>
-//     <p>Content</p>
-//     <p>Content</p>
-//   </div>
-// );
 
 class Lists extends React.Component {
-
-  constructor() {
-    super();
-    this.state = {
-      isToggleOn: 'true',
-      bot: '-90px',
-      windowHeight: 0,
-      windowWidth: 0,
-      background: 'orange',
-      selectedRowKeys: [],
-    };
-    this.BottomBar = this.BottomBar.bind(this);
-    this.BottomBarLeave = this.BottomBarLeave.bind(this);
-  }
-
-  // componentWillMount() {
-  //   this.setState({
-  //     windowWidth: document.querySelector('body').offsetWidth,
-  //     windowHeight: document.querySelector('body').offsetHeight,
-  //   });
-  // }
-
-  BottomBar() {
-    this.setState({ bot: 0 });
-  }
-  BottomBarLeave() {
-    this.setState({ bot: '-90px' });
-  }
 
   render() {
     const layout = (
@@ -213,23 +172,25 @@ class Lists extends React.Component {
                       用户名:<a style={{ color: '#1890ff' }}>Beautiful_sky________</a> 2017-1-7 创建
                     </div>
                     <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
-                      <div style={{ border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>
-                        <img
-                          src={require('../image/play.png')} alt=""
-                          style={{ width: '25px', height: '25px', marginLeft: '-2px', marginRight: '5px' }}
-                        />播放
+                      <div style={{ border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
+                        <img src={require('../image/playa.png')} alt="" style={{ width: '25px', height: '25px', marginLeft: '-2px', marginRight: '5px' }} />播放
                       </div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
                         <img src={require('../image/collect.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />收藏
                       </div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>下载</div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>分享</div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px' }}>评论</div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '4px 10px', display: 'flex', alignItems: 'center' }}>
+                        <img src={require('../image/download.png')} alt="" style={{ width: '25px', height: '25px', marginRight: '5px' }} />下载
+                      </div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
+                        <img src={require('../image/share.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px', display: 'flex', alignItems: 'center' }} />分享
+                      </div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
+                        <img src={require('../image/comments.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />评论
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-                  {/* <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表 */}
                   <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
                   <Divider type="vertical" />
                   <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
@@ -244,10 +205,8 @@ class Lists extends React.Component {
                   <a href="/#" style={{ float: 'right', marginRight: '10px', lineHeight: '35px', color: '#333', fontSize: '15px' }}>播放：6次</a>
                 </div>
                 <Table
-                  // style={{ width: '100%' }}
                   dataIndex={this.props.key}
                   selectedRowKeys
-                  // {this.state.isToggleOn ? 'ON' : 'OFF'}
                   pagination={{ pageSize: 6 }}
                   columns={columns}
                   dataSource={datas}
@@ -255,8 +214,6 @@ class Lists extends React.Component {
                   components={'true'}
                   size={'30px'}
                   bordered={'true'}
-                  // title={() => 'Header'}
-                  // footer={() => 'Footer'}
                 />
               </div>
             </div>

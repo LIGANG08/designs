@@ -4,7 +4,7 @@
 
 import React from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Input, Table, Modal, Button, Menu, Dropdown, Icon } from 'antd';
+import { Layout, Input, Table, Modal, Button, Menu, Dropdown, Icon, Card } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -71,7 +71,21 @@ const menu = (
     <Menu.Divider />
     <Menu.Item key="3">3rd menu item</Menu.Item>
   </Menu>
-);  
+);
+
+// const boxs = [
+//   {
+//     name: 'box1',
+//   },
+//   {
+//     name: 'box2',
+//   },
+//   {
+//     name: 'box3',
+//   },
+//   {
+//     name: 'box4',
+//   }];
 
 class BasicLayout extends React.Component {
   // state = {
@@ -307,6 +321,14 @@ class BasicLayout extends React.Component {
             <span style={{ color: 'silver', fontSize: '13px', position: 'absolute', top: '120px', left: '155px' }}>可以通过”收藏“将歌曲加入到歌单中</span>
           </Modal>
         </div>
+        {/* {boxs.map((b) => {
+          return (
+            <div>{b.name}</div>
+            <Card>
+              <Card.Grid style={gridStyle}></Card.Grid>
+            </Card>
+          );
+        })} */}
       </Layout>
     );
     return (
