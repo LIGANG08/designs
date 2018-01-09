@@ -102,26 +102,20 @@ const boxs = [
     name: 'box4',
   }];
 
-// const gridStyle = {
-//   width: '80%',
-//   textAlign: 'center',
-//   display: 'inline-block',
-//   Flexdirection: 'column',
-//   Alignitems: 'center',
-//   Justifycontent: 'center',
-//   marginLeft: '20px',
-// };
-
-const gridStyles = {
-  // width: '25%',
-  // textAlign: 'center',
-  // display: 'inline-block',
-  // Flexdirection: 'column',
-  // Alignitems: 'center',
-  // Justifycontent: 'center',
-  // marginLeft: '20px',
-  // background: 'silver',
+const style = {
+  width: '150px',
+  height: '30px',
+  position: 'relative',
+  top: '-30px',
+  left: 'px',
+  opacity: '0.4',
+  background: 'black',
+  display: 'flex',
+  justifyContent: 'space-between',
+  padding: '3px 0 5px 5px',
+  border: '1px solid gray',
 };
+
 const BgElement = Element.BgElement;
 
 class BasicLayout extends React.Component {
@@ -414,31 +408,65 @@ class BasicLayout extends React.Component {
                   );
                 })}
               </div>
-              <Card title={b.title} style={{ border: '1px solid blue', background: 'orange', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '60px' }}>
-                {/* <div style={{ background: '' }}> */}
-                {/* <Card.Grid style={gridStyle}> */}
-                {/* <div>热门推荐</div> */}
+              <Card title={b.title} style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '60px' }}>
                 {boxs.map((c) => {
                   return (
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                      {/* <div>{c.name}</div> */}
-                      {/* <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}> */}
-                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<div><img src={c.src} alt="" style={{ width: '120px', height: '120px' }} />
-                        <img
-                          src="http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200" alt="this is pic"
-                          style={{ width: '150px', height: '150px' }}
-                        />
-                      </div></Card.Grid>
-                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
-                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
-                      {/* <Card.Grid style={gridStyles}>{c.name}</Card.Grid>
-                        <Card.Grid style={gridStyles}>{c.name}</Card.Grid> */}
-                      {/* </Card> */}
+                      <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                          <img src={c.src} alt="" style={{ width: '150px', height: '150px' }} />
+                          <div style={style}>
+                            <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
+                            <img
+                              src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                              style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
+                            />
+                          </div>
+                          <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                        </div>
+                      </Card.Grid>
+                      <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                          <img src={c.src} alt="" style={{ width: '150px', height: '150px' }} />
+                          <div style={style}>
+                            <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
+                            <img
+                              src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                              style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
+                            />
+                          </div>
+                          <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                        </div>
+                      </Card.Grid>
+                      <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                          <img src={c.src} alt="" style={{ width: '150px', height: '150px' }} />
+                          <div style={style}>
+                            <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
+                            <img
+                              src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                              style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
+                            />
+                          </div>
+                          <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                        </div>
+                      </Card.Grid>
+                      <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                          <img src={c.src} alt="" style={{ width: '150px', height: '150px' }} />
+                          <div style={style}>
+                            <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
+                            <img
+                              src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
+                              style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
+                            />
+                          </div>
+                          <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
+                        </div>
+                      </Card.Grid>
                     </div>
                   );
                 })}
-                {/* </Card.Grid> */}
-                {/* </div> */}
               </Card>
             </div>
           );
