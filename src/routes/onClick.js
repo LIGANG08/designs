@@ -80,25 +80,25 @@ const boxs = [
   {
     type: '华语',
     src: 'http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200',
-    title: 't1',
+    title: 'Hot recommendation',
     name: 'box1',
   },
   {
     type: '流行',
     src: 'http://img.ivsky.com/img/tupian/t/201103/18/qinjin_daziran-006.jpg',
-    title: 't2',
+    title: 'Personalized recommendation',
     name: 'box2',
   },
   {
     type: '摇滚',
     src: 'http://p1.music.126.net/jDicOuPLwo2pEAvj3tLPOQ==/19224960812054294.jpg?param=140y140',
-    title: 't3',
+    title: 'The new disc recommended',
     name: 'box3',
   },
   {
     type: '民谣',
     src: 'http://p4.music.126.net/sg9zGM77YWeSXpKpH98h_A==/2528876744145400.jpg?param=200y200',
-    title: 't4',
+    title: 'List of recommended',
     name: 'box4',
   }];
 
@@ -423,7 +423,12 @@ class BasicLayout extends React.Component {
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                       {/* <div>{c.name}</div> */}
                       {/* <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}> */}
-                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
+                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<div><img src={c.src} alt="" style={{ width: '120px', height: '120px' }} />
+                        <img
+                          src="http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200" alt="this is pic"
+                          style={{ width: '150px', height: '150px' }}
+                        />
+                      </div></Card.Grid>
                       <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
                       <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
                       {/* <Card.Grid style={gridStyles}>{c.name}</Card.Grid>
