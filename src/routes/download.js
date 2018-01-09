@@ -8,7 +8,6 @@ import { Layout, Menu, Icon, Divider, Avatar, Dropdown } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-import HeaderSearch from 'ant-design-pro/lib/HeaderSearch';
 import styles from '../routes/musicians.less';
 
 const { Content, Footer } = Layout;
@@ -74,17 +73,7 @@ class BasicLayout extends React.Component {
             <Menu.Item key="6">下载客户端</Menu.Item>
           </Menu>
           <div style={{ border: '2px solid white', width: '200px' }} />
-          <HeaderSearch
-            className={styles.Search}
-            placeholder="🔍   音乐/电台/用户"
-            dataSource={['搜索提示一', '搜索提示二', '搜索提示三']}
-            onSearch={(value) => {
-              console.log('input', value);
-            }}
-            onPressEnter={(value) => {
-              console.log('enter', value);
-            }}
-          />
+          <input placeholder="🔍 音乐/电台/用户" style={{ marginLeft: '30px' }} />
           <div style={{ marginLeft: '100px' }}>
             <Dropdown overlay={menu}>
               <a className="ant-dropdown-link" href="/#">

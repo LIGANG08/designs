@@ -4,10 +4,13 @@
 
 import React from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Input, Table, Modal, Button, Menu, Dropdown, Icon, Card } from 'antd';
+import { Layout, Input, Table, Modal, Button, Menu, Dropdown, Icon, Card, Divider } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
+import BannerAnim, { Element } from 'rc-banner-anim';
+import 'rc-banner-anim/assets/index.css';
+import TweenOne from 'rc-tween-one';
 import styles from './onClick.less';
 
 
@@ -73,19 +76,53 @@ const menu = (
   </Menu>
 );
 
-// const boxs = [
-//   {
-//     name: 'box1',
-//   },
-//   {
-//     name: 'box2',
-//   },
-//   {
-//     name: 'box3',
-//   },
-//   {
-//     name: 'box4',
-//   }];
+const boxs = [
+  {
+    type: '华语',
+    src: 'http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200',
+    title: 't1',
+    name: 'box1',
+  },
+  {
+    type: '流行',
+    src: 'http://img.ivsky.com/img/tupian/t/201103/18/qinjin_daziran-006.jpg',
+    title: 't2',
+    name: 'box2',
+  },
+  {
+    type: '摇滚',
+    src: 'http://p1.music.126.net/jDicOuPLwo2pEAvj3tLPOQ==/19224960812054294.jpg?param=140y140',
+    title: 't3',
+    name: 'box3',
+  },
+  {
+    type: '民谣',
+    src: 'http://p4.music.126.net/sg9zGM77YWeSXpKpH98h_A==/2528876744145400.jpg?param=200y200',
+    title: 't4',
+    name: 'box4',
+  }];
+
+// const gridStyle = {
+//   width: '80%',
+//   textAlign: 'center',
+//   display: 'inline-block',
+//   Flexdirection: 'column',
+//   Alignitems: 'center',
+//   Justifycontent: 'center',
+//   marginLeft: '20px',
+// };
+
+const gridStyles = {
+  // width: '25%',
+  // textAlign: 'center',
+  // display: 'inline-block',
+  // Flexdirection: 'column',
+  // Alignitems: 'center',
+  // Justifycontent: 'center',
+  // marginLeft: '20px',
+  // background: 'silver',
+};
+const BgElement = Element.BgElement;
 
 class BasicLayout extends React.Component {
   // state = {
@@ -224,6 +261,50 @@ class BasicLayout extends React.Component {
     const layout = (
       <Layout>
         <Content>
+          <BannerAnim prefixCls="banner-user">
+            <Element
+              prefixCls="banner-user-elem"
+              key="0"
+            >
+              <BgElement
+                key="bg"
+                className="bg"
+                style={{
+                  background: '#364D79',
+                }}
+              />
+              <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
+                Ant Motion Banner
+              </TweenOne>
+              <TweenOne
+                className="banner-user-text"
+                animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
+              >
+                The Fast Way Use Animation In React
+              </TweenOne>
+            </Element>
+            <Element
+              prefixCls="banner-user-elem"
+              key="1"
+            >
+              <BgElement
+                key="bg"
+                className="bg"
+                style={{
+                  background: '#64CBCC',
+                }}
+              />
+              <TweenOne className="banner-user-title" animation={{ y: 30, opacity: 0, type: 'from' }}>
+                Ant Motion Banner
+              </TweenOne>
+              <TweenOne
+                className="banner-user-text"
+                animation={{ y: 30, opacity: 0, type: 'from', delay: 100 }}
+              >
+                The Fast Way Use Animation In React
+              </TweenOne>
+            </Element>
+          </BannerAnim>
           {/* <audio id="audio" src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}>播放</audio> */}
           <div>
             {/* <progress progress={this.state.progress} /> */}
@@ -321,14 +402,42 @@ class BasicLayout extends React.Component {
             <span style={{ color: 'silver', fontSize: '13px', position: 'absolute', top: '120px', left: '155px' }}>可以通过”收藏“将歌曲加入到歌单中</span>
           </Modal>
         </div>
-        {/* {boxs.map((b) => {
+        {boxs.map((b) => {
           return (
-            <div>{b.name}</div>
-            <Card>
-              <Card.Grid style={gridStyle}></Card.Grid>
-            </Card>
+            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', flexDirection: 'column' }} >
+              <div style={{ position: 'absolute', left: '500px', top: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {boxs.map((c) => {
+                  return (
+                    <div style={{ }}>
+                      <div style={{ marginLeft: '10px' }}>{c.type}<Divider type="vertical" /></div>
+                    </div>
+                  );
+                })}
+              </div>
+              <Card title={b.title} style={{ border: '1px solid blue', background: 'orange', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '60px' }}>
+                {/* <div style={{ background: '' }}> */}
+                {/* <Card.Grid style={gridStyle}> */}
+                {/* <div>热门推荐</div> */}
+                {boxs.map((c) => {
+                  return (
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                      {/* <div>{c.name}</div> */}
+                      {/* <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}> */}
+                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
+                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
+                      <Card.Grid style={{ background: 'silver', padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>{c.name}<img src={c.src} alt="" style={{ width: '120px', height: '120px' }} /></Card.Grid>
+                      {/* <Card.Grid style={gridStyles}>{c.name}</Card.Grid>
+                        <Card.Grid style={gridStyles}>{c.name}</Card.Grid> */}
+                      {/* </Card> */}
+                    </div>
+                  );
+                })}
+                {/* </Card.Grid> */}
+                {/* </div> */}
+              </Card>
+            </div>
           );
-        })} */}
+        })}
       </Layout>
     );
     return (
