@@ -172,19 +172,19 @@ class Lists extends React.Component {
                       用户名:<a style={{ color: '#1890ff' }}>Beautiful_sky________</a> 2017-1-7 创建
                     </div>
                     <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
-                      <div style={{ border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
-                        <img src={require('../image/playa.png')} alt="" style={{ width: '25px', height: '25px', marginLeft: '-2px', marginRight: '5px' }} />播放
-                      </div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
-                        <img src={require('../image/collect.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />收藏
+                      <div style={{ border: '1px solid gray', background: 'silver', padding: '2px 10px', display: 'flex', alignItems: 'center' }}>
+                        <img src={require('../image/playa.png')} alt="" style={{ width: '24px', height: '24px', marginLeft: '-2px', marginRight: '5px' }} />播放
                       </div>
                       <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '4px 10px', display: 'flex', alignItems: 'center' }}>
-                        <img src={require('../image/download.png')} alt="" style={{ width: '25px', height: '25px', marginRight: '5px' }} />下载
+                        <img src={require('../image/collect.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />收藏
                       </div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '2px 10px', display: 'flex', alignItems: 'center' }}>
+                        <img src={require('../image/download.png')} alt="" style={{ width: '24px', height: '24px', marginRight: '5px' }} />下载
+                      </div>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '4px 10px', display: 'flex', alignItems: 'center' }}>
                         <img src={require('../image/share.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px', display: 'flex', alignItems: 'center' }} />分享
                       </div>
-                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '5px 10px', display: 'flex', alignItems: 'center' }}>
+                      <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '4px 10px', display: 'flex', alignItems: 'center' }}>
                         <img src={require('../image/comments.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />评论
                       </div>
                     </div>
