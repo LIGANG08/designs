@@ -6,7 +6,8 @@ import React from 'react';
 import { Layout, Card, Table } from 'antd';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-import Cards from '../Card/card';
+// import Cards from '../Card/card';
+import MapCard from '../Card/mapcard';
 import Disc from '../Card/disc';
 import styles from '../List/list.less';
 
@@ -153,7 +154,8 @@ class Contents extends React.Component {
       <Layout>
         <Content className={styles.content}>
           <div className={styles.wrap}>
-            <Cards />
+            {/* <Cards /> */}
+            <MapCard />
             <Disc />
             <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
               <Card.Grid style={gridStyle}>

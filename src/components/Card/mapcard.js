@@ -129,7 +129,7 @@ class MapCard extends React.Component {
             })}
           </div>
           <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
-          <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
+          <Card title="Hot recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
             {hot.map((h) => {
               return (
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
@@ -190,7 +190,7 @@ class MapCard extends React.Component {
             })}
           </div>
           <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
-          <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
+          <Card title="Personalized recommendation" style={{ borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
             {person.map((p) => {
               return (
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
