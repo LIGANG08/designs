@@ -7,16 +7,34 @@ import { Layout, Icon, Card, Divider } from 'antd';
 
 const hot = [
   {
-    src: 'http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200',
+    src: 'http://p1.music.126.net/2yC2LSps62FSt5TtOTE04A==/18512477278946515.jpg?param=140y140',
     srcs: 'http://p4.music.126.net/sYVoa6FSng_-gEll-Mn_Zw==/109951163104331744.jpg?param=200y200',
     pic: 'http://p4.music.126.net/6QbE9r2JeqBz3j3Kva--4A==/109951163038217098.jpg?param=200y200',
     pics: 'http://p1.music.126.net/MN2awBqf6dwKPkWd48p8nA==/109951163081971963.jpg?param=140y140',
+    number: 88,
+    numbers: 160,
+    hnumber: 350,
+    hnumbers: 70,
+    hsrc: 'http://www.iconpng.com/png/miui-bluedescent/musicpicker.png',
+    title: '我们的青春-周杰伦♬',
+    titles: '丝绒质感声音集-仿佛晚安前轻吻你的脸颊',
+    htitle: '古风伤恋｜待到红颜消 杳杳无归期',
+    htitles: '『古风』和声即情感，舍此无他',
   },
   {
-    src: 'http://img.ivsky.com/img/tupian/t/201103/18/qinjin_daziran-006.jpg',
-    srcs: 'http://p3.music.126.net/-Sw4EZ2CHj5QMvQTmP5mjw==/109951163099346002.jpg?param=177y177',
-    pic: 'http://p4.music.126.net/eXhh2CjjqEn9KjKs8Qek1A==/18909400974912277.jpg?param=200y200',
-    pics: 'http://p1.music.126.net/yUxsEGkA9_nSPgr6P7GzKg==/18645518185873305.jpg?param=140y140',
+    src: 'http://p1.music.126.net/_vatT8yIOIRk9JddrKt7uQ==/109951163046086754.jpg?param=140y140',
+    srcs: 'http://p1.music.126.net/vuRXmBPSWNU6yiG9FXQAUQ==/19095218440001908.jpg?param=140y140',
+    pic: 'http://p1.music.126.net/v15TAIq4-NdJFyWgWtvahw==/18870918067829375.jpg?param=140y140',
+    pics: 'http://p1.music.126.net/8hhDe24F1VcijYAHqRlcYg==/109951163097276826.jpg?param=140y140',
+    number: 50,
+    numbers: 190,
+    hnumber: 370,
+    hnumbers: 270,
+    hsrc: 'http://www.iconpng.com/png/miui-bluedescent/musicpicker.png',
+    title: '爱透了一个人，到底是一种什么体验',
+    titles: 'PUBG绝地求生大逃杀素质广场炸街歌单',
+    htitle: '你是我生命中一道光，我只愿追随着你',
+    htitles: '【致过去 】关于我和你的故事 到此为止',
   }];
 
 const person = [
@@ -53,24 +71,24 @@ const person = [
 
 const htype = [
   {
-    type: '华语',
+    htype: '华语',
   }, {
-    type: '流行',
+    htype: '流行',
   }, {
-    type: '民谣',
+    htype: '民谣',
   }, {
-    type: '摇滚',
+    htype: '摇滚',
   }];
 
 const ptype = [
   {
-    type: '华语',
+    ptype: '华语',
   }, {
-    type: '流行',
+    ptype: '流行',
   }, {
-    type: '民谣',
+    ptype: '民谣',
   }, {
-    type: '摇滚',
+    ptype: '摇滚',
   }];
 
 const style = {
@@ -100,139 +118,127 @@ class MapCard extends React.Component {
     const layout = (
       <Layout>
         <div style={{ position: 'relative', display: 'flex', alignItems: '', flexDirection: 'column', boxShadow: '5px 5px 10px silver', padding: '0 0px' }} >
-        <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-          <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐
-          {htype.map((t) => {
-            return (
-              <div>
-                <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{t.type}<Divider type="vertical" /></div>
-              </div>
-            );
-          })}
+          <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+            <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐
+            {htype.map((h) => {
+              return (
+                <div>
+                  <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{h.htype}<Divider type="vertical" /></div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
+          <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
+            {hot.map((h) => {
+              return (
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={h.src} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {h.number} 万</span>
+                        <img src={h.hsrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{h.title}</div>
+                    </div>
+                  </Card.Grid>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={h.srcs} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {h.numbers} 万</span>
+                        <img src={h.hsrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{h.titles}</div>
+                    </div>
+                  </Card.Grid>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={h.pic} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {h.hnumber} 万</span>
+                        <img src={h.hsrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{h.htitle}</div>
+                    </div>
+                  </Card.Grid>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={h.pics} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {h.hnumbers} 万</span>
+                        <img src={h.hsrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{h.htitles}</div>
+                    </div>
+                  </Card.Grid>
+                </div>
+              );
+            })}
+          </Card>
         </div>
-        <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
-        <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
-          {hot.map((h) => {
-            return (
-              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={h.src} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                      <img
-                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                        style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
-                      />
+        <div style={{ position: 'relative', display: 'flex', alignItems: '', flexDirection: 'column', boxShadow: '5px 5px 10px silver', padding: '0 0px' }} >
+          <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+            <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性推荐
+            {ptype.map((p) => {
+              return (
+                <div>
+                  <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{p.ptype}<Divider type="vertical" /></div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
+          <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
+            {person.map((p) => {
+              return (
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={p.src} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.number} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.title}</div>
                     </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
-                  </div>
-                </Card.Grid>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={h.srcs} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                      <img
-                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                        style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
-                      />
+                  </Card.Grid>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={p.srcs} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.numbers} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.titles}</div>
                     </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
-                  </div>
-                </Card.Grid>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={h.pic} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                      <img
-                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                        style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
-                      />
+                  </Card.Grid>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={p.pic} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.pnumber} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.ptitle}</div>
                     </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
-                  </div>
-                </Card.Grid>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={h.pics} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                      <img
-                        src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                        style={{ width: '45px', height: '45px', position: 'relative', top: '-10px' }}
-                      />
+                  </Card.Grid>
+                  <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <img src={p.pics} alt="" style={{ width: '150px', height: '150px' }} />
+                      <div style={style}>
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.pnumbers} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
+                      </div>
+                      <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.ptitles}</div>
                     </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>闭上眼,带你穿越回2004年</div>
-                  </div>
-                </Card.Grid>
-              </div>
-            );
-          })}
-        </Card>
-      </div>
-      <div style={{ position: 'relative', display: 'flex', alignItems: '', flexDirection: 'column', boxShadow: '5px 5px 10px silver', padding: '0 0px' }} >
-        <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-          <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性推荐
-          {ptype.map((t) => {
-            return (
-              <div>
-                <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{t.type}<Divider type="vertical" /></div>
-              </div>
-            );
-          })}
+                  </Card.Grid>
+                </div>
+              );
+            })}
+          </Card>
         </div>
-        <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
-        <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
-          {person.map((p) => {
-            return (
-              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={p.src} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.number} 万</span>
-                      <img src={p.psrc} alt="this is pic" style={cstyle} />
-                    </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.title}</div>
-                  </div>
-                </Card.Grid>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={p.srcs} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.numbers} 万</span>
-                      <img src={p.psrc} alt="this is pic" style={cstyle} />
-                    </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.titles}</div>
-                  </div>
-                </Card.Grid>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={p.pic} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.pnumber} 万</span>
-                      <img src={p.psrc} alt="this is pic" style={cstyle} />
-                    </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.ptitle}</div>
-                  </div>
-                </Card.Grid>
-                <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={p.pics} alt="" style={{ width: '150px', height: '150px' }} />
-                    <div style={style}>
-                      <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.pnumbers} 万</span>
-                      <img src={p.psrc} alt="this is pic" style={cstyle} />
-                    </div>
-                    <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.ptitles}</div>
-                  </div>
-                </Card.Grid>
-              </div>
-            );
-          })}
-        </Card>
-      </div>
       </Layout>
     );
     return (
