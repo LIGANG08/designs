@@ -96,6 +96,11 @@ const person = [
     srcs: 'http://p1.music.126.net/0JIkWClR6VtJ5JKwEWB9HA==/18516875325525359.jpg?param=140y140',
     pic: 'http://p1.music.126.net/DEZWLLr7rr1WmuYtLJAnFw==/109951163064698079.jpg?param=140y140',
     pics: 'http://p1.music.126.net/Y6kpbxQ6C-MJqjCUnC3xdA==/109951163071182230.jpg?param=140y140',
+    number: 88,
+    numbers: 160,
+    pnumber: 350,
+    pnumbers: 70,
+    psrc: 'http://www.iconpng.com/png/miui-bluedescent/musicpicker.png',
     title: 'J·Pop丨冷门佳曲赏',
     titles: '⚡️17年12月新热电音推送',
     ptitle: '「独立女嗓 一场浮生若梦',
@@ -106,13 +111,29 @@ const person = [
     srcs: 'http://p1.music.126.net/H7EVdxwisIdwHiiZgAa3Wg==/18503681185978736.jpg?param=140y140',
     pic: 'http://p1.music.126.net/BtInXBZvnMN13B-ER2oVHg==/19053436998081875.jpg?param=140y140',
     pics: 'http://p1.music.126.net/kZb9DO4vykqiYEx0HHx86w==/109951163065542645.jpg?param=140y140',
+    number: 50,
+    numbers: 190,
+    pnumber: 370,
+    pnumbers: 270,
+    psrc: 'http://www.iconpng.com/png/miui-bluedescent/musicpicker.png',
     title: '【日音】2017年不容错过的100首日系良曲',
     titles: '再深的感情也抵挡不住缘分的交错',
     ptitle: '倒叙年华‖时光漫步之1987～1996',
     ptitles: '华语 | 假如能回到过去，你想做什么',
   }];
 
-const type = [
+const htype = [
+  {
+    type: '华语',
+  }, {
+    type: '流行',
+  }, {
+    type: '民谣',
+  }, {
+    type: '摇滚',
+  }];
+
+const ptype = [
   {
     type: '华语',
   }, {
@@ -426,7 +447,8 @@ class BasicLayout extends React.Component {
         </div>
         <div style={{ position: 'relative', display: 'flex', alignItems: '', flexDirection: 'column', boxShadow: '5px 5px 10px silver', padding: '0 0px' }} >
           <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-            {type.map((t) => {
+            <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />热门推荐
+            {htype.map((t) => {
               return (
                 <div>
                   <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{t.type}<Divider type="vertical" /></div>
@@ -434,7 +456,7 @@ class BasicLayout extends React.Component {
               );
             })}
           </div>
-          <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多</div>
+          <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
           <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
             {hot.map((h) => {
               return (
@@ -498,7 +520,8 @@ class BasicLayout extends React.Component {
         </div>
         <div style={{ position: 'relative', display: 'flex', alignItems: '', flexDirection: 'column', boxShadow: '5px 5px 10px silver', padding: '0 0px' }} >
           <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
-            {type.map((t) => {
+            <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />个性推荐
+            {ptype.map((t) => {
               return (
                 <div>
                   <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{t.type}<Divider type="vertical" /></div>
@@ -506,7 +529,7 @@ class BasicLayout extends React.Component {
               );
             })}
           </div>
-          <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多</div>
+          <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多<Icon type="arrow-right" style={{ color: '#C10D0C', marginLeft: '5px' }} /></div>
           <Card title="title" style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
             {person.map((p) => {
               return (
@@ -515,11 +538,8 @@ class BasicLayout extends React.Component {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                       <img src={p.src} alt="" style={{ width: '150px', height: '150px' }} />
                       <div style={style}>
-                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                        <img
-                          src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                          style={cstyle}
-                        />
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.number} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
                       </div>
                       <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.title}</div>
                     </div>
@@ -528,11 +548,8 @@ class BasicLayout extends React.Component {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                       <img src={p.srcs} alt="" style={{ width: '150px', height: '150px' }} />
                       <div style={style}>
-                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                        <img
-                          src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                          style={cstyle}
-                        />
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.numbers} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
                       </div>
                       <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.titles}</div>
                     </div>
@@ -541,11 +558,8 @@ class BasicLayout extends React.Component {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                       <img src={p.pic} alt="" style={{ width: '150px', height: '150px' }} />
                       <div style={style}>
-                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                        <img
-                          src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                          style={cstyle}
-                        />
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.pnumber} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
                       </div>
                       <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.ptitle}</div>
                     </div>
@@ -554,11 +568,8 @@ class BasicLayout extends React.Component {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                       <img src={p.pics} alt="" style={{ width: '150px', height: '150px' }} />
                       <div style={style}>
-                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
-                        <img
-                          src="http://www.iconpng.com/png/miui-bluedescent/musicpicker.png" alt="this is pic"
-                          style={cstyle}
-                        />
+                        <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: {p.pnumbers} 万</span>
+                        <img src={p.psrc} alt="this is pic" style={cstyle} />
                       </div>
                       <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>{p.ptitles}</div>
                     </div>
