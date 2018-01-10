@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { Layout, Icon, Card, Divider } from 'antd';
+import MapCard from '../Card/mapcard';
 
 const gridStyle = {
   width: '25%',
@@ -209,6 +210,7 @@ class Cards extends React.Component {
             <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black' }}>震撼纯音&史诗级神BGM</div>
           </Card.Grid>
         </Card>
+        <MapCard />
       </Layout>
     );
     return (

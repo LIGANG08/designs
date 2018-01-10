@@ -80,24 +80,28 @@ const boxs = [
   {
     type: '华语',
     src: 'http://p4.music.126.net/PVGZZELy2BX0jM__-i5dkw==/19007257509865737.jpg?param=200y200',
+    pic: 'http://p4.music.126.net/6QbE9r2JeqBz3j3Kva--4A==/109951163038217098.jpg?param=200y200',
     title: 'Hot recommendation',
     name: 'box1',
   },
   {
     type: '流行',
     src: 'http://img.ivsky.com/img/tupian/t/201103/18/qinjin_daziran-006.jpg',
+    pic: 'http://p4.music.126.net/eXhh2CjjqEn9KjKs8Qek1A==/18909400974912277.jpg?param=200y200',
     title: 'Personalized recommendation',
     name: 'box2',
   },
   {
     type: '摇滚',
     src: 'http://p1.music.126.net/jDicOuPLwo2pEAvj3tLPOQ==/19224960812054294.jpg?param=140y140',
+    pic: 'http://p4.music.126.net/sg9zGM77YWeSXpKpH98h_A==/2528876744145400.jpg?param=200y200',
     title: 'The new disc recommended',
     name: 'box3',
   },
   {
     type: '民谣',
     src: 'http://p4.music.126.net/sg9zGM77YWeSXpKpH98h_A==/2528876744145400.jpg?param=200y200',
+    pic: 'http://p3.music.126.net/QeejsDZArWrU9rDqMUIhnA==/18619129906901250.jpg?param=200y200',
     title: 'List of recommended',
     name: 'box4',
   }];
@@ -398,17 +402,18 @@ class BasicLayout extends React.Component {
         </div>
         {boxs.map((b) => {
           return (
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', flexDirection: 'column' }} >
-              <div style={{ position: 'absolute', left: '500px', top: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ position: 'relative', display: 'flex', alignItems: '', flexDirection: 'column', boxShadow: '5px 5px 10px silver', padding: '0 0px' }} >
+              <div style={{ width: '98%', height: '50px', position: 'absolute', left: '10px', top: '10px', display: 'flex', alignItems: 'center', justifyContent: '', boxShadow: '5px 5px 10px silver', fontSize: '20px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
                 {boxs.map((c) => {
                   return (
-                    <div style={{ }}>
-                      <div style={{ marginLeft: '10px' }}>{c.type}<Divider type="vertical" /></div>
+                    <div>
+                      <div style={{ marginLeft: '10px', color: '#666', fontSize: '15px', padding: '5px' }}>{c.type}<Divider type="vertical" /></div>
                     </div>
                   );
                 })}
               </div>
-              <Card title={b.title} style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '60px' }}>
+              <div style={{ position: 'absolute', top: '25px', right: '30px' }}>更多</div>
+              <Card title={b.title} style={{ border: '1px solid blue', borderBottom: '1px solid red', fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600', marginTop: '70px' }}>
                 {boxs.map((c) => {
                   return (
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
@@ -427,7 +432,7 @@ class BasicLayout extends React.Component {
                       </Card.Grid>
                       <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                          <img src={c.src} alt="" style={{ width: '150px', height: '150px' }} />
+                          <img src={c.pic} alt="" style={{ width: '150px', height: '150px' }} />
                           <div style={style}>
                             <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
                             <img
@@ -440,7 +445,7 @@ class BasicLayout extends React.Component {
                       </Card.Grid>
                       <Card.Grid style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                          <img src={c.src} alt="" style={{ width: '150px', height: '150px' }} />
+                          <img src={c.pic} alt="" style={{ width: '150px', height: '150px' }} />
                           <div style={style}>
                             <span style={{ color: 'wheat', lineHeight: '30px' }}>浏览: 130 万</span>
                             <img
