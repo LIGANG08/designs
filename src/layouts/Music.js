@@ -84,17 +84,11 @@ class BasicLayout extends React.Component {
     this.state = { isToggleOn: 'true', data: [] };
     this.handleClick = this.handleClick.bind(this);
   }
-  componentWillMount() {
-    this.setState({
-      data: this.props.music.data,
-    });
-  }
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'music/fetch',
-      // payload: {},
-    });
-  }
+  // componentWillMount() {
+  //   this.setState({
+  //     data: this.props.music.data,
+  //   });
+  // }
   handleClick() {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn,
@@ -106,6 +100,7 @@ class BasicLayout extends React.Component {
     const { musicsrc } = music;
     console.log(music.musicsrc, 'move');
     console.log(music, 'src');
+    console.log(this.props.musicsrc, 'move');
     const layout = (
       <Layout>
         <div className={styles.header}>
@@ -158,11 +153,11 @@ class BasicLayout extends React.Component {
                       />,
                     )
                   } */}
-                  {/* {musicsrc.map(() => {
+                  {musicsrc.map(() => {
                     return (
-                      <img src={music.musicsrc} alt="" style={{ height: '450px' }} />
+                      <img src={this.props.musicsrc} alt="" style={{ height: '450px' }} />
                     );
-                  })} */}
+                  })}
                   {/* <img src="http://p1.music.126.net/H61l7jss2zgM-2-8bbNvYg==/109951163103329466.jpg" alt="" />
                   <img src="http://p1.music.126.net/MwO2V5iAPlXPMKL29aiIPQ==/109951163102317813.jpg" alt="" />
                   <img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="" /> */}
