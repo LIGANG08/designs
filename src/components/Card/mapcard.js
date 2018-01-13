@@ -16,7 +16,7 @@ const hot = [
     hnumber: 350,
     hnumbers: 70,
     hsrc: 'http://www.iconpng.com/png/miui-bluedescent/musicpicker.png',
-    title: '我们的青春-周杰伦♬',
+    title: '我们的青春,永不言弃 --- 周 杰 伦 ♬',
     titles: '丝绒质感声音集-仿佛晚安前轻吻你的脸颊',
     htitle: '古风伤恋｜待到红颜消 杳杳无归期',
     htitles: '『古风』和声即情感，舍此无他',

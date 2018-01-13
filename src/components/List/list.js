@@ -151,6 +151,13 @@ const datas = [{
 
 class Lists extends React.Component {
 
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'list/fetch',
+      payload: {},
+    });
+  }
+
   render() {
     const layout = (
       <Layout>
