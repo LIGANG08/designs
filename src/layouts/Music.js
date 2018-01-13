@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Icon, Carousel, Avatar, Dropdown, List } from 'antd';
+import { Layout, Menu, Icon, Avatar, Carousel, Dropdown, List } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -38,28 +38,28 @@ const query = {
   },
 };
 
-const data = [
-  {
-    title: '薛之谦',
-    song: '丑八怪',
-    src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-  },
-  {
-    title: '李荣浩',
-    song: '李白',
-    src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-  },
-  {
-    title: 'PRC 巴音汗',
-    song: '80000(Prod.By DROYC)',
-    src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-  },
-  {
-    title: '音阙诗听',
-    song: '红昭愿',
-    src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-  },
-];
+// const data = [
+//   {
+//     title: '薛之谦',
+//     song: '丑八怪',
+//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+//   },
+//   {
+//     title: '李荣浩',
+//     song: '李白',
+//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
+//   },
+//   {
+//     title: 'PRC 巴音汗',
+//     song: '80000(Prod.By DROYC)',
+//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
+//   },
+//   {
+//     title: '音阙诗听',
+//     song: '红昭愿',
+//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
+//   },
+// ];
 
 const menu = (
   <Menu>
@@ -81,8 +81,19 @@ const menu = (
 class BasicLayout extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isToggleOn: 'true' };
+    this.state = { isToggleOn: 'true', data: [] };
     this.handleClick = this.handleClick.bind(this);
+  }
+  componentWillMount() {
+    this.setState({
+      data: this.props.music.data,
+    });
+  }
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'music/fetch',
+      // payload: {},
+    });
   }
   handleClick() {
     this.setState(prevState => ({
@@ -91,6 +102,10 @@ class BasicLayout extends React.Component {
   }
 
   render() {
+    const { music } = this.props;
+    const { musicsrc } = music;
+    console.log(music.musicsrc, 'move');
+    console.log(music, 'src');
     const layout = (
       <Layout>
         <div className={styles.header}>
@@ -133,15 +148,24 @@ class BasicLayout extends React.Component {
             <div className={styles.main}>
               <div className={styles.top}>
                 <Carousel classname={styles.move} autoplay={{ second: '3s' }}>
-                  <div><img src="http://p1.music.126.net/H61l7jss2zgM-2-8bbNvYg==/109951163103329466.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/MwO2V5iAPlXPMKL29aiIPQ==/109951163102317813.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/IZWfulWM0y0HVkocQG2MNA==/109951163100504335.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/tSz-w6OCMAxqtWVtphHqVQ==/109951163103245931.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/0jC49uQ2mnPeWptM7sNAgg==/109951163100181204.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/spNFpLdrcZvie1XDfn60Iw==/19208468137739021.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/vvZLXI5EqFLsKLlvfqz0uA==/19088621370291879.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
-                  <div><img src="http://p1.music.126.net/Gj92V72Sl8u2z6EhLaGF6Q==/19182079858662886.jpg" alt="这是一张图片" style={{ height: '450px' }} /></div>
+                  <img src={music.musicsrc} alt="" />
+                  {/* {
+                    musicsrc.map(item =>
+                      <img
+                        src={item.src}
+                        alt=""
+                        style={{ height: '450px' }}
+                      />,
+                    )
+                  } */}
+                  {/* {musicsrc.map(() => {
+                    return (
+                      <img src={music.musicsrc} alt="" style={{ height: '450px' }} />
+                    );
+                  })} */}
+                  {/* <img src="http://p1.music.126.net/H61l7jss2zgM-2-8bbNvYg==/109951163103329466.jpg" alt="" />
+                  <img src="http://p1.music.126.net/MwO2V5iAPlXPMKL29aiIPQ==/109951163102317813.jpg" alt="" />
+                  <img src="http://p1.music.126.net/G74l8fFdzZ555qNPiN0ozw==/19073228207509877.jpg" alt="" /> */}
                 </Carousel>
                 <svg className={styles.svgc}>
                   <polygon
@@ -162,11 +186,12 @@ class BasicLayout extends React.Component {
                 <Contents />
               </div>
             </div>
-            <div className={styles.right}>猜你喜欢<hr />
+            <div className={styles.right}>猜你喜欢
+              {/* <hr /> */}
               <List
                 onClick={this.onlist}
                 itemLayout="horizontal"
-                dataSource={data}
+                dataSource={music.data}
                 renderItem={item => (
                   <List.Item>
                     <List.Item.Meta
@@ -195,4 +220,7 @@ class BasicLayout extends React.Component {
   }
 }
 
-export default connect()(BasicLayout);
+export default connect(
+  state => ({
+    music: state.music,
+  }))(BasicLayout);

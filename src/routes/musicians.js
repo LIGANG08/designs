@@ -67,7 +67,7 @@ class BasicLayout extends React.Component {
           >
             <Menu.Item key="1"><Link to="/">发现音乐</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/list">我的音乐</Link></Menu.Item>
-            <Menu.Item key="3"><Link to="/pic2">朋友</Link></Menu.Item>
+            <Menu.Item key="3">朋友</Menu.Item>
             <Menu.Item key="4"><a href="http://music.163.com/store/product">商城</a></Menu.Item>
             <Menu.Item key="5"><Link to="/musicians">音乐人</Link></Menu.Item>
             <Menu.Item key="6"><Link to="/download">下载客户端</Link></Menu.Item>

@@ -6,8 +6,8 @@ import React from 'react';
 import { Layout, Card, Table } from 'antd';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-// import Cards from '../Card/card';
-import MapCard from '../Card/mapcard';
+import Cards from '../Card/card';
+// import MapCard from '../Card/mapcard';
 import Disc from '../Card/disc';
 import styles from '../List/list.less';
 
@@ -153,27 +153,27 @@ class Contents extends React.Component {
     const layout = (
       <Layout>
         <Content className={styles.content}>
-          <div className={styles.wrap}>
-            {/* <Cards /> */}
-            <MapCard />
-            <Disc />
-            <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
-              <Card.Grid style={gridStyle}>
-                <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
-              </Card.Grid>
-              <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-              <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-              <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-            </Card>
-            <Table
-              style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '1000px' }}
-              pagination={{ pageSize: 6 }}
-              columns={columns}
-              dataSource={datas}
-              bordered
-              footer={() => 'Footer'}
-            />
-          </div>
+          {/* <div className={styles.wrap}> */}
+          <Cards />
+          {/* <MapCard /> */}
+          <Disc />
+          <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
+            <Card.Grid style={gridStyle}>
+              <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
+            </Card.Grid>
+            <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+            <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+            <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
+          </Card>
+          <Table
+            style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '1000px' }}
+            pagination={{ pageSize: 6 }}
+            columns={columns}
+            dataSource={datas}
+            bordered
+            footer={() => 'Footer'}
+          />
+          {/* </div> */}
         </Content>
       </Layout>
     );

@@ -16,15 +16,10 @@ function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Switch>
-        {/* <Route path="/" exact component={IndexPage} /> */}
-        {/* <Route path="/" component={BasicLayout} /> */}
         <Route path="/" exact component={Music} />
         <Route path="/list" component={list} />
         <Route path="/musicians" component={musicians} />
         <Route path="/download" component={download} />
-        {/* <Route path="/one" component={one} /> */}
-        {/* <Route path="/two" component={two} /> */}
-        {/* <Route path="/three" component={three} /> */}
         <Route path="/onClick" component={onClick} />
         <Route path="/test" component={test} />
       </Switch>

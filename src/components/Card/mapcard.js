@@ -7,6 +7,7 @@ import { Layout, Icon, Card, Divider } from 'antd';
 
 const hot = [
   {
+    key: 1,
     src: 'http://p1.music.126.net/2yC2LSps62FSt5TtOTE04A==/18512477278946515.jpg?param=140y140',
     srcs: 'http://p4.music.126.net/sYVoa6FSng_-gEll-Mn_Zw==/109951163104331744.jpg?param=200y200',
     pic: 'http://p4.music.126.net/6QbE9r2JeqBz3j3Kva--4A==/109951163038217098.jpg?param=200y200',
@@ -22,6 +23,7 @@ const hot = [
     htitles: '『古风』和声即情感，舍此无他',
   },
   {
+    key: 2,
     src: 'http://p1.music.126.net/_vatT8yIOIRk9JddrKt7uQ==/109951163046086754.jpg?param=140y140',
     srcs: 'http://p1.music.126.net/vuRXmBPSWNU6yiG9FXQAUQ==/19095218440001908.jpg?param=140y140',
     pic: 'http://p1.music.126.net/v15TAIq4-NdJFyWgWtvahw==/18870918067829375.jpg?param=140y140',
@@ -39,6 +41,7 @@ const hot = [
 
 const person = [
   {
+    key: 1,
     src: 'http://p1.music.126.net/fs9-bg5-reljcOOlPqe6Gg==/109951163094225761.jpg?param=140y140',
     srcs: 'http://p1.music.126.net/0JIkWClR6VtJ5JKwEWB9HA==/18516875325525359.jpg?param=140y140',
     pic: 'http://p1.music.126.net/DEZWLLr7rr1WmuYtLJAnFw==/109951163064698079.jpg?param=140y140',
@@ -54,6 +57,7 @@ const person = [
     ptitles: '日式少年音，温柔少年心',
   },
   {
+    key: 2,
     src: 'http://p1.music.126.net/h1VB-TbIApSkB9GavOxEfA==/109951163096063666.jpg?param=140y140',
     srcs: 'http://p1.music.126.net/H7EVdxwisIdwHiiZgAa3Wg==/18503681185978736.jpg?param=140y140',
     pic: 'http://p1.music.126.net/BtInXBZvnMN13B-ER2oVHg==/19053436998081875.jpg?param=140y140',
@@ -71,23 +75,31 @@ const person = [
 
 const htype = [
   {
+    key: 1,
     htype: '华语',
   }, {
+    key: 2,
     htype: '流行',
   }, {
+    key: 3,
     htype: '民谣',
   }, {
+    key: 4,
     htype: '摇滚',
   }];
 
 const ptype = [
   {
+    key: 1,
     ptype: '华语',
   }, {
+    key: 2,
     ptype: '流行',
   }, {
+    key: 3,
     ptype: '民谣',
   }, {
+    key: 4,
     ptype: '摇滚',
   }];
 
