@@ -8,8 +8,8 @@ import musicians from './routes/musicians';
 import download from './routes/download';
 import onClick from './routes/onClick';
 import test from './routes/test';
-// import one from './Music/one';
-// import two from './Music/two';
+// import one from './routes/one';
+import two from './routes/two';
 // import three from './Music/three';s
 
 function RouterConfig({ history }) {
@@ -22,6 +22,7 @@ function RouterConfig({ history }) {
         <Route path="/download" component={download} />
         <Route path="/onClick" component={onClick} />
         <Route path="/test" component={test} />
+        <Route path="/one" component={two} />
       </Switch>
     </Router>
   );
