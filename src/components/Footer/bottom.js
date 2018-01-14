@@ -10,9 +10,11 @@ class Bottom extends React.Component {
   constructor() {
     super();
     this.state = {
-      bot: '-90px',
+      bot: '-75px',
+      up: require('../image/up.png'),
       play: require('../image/playb.png'),
       lock: require('../image/unlock.png'),
+      next: require('../image/next.png'),
     };
     this.BottomBar = this.BottomBar.bind(this);
     this.BottomBarLeave = this.BottomBarLeave.bind(this);
@@ -38,7 +40,7 @@ class Bottom extends React.Component {
   }
 
   BottomBarLeave() {
-    this.setState({ bot: '-110px' });
+    this.setState({ bot: '-75px' });
   }
 
   render() {
@@ -49,10 +51,11 @@ class Bottom extends React.Component {
           onMouseOver={this.BottomBar}
           onMouseLeave={this.BottomBarLeave}
           style={{
-            height: '120px',
+            border: '2px solid gray',
+            height: '80px',
             width: '100%',
             background: 'black',
-            opacity: '0.5',
+            opacity: '0.8',
             position: 'fixed',
             left: '0',
             bottom,
@@ -60,22 +63,40 @@ class Bottom extends React.Component {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <div style={{ border: '1px solid silver' }}>
-            <img onClick={this.Click.bind(this)} src={this.state.lock} style={{ color: this.state.color, float: 'right', right: '10px', width: '15px', height: '15px', boxShadow: ' 2px 2px 5px silver' }} alt="" />
+          <div style={{ position: 'absolute', right: '10px', top: '5px', border: '1px solid gray', boxShadow: '0 0 5px silver' }}>
+            <img onClick={this.Click.bind(this)} src={this.state.lock} style={{ color: this.state.color, width: '15px', height: '15px' }} alt="" />
           </div>
-          <div style={{ border: '1px solid red', display: 'flex', alignItems: 'center' }}>
-            <div style={{ border: '1px solid blue', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '20px', height: '20px', marginTop: '0px', marginLeft: '0px' }} />
-              <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '40px', height: '40px', marginTop: '0px', marginLeft: '30px' }} />
-              <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '20px', height: '20px', marginTop: '0px', marginLeft: '30px' }} />
+          <div style={{ border: '1px solid', display: 'flex', alignItems: 'center' }}>
+            <div style={{ border: '1px solid', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img onClick={this.onClick.bind(this)} src={this.state.up} alt="this is pic" style={{ width: '30px', height: '30px', marginLeft: '0px' }} />
+              <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '35px', height: '35px', marginLeft: '10px' }} />
+              <img onClick={this.onClick.bind(this)} src={this.state.next} alt="this is pic" style={{ width: '30px', height: '30px', marginLeft: '10px' }} />
             </div>
-            <div style={{ border: '1px solid orange', color: 'silver', width: '700px' }}>
-              <img src="http://i01.pic.sogou.com/358447d676d3a67c" alt="this is pic" style={{ width: '50px', height: '50px', margin: '20px' }} />
+            <div style={{ border: '1px solid', color: 'silver', width: '700px' }}>
+              <img src="http://i01.pic.sogou.com/358447d676d3a67c" alt="this is pic" style={{ width: '40px', height: '40px', margin: '10px' }} />
             </div>
-            <div style={{ color: 'silver', borderRight: '2px solid silver', paddingRight: '20px', boxShadow: ' 0px 0px 2px silver' }}>收藏,分享</div>
-            <div style={{ color: 'silver', marginLeft: '20px' }}>列表</div>
+            <div style={{ color: 'silver', marginLeft: '20px', padding: '0 20px 0 20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ }}>
+                <img src={require('../image/collects.png')} alt="" style={{ width: '30px', height: '30px' }} />
+              </div>
+              <div style={{ marginLeft: '20px' }}>
+                <img src={require('../image/shares.png')} alt="" style={{ width: '30px', height: '30px' }} />
+              </div>
+            </div>
+            <div style={{ color: 'silver', marginLeft: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div>
+                <img src={require('../image/voice.png')} alt="" style={{ width: '30px', height: '30px' }} />
+              </div>
+              <div style={{ marginLeft: '10px' }}>
+                <img src={require('../image/random.png')} alt="" style={{ width: '30px', height: '30px' }} />
+              </div>
+              <div style={{ marginLeft: '10px' }}>
+                <img src={require('../image/list.png')} alt="" style={{ width: '30px', height: '30px' }} />
+              </div>
+            </div>
           </div>
           {/* <audio
             controls={'true'}
