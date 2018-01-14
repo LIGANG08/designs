@@ -100,74 +100,15 @@ const playlist = (
   </Menu>
 );
 
-// const data = [
-//   {
-//     id: 1,
-//     title: '薛之谦',
-//     song: '丑八怪',
-//     src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
-//   },
-//   {
-//     id: 2,
-//     title: '李荣浩',
-//     song: '李白',
-//     src: 'http://i01.pic.sogou.com/358447d676d3a67c',
-//   },
-//   {
-//     id: 3,
-//     title: 'PRC 巴音汗',
-//     song: '80000(Prod.By DROYC)',
-//     src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
-//   },
-//   {
-//     id: 4,
-//     title: '音阙诗听',
-//     song: '红昭愿',
-//     src: 'http://i02.pic.sogou.com/78ccb0feab55c76c',
-//   },
-// ];
-
 class BasicLayout extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      isToggleOn: 'true',
-      bot: '-110px',
-      isLock: false,
-      windowHeight: 0,
-      windowWidth: 0,
-      background: 'orange',
-      selectedRowKeys: [],
-      src: require('../image/playb.png'),
-      pic: require('../image/unlock.png'),
+      visible: false,
       spic: require('../image/close.png'),
       number: 7,
     };
-    this.BottomBar = this.BottomBar.bind(this);
-    this.BottomBarLeave = this.BottomBarLeave.bind(this);
-  }
-
-  onClick() {
-    this.setState({
-      src: (this.state.src === require('../image/playb.png') ? require('../image/pause.png') : require('../image/playb.png')),
-    });
-    console.log(this.state.background);
-  }
-
-  Click() {
-    this.setState({
-      isLock: !this.state.isLock,
-      bot: 0,
-      pic: (this.state.pic === require('../image/unlock.png') ? require('../image/lock.png') : require('../image/unlock.png')),
-    });
-  }
-
-  BottomBar() {
-    this.setState({ bot: 0 });
-  }
-  BottomBarLeave() {
-    this.setState({ bot: '-110px' });
   }
 
   sClick() {

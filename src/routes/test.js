@@ -4,7 +4,7 @@
 
 import React from 'react';
 // import { Link, Switch, Route } from 'react-router-dom';
-import { Layout, Table } from 'antd';
+import { Layout, Table, Modal, Button } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
@@ -58,6 +58,7 @@ class BasicLayout extends React.Component {
     this.state = {
       src: require('../image/play.png'),
       pic: require('../image/playb.png'),
+      visible: false,
     };
     this.onPlaySong = this.onPlaySong.bind(this);
   }
@@ -69,6 +70,25 @@ class BasicLayout extends React.Component {
       isPlay: !this.state.isPlay,
     });
   }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
 
   render() {
     const columns = [{
@@ -104,6 +124,32 @@ class BasicLayout extends React.Component {
             footer={() => 'Footer'}
           />
         </Content>
+        <div>
+          <Button type="primary" onClick={this.showModal}>Open</Button>
+          <img onClick={this.showModal} src="http://i01.pic.sogou.com/358447d676d3a67c" alt="" style={{ width: '30px', height: '30px' }} />
+          <Modal
+            title="播放列表"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            mask={false}
+            footer={false}
+            // bodyStyle={{ background: 'black' }}
+            maskStyle={{ background: 'black' }}
+          >
+            {/* <div style={{ width: '500px', height: '250px' }}>s</div> */}
+            <Table
+            // onClick={this.pClick.bind(this, datas.key)}
+              dataIndex={this.state.key}
+              style={{ background: 'this.state.background', marginTop: '130px', textAlign: 'center'  }}
+              selectedRowKeys
+              pagination={false}
+              columns={columns}
+              dataSource={datas}
+              bordered
+            />
+          </Modal>
+        </div>
       </Layout>
     );
     return (

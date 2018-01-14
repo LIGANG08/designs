@@ -3,7 +3,27 @@
  */
 
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Modal, List } from 'antd';
+
+const data = [{
+  key: 1,
+  play: require('../image/play.png'),
+  src: 'http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg',
+  song: '丑八怪',
+  url: 'http://music.163.com/song/media/outer/url?id=483671599.mp3',
+}, {
+  key: 2,
+  play: require('../image/play.png'),
+  src: 'http://i01.pic.sogou.com/358447d676d3a67c',
+  song: '李白',
+  url: 'http://music.163.com/song/media/outer/url?id=26662115.mp3',
+}, {
+  key: 3,
+  play: require('../image/play.png'),
+  src: 'http://i04.pic.sogou.com/a2e555b84cdbdbaa',
+  song: '80000(Prod.By DROYC)',
+  url: 'http://music.163.com/song/media/outer/url?id=476592630.mp3',
+}];
 
 class Bottom extends React.Component {
 
@@ -15,6 +35,7 @@ class Bottom extends React.Component {
       play: require('../image/playb.png'),
       lock: require('../image/unlock.png'),
       next: require('../image/next.png'),
+      visible: false,
     };
     this.BottomBar = this.BottomBar.bind(this);
     this.BottomBarLeave = this.BottomBarLeave.bind(this);
@@ -42,6 +63,28 @@ class Bottom extends React.Component {
   BottomBarLeave() {
     this.setState({ bot: '-75px' });
   }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  }
+
+  // listclick() {
+  //   this.setState
+  // }
 
   render() {
     const bottom = this.state.isLock ? 0 : this.state.bot;
@@ -94,7 +137,38 @@ class Bottom extends React.Component {
                 <img src={require('../image/random.png')} alt="" style={{ width: '30px', height: '30px' }} />
               </div>
               <div style={{ marginLeft: '10px' }}>
-                <img src={require('../image/list.png')} alt="" style={{ width: '30px', height: '30px' }} />
+                <img onClick={this.showModal} src={require('../image/list.png')} alt="" style={{ width: '30px', height: '30px' }} />
+                <Modal
+                  title="播放列表"
+                  visible={this.state.visible}
+                  onOk={this.handleOk}
+                  onCancel={this.handleCancel}
+                  footer={false}
+                  mask={false}
+                  style={{ marginTop: '300px' }}
+                  bodyStyle={{ background: 'black' }}
+                >
+                  {/* <div>
+                    <Table
+                      dataIndex={this.state.key}
+                      // style={{ background: 'this.state.background', marginTop: '130px', textAlign: 'center'  }}
+                      selectedRowKeys
+                      pagination={false}
+                      columns={columns}
+                      dataSource={datas}
+                      bordered
+                    />
+                  </div> */}
+                  {/* <List
+                    size="large"
+                    header={<div>Header</div>}
+                    footer={<div>Footer</div>}
+                    bordered
+                    dataSource={data}
+                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                  /> */}
+                  <div style={{ height: '300px', width: '500px', background: 'black' }}>s</div>
+                </Modal>
               </div>
             </div>
           </div>
