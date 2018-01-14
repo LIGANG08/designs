@@ -55,21 +55,6 @@ const menu = (
 );
 
 class BasicLayout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isToggleOn: 'true', data: [] };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  // componentWillMount() {
-  //   this.setState({
-  //     data: this.props.music.data,
-  //   });
-  // }
-  handleClick() {
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
-  }
 
   render() {
     const { music } = this.props;
@@ -150,7 +135,6 @@ class BasicLayout extends React.Component {
               </div>
             </div>
             <div className={styles.right}>猜你喜欢
-              {/* <hr /> */}
               <List
                 onClick={this.onlist}
                 itemLayout="horizontal"

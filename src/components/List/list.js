@@ -43,7 +43,6 @@ class Lists extends React.Component {
 
   onPlaySong(r) {
     console.log(r);
-    // console.log(r.target.key);
     this.setState({
       pic: (this.state.pic === require('../image/播放.png') ? require('../image/暂停.png') : require('../image/播放.png')),
     });
@@ -62,7 +61,7 @@ class Lists extends React.Component {
       dataIndex: 'play',
       width: 70,
       render: (text, record) => {
-        return <img onClick={this.onPlaySong.bind(this, record.song)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
+        return <img onClick={this.onPlaySong.bind(this, record)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
       },
     }, {
       title: '封面',

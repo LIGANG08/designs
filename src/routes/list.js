@@ -271,15 +271,15 @@ class BasicLayout extends React.Component {
                   )}
                 />
               </div>
-              <Switch>
-                <Route path="/list/page2" render={() => <One />} />
-                <Route path="/list/page3" render={() => <Two />} />
-                <Route path="/list/page4" render={() => <Three />} />
-                {/* <Route path="/two" render={() => <One />} /> */}
-                <div className={styles.right} style={{ background: 'red' }}>
-                  <Lists />
-                </div>
-              </Switch>
+              {/* <Switch> */}
+              <Route path="/list/page2" render={() => <One />} />
+              <Route path="/list/page3" render={() => <Two />} />
+              <Route path="/list/page4" render={() => <Three />} />
+              {/* <Route path="/two" render={() => <One />} /> */}
+              <div className={styles.right} style={{ background: 'red' }}>
+                <Lists />
+              </div>
+              {/* </Switch> */}
             </div>
           </Content>
         </Layout>

@@ -41,7 +41,7 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { put }) {
+    *fetch({ payload }, { call, put }) {  // eslint-disable-line
       yield put({
         type: 'move',
       });

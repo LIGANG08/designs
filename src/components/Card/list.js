@@ -27,7 +27,7 @@ class Lists extends React.Component {
           <Card.Grid style={gridStyle}>
             <img
               src="http://p1.music.126.net/_vatT8yIOIRk9JddrKt7uQ==/109951163046086754.jpg?param=140y140" alt="this is pic"
-              style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver', borderRadius: '0%' }}
+              style={{ width: '150px', height: '150px', boxShadow: '8px 8px 5px silver' }}
             />
             <div style={{ fontSize: '15px', fontStyle: 'normal', color: 'black', marginTop: '20px' }}>爱透了一个人，到底是一种什么体验</div>
           </Card.Grid>
