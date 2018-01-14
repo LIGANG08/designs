@@ -3,12 +3,13 @@
  */
 
 import React from 'react';
-import { Layout, Card, Table } from 'antd';
+import { Layout, Table } from 'antd';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import Cards from '../Card/card';
 // import MapCard from '../Card/mapcard';
 import Disc from '../Card/disc';
+import Lists from '../Card/list';
 import styles from '../List/list.less';
 
 const query = {
@@ -32,14 +33,6 @@ const query = {
   },
 };
 const { Content } = Layout;
-const gridStyle = {
-  width: '25%',
-  textAlign: 'center',
-  display: 'inline-block',
-  Flexdirection: 'column',
-  Alignitems: 'center',
-  Justifycontent: 'center',
-};
 const columns = [{
   dataIndex: 'key',
 }, {
@@ -157,14 +150,7 @@ class Contents extends React.Component {
           <Cards />
           {/* <MapCard /> */}
           <Disc />
-          <Card title="List of recommended" style={{ fontStyle: 'italic', fontFamily: 'fantasy', fontWeight: '600' }}>
-            <Card.Grid style={gridStyle}>
-              <img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} />
-            </Card.Grid>
-            <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-            <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-            <Card.Grid style={gridStyle}><img src="http://huyaimg.dwstatic.com/avatar/1056/9a/db274c276ff4d6aecffc0997d8e789_180_135.jpg" alt="this is pic" style={{ width: '150px', height: '150px' }} /></Card.Grid>
-          </Card>
+          <Lists />
           <Table
             style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '1000px' }}
             pagination={{ pageSize: 6 }}

@@ -8,7 +8,6 @@ import { Layout, Menu, Icon, Avatar, Carousel, Dropdown, List } from 'antd';
 import { connect } from 'dva';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
-import Example from '../components/Example';
 import Footers from '../components/Footer/footer';
 import Contents from '../components/Content/wrap';
 import styles from './Music.less';
@@ -130,11 +129,6 @@ class BasicLayout extends React.Component {
                       />,
                     )
                   }
-                  {/* {musicsrc.map(() => {
-                    return (
-                      <img src={music.musicsrc} alt="" style={{ height: '450px' }} />
-                    );
-                  })} */}
                 </Carousel>
                 <svg className={styles.svgc}>
                   <polygon
@@ -177,7 +171,6 @@ class BasicLayout extends React.Component {
         <Footer className={styles.footer}>
           <Footers />
         </Footer>
-        <Example />
         <Bottom />
       </Layout>
     );

@@ -240,7 +240,6 @@ class BasicLayout extends React.Component {
     });
   }
 
-
   showModal = () => {
     this.setState({
       visible: true,

@@ -59,7 +59,7 @@ class Bottom extends React.Component {
             position: 'fixed',
             left: '0',
             bottom,
-            transition: 'bottom 1s',
+            transition: 'bottom 0.5s',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -71,7 +71,7 @@ class Bottom extends React.Component {
           </div>
           <div style={{ border: '1px solid', display: 'flex', alignItems: 'center' }}>
             <div style={{ border: '1px solid', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img onClick={this.onClick.bind(this)} src={this.state.up} alt="this is pic" style={{ width: '30px', height: '30px', marginLeft: '0px' }} />
+              <img onClick={this.onClick.bind(this)} src={this.state.up} alt="this is pic" style={{ width: '30px', height: '30px' }} />
               <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '35px', height: '35px', marginLeft: '10px' }} />
               <img onClick={this.onClick.bind(this)} src={this.state.next} alt="this is pic" style={{ width: '30px', height: '30px', marginLeft: '10px' }} />
             </div>

@@ -31,46 +31,63 @@ const query = {
     minWidth: 1200,
   },
 };
-const columns = [{
-  dataIndex: 'key',
-  width: 50,
-  render: text => <a href="">{text}</a>,
-}, {
-  title: '播放',
-  dataIndex: 'play',
-  width: 70,
-  // render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-  render: (text) => {
-    return <img src={text} alt={'g'} width={'35px'} height={'35px'} />;
-  },
-}, {
-  title: '封面',
-  dataIndex: 'src',
-  width: 100,
-  render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
-}, {
-  title: '歌曲标题',
-  dataIndex: 'song',
-  width: 100,
-  render: text => <div>{text}</div>,
-}, {
-  title: '时长',
-  width: 100,
-  dataIndex: 'time',
-}, {
-  title: '歌手',
-  dataIndex: 'autor',
-  width: 100,
-  render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
-}, {
-  title: '专辑',
-  dataIndex: 'albums',
-}];
 
 class Lists extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pic: require('../image/播放.png'),
+    };
+    this.onPlaySong = this.onPlaySong.bind(this);
+  }
+
+  onPlaySong(r) {
+    console.log(r);
+    // console.log(r.target.key);
+    this.setState({
+      pic: (this.state.pic === require('../image/播放.png') ? require('../image/暂停.png') : require('../image/播放.png')),
+    });
+  }
+
   render() {
     const { list } = this.props;
     console.log(list.datas, 'list');
+
+    const columns = [{
+      dataIndex: 'key',
+      width: 50,
+      render: text => <a href="">{text}</a>,
+    }, {
+      title: '播放',
+      dataIndex: 'play',
+      width: 70,
+      render: (text, record) => {
+        return <img onClick={this.onPlaySong.bind(this, record.song)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
+      },
+    }, {
+      title: '封面',
+      dataIndex: 'src',
+      width: 100,
+      render: text => <img src={text} alt={'g'} width={'60px'} height={'60px'} />,
+    }, {
+      title: '歌曲标题',
+      dataIndex: 'song',
+      width: 100,
+      render: text => <div>{text}</div>,
+    }, {
+      title: '时长',
+      width: 100,
+      dataIndex: 'time',
+    }, {
+      title: '歌手',
+      dataIndex: 'autor',
+      width: 100,
+      render: text => <div style={{ marginLeft: 'px' }}>{text}</div>,
+    }, {
+      title: '专辑',
+      dataIndex: 'albums',
+    }];
+
     const layout = (
       <Layout>
         <Layout>
@@ -125,7 +142,6 @@ class Lists extends React.Component {
                 </div>
                 <Table
                   dataIndex={this.props.key}
-                  // selectedRowKeys
                   pagination={{ pageSize: 6 }}
                   columns={columns}
                   dataSource={list.datas}

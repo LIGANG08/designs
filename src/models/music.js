@@ -41,14 +41,12 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
+    *fetch({ payload }, { put }) {
       yield put({
         type: 'move',
-        // loading: true,
       });
       yield put({
         type: 'save',
-        // payload: true,
       });
     },
   },

@@ -198,7 +198,6 @@ class BasicLayout extends React.Component {
   render() {
     const { music } = this.props;
     // const { musicsrc } = music;
-    const bottom = this.state.isLock ? 0 : this.state.bot;
     const layout = (
       <Layout>
         <div className={styles.header}>
