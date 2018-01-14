@@ -12,6 +12,7 @@ import One from '../routes/one';
 import Two from '../routes/two';
 import Three from '../routes/three';
 import Lists from '../components/List/list';
+import Bottom from '../components/Footer/bottom';
 import styles from './list.less';
 
 const { Content } = Layout;
@@ -283,19 +284,7 @@ class BasicLayout extends React.Component {
             </div>
           </Content>
         </Layout>
-        <div onMouseOver={this.BottomBar} onMouseLeave={this.BottomBarLeave} style={{ height: '120px', width: '100%', background: 'black', opacity: '0.5', position: 'fixed', left: '0', bottom, transition: 'bottom 1s' }}>
-          <img onClick={this.Click.bind(this)} src={this.state.pic} style={{ color: this.state.color, float: 'right', right: '10px', width: '30px', height: '30px' }} alt="" />
-          <div style={{ border: '1px solid red' }}>
-            <img onClick={this.onClick.bind(this)} src={this.state.src} alt="this is pic" style={{ width: '40px', height: '40px', marginTop: '20px', marginLeft: '150px' }} />
-          </div>
-          <audio
-            controls={'true'}
-            id={`audio${26662115}`}
-            src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}
-            preload={'true'}
-          >s
-          </audio>
-        </div>
+        <Bottom />
       </Layout>
     );
     return (

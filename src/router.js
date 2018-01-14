@@ -1,7 +1,5 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
-// import IndexPage from './routes/IndexPage';
-// import BasicLayout from './layouts/BasicLayout';
 import Music from './layouts/Music';
 import list from './routes/list';
 import musicians from './routes/musicians';
@@ -9,8 +7,7 @@ import download from './routes/download';
 import onClick from './routes/onClick';
 import test from './routes/test';
 // import one from './routes/one';
-import two from './routes/two';
-// import three from './Music/three';s
+// import three from './routes/three';
 
 function RouterConfig({ history }) {
   return (
@@ -22,7 +19,7 @@ function RouterConfig({ history }) {
         <Route path="/download" component={download} />
         <Route path="/onClick" component={onClick} />
         <Route path="/test" component={test} />
-        <Route path="/one" component={two} />
+        {/* <Route path="/one" component={three} /> */}
       </Switch>
     </Router>
   );
