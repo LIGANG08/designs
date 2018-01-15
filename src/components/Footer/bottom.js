@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Layout, Modal, List } from 'antd';
+import { Layout, Modal, List, Progress } from 'antd';
 
 const data = [{
   key: 1,
@@ -115,13 +115,16 @@ class Bottom extends React.Component {
           <div style={{ border: '1px solid', display: 'flex', alignItems: 'center' }}>
             <div style={{ border: '1px solid', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img onClick={this.onClick.bind(this)} src={this.state.up} alt="this is pic" style={{ width: '30px', height: '30px' }} />
-              <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '35px', height: '35px', marginLeft: '10px' }} />
-              <img onClick={this.onClick.bind(this)} src={this.state.next} alt="this is pic" style={{ width: '30px', height: '30px', marginLeft: '10px' }} />
+              <img onClick={this.onClick.bind(this)} src={this.state.play} alt="this is pic" style={{ width: '35px', height: '35px', marginLeft: '20px' }} />
+              <img onClick={this.onClick.bind(this)} src={this.state.next} alt="this is pic" style={{ width: '30px', height: '30px', marginLeft: '20px' }} />
             </div>
-            <div style={{ border: '1px solid', color: 'silver', width: '700px' }}>
-              <img src="http://i01.pic.sogou.com/358447d676d3a67c" alt="this is pic" style={{ width: '40px', height: '40px', margin: '10px' }} />
+            <div style={{ border: '1px solid gray', color: 'silver', marginLeft: '50px' }}>
+              <img src="http://i01.pic.sogou.com/358447d676d3a67c" alt="this is pic" style={{ width: '40px', height: '40px' }} />
             </div>
-            <div style={{ color: 'silver', marginLeft: '20px', padding: '0 20px 0 20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', width: '500px' }}>
+              <Progress percent={50} showInfo={false} status="active" style={{ background: 'black' }} />
+            </div>
+            <div style={{ color: 'silver', marginLeft: '0px', padding: '0 20px 0 20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ }}>
                 <img src={require('../image/collects.png')} alt="" style={{ width: '30px', height: '30px' }} />
               </div>
