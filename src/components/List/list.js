@@ -120,12 +120,12 @@ class Lists extends React.Component {
                         <img src={require('../image/share.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px', display: 'flex', alignItems: 'center' }} />分享
                       </div>
                       <div style={{ marginLeft: '20px', border: '1px solid gray', background: 'silver', padding: '4px 10px', display: 'flex', alignItems: 'center' }}>
-                        <img src={require('../image/comments.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />评论
+                        <img src={require('../image/comments.png')} alt="" style={{ width: '20px', height: '20px', marginRight: '5px' }} />评论(0)
                       </div>
                     </div>
                   </div>
                 </div>
-                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C' }}>
+                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', width: '100%' }}>
                   <Icon type="bars" style={{ margin: '10px', color: '#C10D0C' }} />歌曲列表
                   <Divider type="vertical" />
                   <a href="/#" style={{ color: '#666', fontSize: '15px' }}>华语</a>
@@ -147,8 +147,22 @@ class Lists extends React.Component {
                   scroll={{ y: 300 }}
                   components={'true'}
                   size={'30px'}
+                  style={{ borderBottom: '2px solid silver' }}
                   // bordered={'true'}
                 />
+                <div style={{ fontSize: '20px', marginTop: '10px', paddingBottom: '5px', color: '#333', borderBottom: '2px solid #C10D0C', width: '100%' }}>
+                  <Icon type="edit" style={{ margin: '10px', color: '#C10D0C' }} />评论
+                  <Divider type="vertical" />
+                  <a href="/#" style={{ color: '#666', fontSize: '15px' }}>共0条评论</a>
+                  <Divider type="vertical" />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'cente', paddingBottom: '30px', borderBottom: '1px solid silver', margin: '30px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <img src={require('../image/a.jpeg')} alt="" style={{ width: '50px', height: '50px', border: '1px solid silver' }} />
+                    <textarea placeholder="评论" style={{ width: '590px', height: '250px', marginLeft: '20px', border: '1px solid silver' }} />
+                  </div>
+                  <a><button className={styles.button} type="button" >评论</button></a>
+                </div>
               </div>
             </div>
           </Content>
