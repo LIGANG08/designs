@@ -10,6 +10,7 @@ export default {
       autor: '薛之谦',
       albums: '《意外》',
       background: 'this.state.background',
+      url: 'http://music.163.com/song/media/outer/url?id=483671599.mp3',
     }, {
       key: '2',
       play: require('../image/play.png'),
@@ -18,6 +19,7 @@ export default {
       time: '04:12',
       autor: '李荣浩',
       albums: '《李白》',
+      url: 'http://music.163.com/song/media/outer/url?id=26662115.mp3',
     }, {
       key: '3',
       play: require('../image/play.png'),
@@ -26,6 +28,7 @@ export default {
       time: '01:48',
       autor: 'PRC 巴音汗',
       albums: '《80000(Prod.By DROYC)》',
+      url: 'http://music.163.com/song/media/outer/url?id=476592630.mp3',
     }, {
       key: '4',
       play: require('../image/play.png'),
