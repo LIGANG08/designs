@@ -151,37 +151,19 @@ class Bottom extends React.Component {
                   style={{ marginTop: '300px' }}
                   bodyStyle={{ background: 'black' }}
                 >
-                  {/* <div>
-                    <Table
-                      dataIndex={this.state.key}
-                      // style={{ background: 'this.state.background', marginTop: '130px', textAlign: 'center'  }}
-                      selectedRowKeys
-                      pagination={false}
-                      columns={columns}
-                      dataSource={datas}
-                      bordered
-                    />
-                  </div> */}
-                  {/* <List
+                  <List
                     size="large"
                     header={<div>Header</div>}
                     footer={<div>Footer</div>}
                     bordered
                     dataSource={data}
                     renderItem={item => (<List.Item>{item}</List.Item>)}
-                  /> */}
+                  />
                   <div style={{ height: '300px', width: '500px', background: 'black' }}>s</div>
                 </Modal>
               </div>
             </div>
           </div>
-          {/* <audio
-            controls={'true'}
-            id={`audio${26662115}`}
-            src={'http://music.163.com/song/media/outer/url?id=26662115.mp3'}
-            preload={'true'}
-          >s
-          </audio> */}
         </div>
       </Layout>
     );
