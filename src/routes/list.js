@@ -224,7 +224,7 @@ class BasicLayout extends React.Component {
             </div>
           </Content>
         </Layout>
-        <Bottom />
+        {/* <Bottom /> */}
       </Layout>
     );
     return (

@@ -42,11 +42,18 @@ class Contents extends React.Component {
     };
     this.onPlaySong = this.onPlaySong.bind(this);
   }
+  componentWillMount() {
+    let pic = [];
+    this.props.list.datas.map(() => {
+      pic.push(require('../image/播放.png'));
+    });
+    this.setState({ pic });
+  }
   onPlaySong(r) {
     console.log(r);
-    this.setState({
-      pic: (this.state.pic === require('../image/播放.png') ? require('../image/暂停.png') : require('../image/播放.png')),
-    });
+    let pic = this.state.pic;
+    pic[r.key] = pic[r.key] === require('../image/播放.png') ? require('../image/暂停.png') : require('../image/播放.png');
+    this.setState({ pic });
   }
   render() {
     const { list } = this.props;
@@ -59,7 +66,7 @@ class Contents extends React.Component {
       dataIndex: 'play',
       width: 70,
       render: (text, record) => {
-        return <img onClick={this.onPlaySong.bind(this, record)} src={this.state.pic} alt={'g'} width={'30px'} height={'30px'} />;
+        return <img onClick={this.onPlaySong.bind(this, record)} src={this.state.pic[record.key]} alt={'g'} width={'30px'} height={'30px'} />;
       },
     }, {
       title: '封面',

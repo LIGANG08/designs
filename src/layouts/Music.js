@@ -92,6 +92,7 @@ class BasicLayout extends React.Component {
               </a>
             </Dropdown>
           </div>
+          <Bottom />
         </div>
         <Layout>
           <Sider
@@ -104,10 +105,11 @@ class BasicLayout extends React.Component {
             <div className={styles.main}>
               <div className={styles.top}>
                 <Carousel classname={styles.move} autoplay={{ second: '3s' }}>
-                  <img src={music.musicsrc} alt="" />
+                  {/* <img src={music.musicsrc} alt="" /> */}
                   {
                     musicsrc.map(item =>
                       <img
+                        key={item.key}
                         src={item.src}
                         alt=""
                         style={{ height: '450px' }}
@@ -155,7 +157,6 @@ class BasicLayout extends React.Component {
         <Footer className={styles.footer}>
           <Footers />
         </Footer>
-        <Bottom />
       </Layout>
     );
     return (
